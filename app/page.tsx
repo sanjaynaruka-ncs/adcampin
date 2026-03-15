@@ -16,7 +16,7 @@ function LearnPlayLabPage() {
 
       <Image
           src="/learnplaylab-logo.webp"
-          alt="Mathuvo"
+          alt="LeanPlayLab"
           width={220}
           height={220}
         />
