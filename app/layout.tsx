@@ -1,31 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { headers } from "next/headers";
 
-export async function generateMetadata(): Promise<Metadata> {
-
-  const headersList = await headers();
-
-  const hostHeader = headersList.get("host") || "";
-  const host = hostHeader.split(":")[0];
-
-  if (host.startsWith("learnplaylab.")) {
-    return {
-      title: "Learn Play Lab",
-      icons: {
-        icon: "/favicon.ico"
-      }
-    };
-  }
-
-  return {
-    title: "AdCampin",
-    icons: {
-      icon: "/favicon.ico"
-    }
-  };
-}
+export const metadata = {
+  title: "AdCampin",
+  description: "Launch high-converting ads in seconds with AI.",
+  icons: {
+    icon: "/favicon.png",
+  },
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,7 +25,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body
