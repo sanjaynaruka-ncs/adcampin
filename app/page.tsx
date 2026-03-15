@@ -36,36 +36,58 @@ function LearnPlayLabPage() {
         Mobile Games Studio by AdCampin
       </p>
 
-      {/* Apps */}
-      <div className="flex flex-row flex-wrap justify-center gap-16">
+      {/* Apps Row */}
+      <div className="flex flex-wrap justify-center gap-16">
 
         {/* Mathuvo */}
-        <a
-          href="https://play.google.com/store/apps/details?id=com.adcampin.mathuvo"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transform hover:scale-105 transition"
-        >
-          <img
-            src="/mathuvo.webp"
-            alt="Mathuvo"
-            className="w-40 rounded-xl shadow-lg"
-          />
-        </a>
+        <div className="flex flex-col items-center gap-4">
+
+          <a
+            href="https://play.google.com/store/apps/details?id=com.adcampin.mathuvo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transform hover:scale-105 transition"
+          >
+            <img
+              src="/mathuvo.webp"
+              alt="Mathuvo"
+              className="w-40 rounded-xl shadow-lg"
+            />
+          </a>
+
+          <a
+            href="/mathuvo/privacy-policy"
+            className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 text-sm"
+          >
+            Mathuvo – Privacy Policy
+          </a>
+
+        </div>
 
         {/* Tic Tac Toe */}
-        <a
-          href="https://play.google.com/store/apps/details?id=com.adcampin.tictactoe_new"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transform hover:scale-105 transition"
-        >
-          <img
-            src="/tictactoe.webp"
-            alt="Tic Tac Toe"
-            className="w-40 rounded-xl shadow-lg"
-          />
-        </a>
+        <div className="flex flex-col items-center gap-4">
+
+          <a
+            href="https://play.google.com/store/apps/details?id=com.adcampin.tictactoe_new"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transform hover:scale-105 transition"
+          >
+            <img
+              src="/tictactoe.webp"
+              alt="Tic Tac Toe"
+              className="w-40 rounded-xl shadow-lg"
+            />
+          </a>
+
+          <a
+            href="/tic-tac-toe/privacy-policy"
+            className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 text-sm"
+          >
+            Tic Tac Toe – Privacy Policy
+          </a>
+
+        </div>
 
       </div>
 
