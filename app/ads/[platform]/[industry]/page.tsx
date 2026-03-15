@@ -2,6 +2,7 @@ import Link from "next/link";
 import { industries } from "@/lib/industries";
 import { platforms } from "@/lib/platforms";
 
+
 export function generateStaticParams() {
 
   const params = [];
