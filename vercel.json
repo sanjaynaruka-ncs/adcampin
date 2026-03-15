@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "learnplaylab.adcampin.com"
+        }
+      ],
+      "destination": "/learnplaylab"
+    }
+  ]
+}
