@@ -3,24 +3,27 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { headers } from "next/headers";
 
-export async function generateMetadata() {
-  const headersList = await headers();
-  const host = headersList.get("host");
+export async function generateMetadata(): Promise<Metadata> {
 
-  if (host?.startsWith("learnplaylab.")) {
+  const headersList = await headers();
+
+  const hostHeader = headersList.get("host") || "";
+  const host = hostHeader.split(":")[0];
+
+  if (host.startsWith("learnplaylab.")) {
     return {
       title: "Learn Play Lab",
       icons: {
-        icon: "/learnplaylab-favicon.png",
-      },
+        icon: "/favicon.ico"
+      }
     };
   }
 
   return {
     title: "AdCampin",
     icons: {
-      icon: "/favicon.ico",
-    },
+      icon: "/favicon.ico"
+    }
   };
 }
 
@@ -39,6 +42,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body
