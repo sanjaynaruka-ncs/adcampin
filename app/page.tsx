@@ -12,29 +12,49 @@ import Footer from "./components/Footer";
 function LearnPlayLabPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white text-center p-10">
+
+      <img
+        src="/learnplaylab-logo.webp"
+        alt="Learn Play Lab"
+        className="w-24 mb-6"
+      />
+
+  <h1 className="text-4xl font-bold mb-4">
+    Learn Play Lab
+  </h1>
       <h1 className="text-4xl font-bold mb-8">Learn Play Lab</h1>
 
       <p className="text-gray-400 mb-12">
         Mobile Games Studio by AdCampin
       </p>
 
-      <div className="space-y-6">
+      <div className="flex flex-col items-center gap-10 mt-10">
 
-        <a
-          href="/mathuvo/privacy-policy"
-          className="block bg-blue-600 px-6 py-4 rounded-lg hover:bg-blue-500"
-        >
-          Mathuvo – Privacy Policy
-        </a>
+  {/* Mathuvo */}
+  <a
+    href="https://play.google.com/store/apps/details?id=com.adcampin.mathuvo"
+    target="_blank"
+  >
+    <img
+      src="/mathuvo.webp"
+      alt="Mathuvo"
+      className="w-56 rounded-xl shadow-lg hover:scale-105 transition"
+    />
+  </a>
 
-        <a
-          href="/tic-tac-toe/privacy-policy"
-          className="block bg-blue-600 px-6 py-4 rounded-lg hover:bg-blue-500"
-        >
-          Tic Tac Toe – Privacy Policy
-        </a>
+  {/* Tic Tac Toe */}
+  <a
+    href="https://play.google.com/store/apps/details?id=com.adcampin.tictactoe_new"
+    target="_blank"
+  >
+    <img
+      src="/tictactoe.webp"
+      alt="Tic Tac Toe"
+      className="w-56 rounded-xl shadow-lg hover:scale-105 transition"
+    />
+  </a>
 
-      </div>
+</div>
     </div>
   );
 }
