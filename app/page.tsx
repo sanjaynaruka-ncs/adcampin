@@ -21,10 +21,12 @@ function LearnPlayLabPage() {
           height={220}
         />
 
-  <h1 className="text-4xl font-bold mb-4">
-    Learn Play Lab
-  </h1>
       <h1 className="text-4xl font-bold mb-8">Learn Play Lab</h1>
+
+      <p className="text-gray-400 max-w-xl mb-12">
+        Learn Play Lab is a mobile game studio by AdCampin focused on creating fun,
+        educational, and engaging games for players of all ages.
+      </p>
 
       <p className="text-gray-400 mb-12">
         Mobile Games Studio by AdCampin
@@ -57,7 +59,7 @@ function LearnPlayLabPage() {
       width={220}
       height={220}
     />
-    
+
   </a>
 
 </div>

@@ -1,14 +1,27 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { headers } from "next/headers";
 
-export const metadata = {
-  title: "AdCampin",
-  description: "Launch high-converting ads in seconds with AI.",
-  icons: {
-    icon: "/favicon.png",
-  },
-};
+export async function generateMetadata() {
+  const headersList = await headers();
+  const host = headersList.get("host");
+
+  if (host?.startsWith("learnplaylab.")) {
+    return {
+      title: "Learn Play Lab",
+      icons: {
+        icon: "/learnplaylab-favicon.webp",
+      },
+    };
+  }
+
+  return {
+    title: "AdCampin",
+    icons: {
+      icon: "/favicon.ico",
+    },
+  };
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
