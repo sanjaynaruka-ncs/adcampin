@@ -1,0 +1,14 @@
+{
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "http://65.20.76.133/$1",
+      "has": [
+        {
+          "type": "host",
+          "value": "learnplaylab.adcampin.com"
+        }
+      ]
+    }
+  ]
+}
