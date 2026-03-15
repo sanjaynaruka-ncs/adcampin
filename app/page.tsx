@@ -98,9 +98,11 @@ function LearnPlayLabPage() {
 export default async function Home() {
 
   const headersList = await headers();
-  const host = headersList.get("host");
 
-  if (host?.startsWith("learnplaylab.")) {
+  const hostHeader = headersList.get("host") || "";
+  const host = hostHeader.split(":")[0]; // remove port if present
+
+  if (host.startsWith("learnplaylab.")) {
     return <LearnPlayLabPage />;
   }
 
