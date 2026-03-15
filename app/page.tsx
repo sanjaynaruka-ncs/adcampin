@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 import { headers } from "next/headers";
+import Image from "next/image";
 
 import Navbar from "./components/navbar";
 import HeroSection from "./components/hero_section";
@@ -13,11 +14,12 @@ function LearnPlayLabPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white text-center p-10">
 
-      <img
-        src="/learnplaylab-logo.webp"
-        alt="Learn Play Lab"
-        className="w-24 mb-6"
-      />
+      <Image
+          src="/learnplaylab-logo.webp"
+          alt="Mathuvo"
+          width={220}
+          height={220}
+        />
 
   <h1 className="text-4xl font-bold mb-4">
     Learn Play Lab
@@ -35,10 +37,11 @@ function LearnPlayLabPage() {
     href="https://play.google.com/store/apps/details?id=com.adcampin.mathuvo"
     target="_blank"
   >
-    <img
+    <Image
       src="/mathuvo.webp"
       alt="Mathuvo"
-      className="w-56 rounded-xl shadow-lg hover:scale-105 transition"
+      width={220}
+      height={220}
     />
   </a>
 
@@ -47,11 +50,14 @@ function LearnPlayLabPage() {
     href="https://play.google.com/store/apps/details?id=com.adcampin.tictactoe_new"
     target="_blank"
   >
-    <img
+
+    <Image
       src="/tictactoe.webp"
-      alt="Tic Tac Toe"
-      className="w-56 rounded-xl shadow-lg hover:scale-105 transition"
+      alt="Mathuvo"
+      width={220}
+      height={220}
     />
+    
   </a>
 
 </div>
