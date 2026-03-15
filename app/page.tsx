@@ -38,9 +38,10 @@ function LearnPlayLabPage() {
   );
 }
 
-export default function Home() {
+export default async function Home() {
 
-  const host = headers().get("host");
+  const headersList = await headers();
+  const host = headersList.get("host");
 
   if (host?.startsWith("learnplaylab.")) {
     return <LearnPlayLabPage />;
