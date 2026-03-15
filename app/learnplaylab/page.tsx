@@ -1,28 +1,58 @@
 export default function LearnPlayLab() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white text-center p-10">
-      <h1 className="text-4xl font-bold mb-8">Learn Play Lab</h1>
-      <p className="text-gray-400 mb-12">
-        Mobile Games Studio by AdCampin
+    <div className="min-h-screen bg-black text-white flex flex-col items-center text-center px-6 py-20">
+
+      <img
+        src="/learnplaylab-logo.webp"
+        alt="Learn Play Lab"
+        className="w-32 mb-6"
+      />
+
+      <h1 className="text-4xl font-bold mb-6">
+        Learn Play Lab
+      </h1>
+
+      <p className="text-gray-400 max-w-xl mb-6">
+        Learn Play Lab is a mobile game studio by AdCampin focused on creating fun,
+        educational, and engaging games for players of all ages.
       </p>
 
-      <div className="space-y-6">
+      <div className="flex flex-wrap justify-center gap-16 mt-10">
 
-        <a
-          href="/mathuvo/privacy-policy"
-          className="block bg-blue-600 px-6 py-4 rounded-lg hover:bg-blue-500"
-        >
-          Mathuvo – Privacy Policy
-        </a>
+        <div className="flex flex-col items-center gap-4">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.adcampin.mathuvo"
+            target="_blank"
+          >
+            <img src="/mathuvo.webp" className="w-40 rounded-xl shadow-lg"/>
+          </a>
 
-        <a
-          href="/tic-tac-toe/privacy-policy"
-          className="block bg-blue-600 px-6 py-4 rounded-lg hover:bg-blue-500"
-        >
-          Tic Tac Toe – Privacy Policy
-        </a>
+          <a
+            href="/mathuvo/privacy-policy"
+            className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 text-sm"
+          >
+            Mathuvo – Privacy Policy
+          </a>
+        </div>
+
+        <div className="flex flex-col items-center gap-4">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.adcampin.tictactoe_new"
+            target="_blank"
+          >
+            <img src="/tictactoe.webp" className="w-40 rounded-xl shadow-lg"/>
+          </a>
+
+          <a
+            href="/tic-tac-toe/privacy-policy"
+            className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 text-sm"
+          >
+            Tic Tac Toe – Privacy Policy
+          </a>
+        </div>
 
       </div>
+
     </div>
   );
 }
