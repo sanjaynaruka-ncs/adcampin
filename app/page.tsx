@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
+
 import { headers } from "next/headers";
-import Image from "next/image";
 
 import Navbar from "./components/navbar";
 import HeroSection from "./components/hero_section";
@@ -12,57 +12,63 @@ import Footer from "./components/Footer";
 
 function LearnPlayLabPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white text-center p-10">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center text-center px-6 py-20">
 
-      <Image
-          src="/learnplaylab-logo.webp"
-          alt="LeanPlayLab"
-          width={220}
-          height={220}
-        />
+      {/* Logo */}
+      <img
+        src="/learnplaylab-logo.webp"
+        alt="Learn Play Lab"
+        className="w-32 mb-6"
+      />
 
-      <h1 className="text-4xl font-bold mb-8">Learn Play Lab</h1>
+      {/* Title */}
+      <h1 className="text-4xl font-bold mb-6">
+        Learn Play Lab
+      </h1>
 
-      <p className="text-gray-400 max-w-xl mb-12">
+      {/* Description */}
+      <p className="text-gray-400 max-w-xl mb-6">
         Learn Play Lab is a mobile game studio by AdCampin focused on creating fun,
         educational, and engaging games for players of all ages.
       </p>
 
-      <p className="text-gray-400 mb-12">
+      <p className="text-gray-500 mb-16">
         Mobile Games Studio by AdCampin
       </p>
 
-      <div className="flex flex-col items-center gap-10 mt-10">
+      {/* Apps */}
+      <div className="flex flex-row flex-wrap justify-center gap-16">
 
-  {/* Mathuvo */}
-  <a
-    href="https://play.google.com/store/apps/details?id=com.adcampin.mathuvo"
-    target="_blank"
-  >
-    <Image
-      src="/mathuvo.webp"
-      alt="Mathuvo"
-      width={220}
-      height={220}
-    />
-  </a>
+        {/* Mathuvo */}
+        <a
+          href="https://play.google.com/store/apps/details?id=com.adcampin.mathuvo"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transform hover:scale-105 transition"
+        >
+          <img
+            src="/mathuvo.webp"
+            alt="Mathuvo"
+            className="w-40 rounded-xl shadow-lg"
+          />
+        </a>
 
-  {/* Tic Tac Toe */}
-  <a
-    href="https://play.google.com/store/apps/details?id=com.adcampin.tictactoe_new"
-    target="_blank"
-  >
+        {/* Tic Tac Toe */}
+        <a
+          href="https://play.google.com/store/apps/details?id=com.adcampin.tictactoe_new"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transform hover:scale-105 transition"
+        >
+          <img
+            src="/tictactoe.webp"
+            alt="Tic Tac Toe"
+            className="w-40 rounded-xl shadow-lg"
+          />
+        </a>
 
-    <Image
-      src="/tictactoe.webp"
-      alt="Mathuvo"
-      width={220}
-      height={220}
-    />
+      </div>
 
-  </a>
-
-</div>
     </div>
   );
 }

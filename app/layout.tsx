@@ -11,7 +11,7 @@ export async function generateMetadata() {
     return {
       title: "Learn Play Lab",
       icons: {
-        icon: "/learnplaylab-favicon.webp",
+        icon: "/learnplaylab-favicon.png",
       },
     };
   }
