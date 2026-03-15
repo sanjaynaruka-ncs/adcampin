@@ -1,0 +1,45 @@
+/* GLOBAL RESPONSIVE FIXES */
+
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Buttons responsive */
+button {
+  max-width: 100%;
+}
+
+/* Containers safe padding */
+.container-safe {
+  max-width: 1280px;
+  margin: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Mobile text scaling */
+h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+p {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
+
+/* Grid fallback for small screens */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
