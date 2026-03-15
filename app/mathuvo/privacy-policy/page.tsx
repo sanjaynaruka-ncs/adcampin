@@ -1,176 +1,184 @@
 export default function PrivacyPolicy() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-16 text-gray-200">
-      <h1 className="text-4xl font-bold mb-6">
-        Privacy Policy – Mathuvo
-      </h1>
+    <div className="min-h-screen bg-gradient-to-b from-[#0b1120] to-black text-gray-200">
 
-      <p className="mb-2">
-        <strong>Privacy Policy for Mathuvo – Math Adventure Quest</strong>
-      </p>
+      {/* Header */}
+      <div className="max-w-5xl mx-auto px-6 pt-20 pb-10">
+        <h1 className="text-4xl font-bold text-white mb-3">
+          Privacy Policy – Mathuvo
+        </h1>
+        <p className="text-gray-400">
+          Effective date: January 1, 2026
+        </p>
+      </div>
 
-      <p className="mb-6">
-        <strong>Effective date:</strong> January 1, 2026
-      </p>
+      {/* Content Card */}
+      <div className="max-w-3xl mx-auto bg-[#0f172a] border border-gray-800 rounded-xl px-8 py-10 shadow-lg space-y-8">
 
-      <p className="mb-6">
-        Welcome to <strong>Mathuvo – Math Adventure Quest</strong>, a mobile
-        game developed and published by <strong>Learn Play Lab</strong>, a
-        division of <strong>AdCampin</strong> (“we,” “our,” or “us”).
-      </p>
+        <p>
+          Welcome to <strong>Mathuvo – Math Adventure Quest</strong>, a mobile
+          game developed and published by <strong>Learn Play Lab</strong>, a
+          division of <strong>AdCampin</strong>. This Privacy Policy explains
+          how we handle your information when you use our mobile game available
+          on the Google Play Store.
+        </p>
 
-      <p className="mb-10">
-        This Privacy Policy explains how we handle your information when you
-        use our mobile game available on the Google Play Store. By installing
-        or using <strong>Mathuvo</strong>, you agree to the terms of this
-        Privacy Policy.
-      </p>
+        <p>
+          By installing or using <strong>Mathuvo</strong>, you agree to the
+          terms of this Privacy Policy.
+        </p>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        1. Information We Collect
-      </h2>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            1. Information We Collect
+          </h2>
 
-      <h3 className="text-xl font-semibold mb-2">Personal Data</h3>
+          <h3 className="font-semibold mt-4 mb-2 text-gray-300">
+            Personal Data
+          </h3>
 
-      <p className="mb-6">
-        <strong>Mathuvo does not collect personally identifiable information</strong>{" "}
-        such as your name, address, phone number, email address, or login
-        credentials.
-      </p>
+          <p className="mb-4">
+            Mathuvo does <strong>not collect personally identifiable
+            information</strong> such as name, email address, phone number,
+            or login credentials.
+          </p>
 
-      <h3 className="text-xl font-semibold mb-2">Non-Personal Data</h3>
+          <h3 className="font-semibold mt-4 mb-2 text-gray-300">
+            Non-Personal Data
+          </h3>
 
-      <p className="mb-4">
-        We may automatically collect non-personally identifiable information
-        that the device or app generates, such as:
-      </p>
+          <p>The app may automatically collect technical information such as:</p>
 
-      <ul className="list-disc ml-6 mb-8 space-y-2">
-        <li>Device model and operating system version</li>
-        <li>App version</li>
-        <li>Screen resolution</li>
-        <li>Language settings</li>
-        <li>Anonymous usage statistics (e.g., number of times the app is launched)</li>
-      </ul>
+          <ul className="list-disc ml-6 mt-3 space-y-2 text-gray-300">
+            <li>Device model and operating system version</li>
+            <li>App version</li>
+            <li>Screen resolution</li>
+            <li>Language settings</li>
+            <li>Anonymous usage statistics</li>
+          </ul>
 
-      <p className="mb-10">
-        This data is used <strong>only in aggregate</strong> to understand how
-        the App is used and to improve performance.
-      </p>
+          <p className="mt-4">
+            This information is used only in aggregate to improve app
+            performance and user experience.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        2. Ads and External Services
-      </h2>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            2. Ads and External Services
+          </h2>
 
-      <p className="mb-6">
-        At launch, Mathuvo does <strong>not display any advertisements</strong>.
-        If advertising or monetization is added in future versions, we will
-        update this policy and notify users accordingly.
-      </p>
+          <p>
+            At launch, Mathuvo does <strong>not display advertisements</strong>.
+            If ads or monetization are added in future versions, this policy
+            will be updated accordingly.
+          </p>
 
-      <p className="mb-10">
-        We may use third-party services (such as analytics or ad networks).
-        These services may collect certain information automatically, such as
-        your device’s IP address, but they <strong>do not collect personally
-        identifiable information</strong> unless you choose to provide it.
-      </p>
+          <p className="mt-4">
+            The app may use third-party services such as analytics tools or ad
+            networks. These services may automatically collect technical
+            information like device IP address but do not collect personally
+            identifiable information unless provided voluntarily.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        3. How We Use Your Information
-      </h2>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            3. How We Use Your Information
+          </h2>
 
-      <p className="mb-4">
-        We use the information we collect in the following ways:
-      </p>
+          <ul className="list-disc ml-6 space-y-2 text-gray-300">
+            <li>Provide and maintain the app</li>
+            <li>Improve functionality and user experience</li>
+            <li>Analyze usage patterns</li>
+            <li>Fix bugs and technical issues</li>
+          </ul>
 
-      <ul className="list-disc ml-6 mb-10 space-y-2">
-        <li>To provide and maintain the App</li>
-        <li>To improve the App’s functionality and user experience</li>
-        <li>To analyze usage patterns and app performance</li>
-        <li>To troubleshoot and fix bugs</li>
-      </ul>
+          <p className="mt-4">
+            None of the data collected is used to identify users personally.
+          </p>
+        </section>
 
-      <p className="mb-10">
-        None of the data we collect is used to identify you personally.
-      </p>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            4. Data Sharing and Disclosure
+          </h2>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        4. Data Sharing and Disclosure
-      </h2>
+          <p>
+            We do <strong>not sell, trade, or transfer</strong> personal data to
+            outside parties.
+          </p>
 
-      <p className="mb-6">
-        We do <strong>not sell, trade, or otherwise transfer</strong> your
-        personal data to outside parties.
-      </p>
+          <p className="mt-4">
+            Non-personal aggregated data may be shared with analytics providers,
+            advertising partners (if ads are introduced), or legal authorities
+            when required by law.
+          </p>
+        </section>
 
-      <p className="mb-4">
-        We may share non-personal, aggregated information with:
-      </p>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            5. Third-Party Links
+          </h2>
 
-      <ul className="list-disc ml-6 mb-10 space-y-2">
-        <li>Analytics providers</li>
-        <li>Advertising partners (if and when ads are added)</li>
-        <li>Legal authorities where required by law</li>
-      </ul>
+          <p>
+            The app may include links to third-party websites or services such
+            as support or privacy policy pages. We are not responsible for the
+            privacy practices of these sites.
+          </p>
+        </section>
 
-      <p className="mb-10">
-        Such information is <strong>not linked</strong> to any personal identity.
-      </p>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            6. Children’s Privacy
+          </h2>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        5. Third-Party Links
-      </h2>
+          <p>
+            Mathuvo is designed for children and general audiences. We do not
+            knowingly collect personal information from children under 13. If
+            you believe a child has provided personal information, please
+            contact us so we can remove it promptly.
+          </p>
+        </section>
 
-      <p className="mb-10">
-        The App may contain links to third-party websites or services
-        (for example privacy policy or support pages). We are not responsible
-        for the content or privacy practices of these sites. You should review
-        their privacy policies separately.
-      </p>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            7. Security
+          </h2>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        6. Children’s Privacy
-      </h2>
+          <p>
+            We implement reasonable security measures to protect collected
+            information. However, no digital system is completely secure.
+          </p>
+        </section>
 
-      <p className="mb-10">
-        Mathuvo is designed for children and general audiences. We do
-        <strong> not knowingly collect Personal Information from children under
-        the age of 13</strong>. If you believe your child has provided us with
-        personal information without parental consent, please contact us so we
-        can promptly remove that information.
-      </p>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            8. Changes to This Privacy Policy
+          </h2>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        7. Security
-      </h2>
+          <p>
+            This policy may be updated periodically. When changes occur, the
+            “Effective date” at the top of the page will be updated.
+          </p>
+        </section>
 
-      <p className="mb-10">
-        We implement reasonable measures to protect the data collected and
-        stored by the App. However, no security system is impenetrable, and we
-        cannot guarantee absolute protection.
-      </p>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            9. Contact Us
+          </h2>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        8. Changes to This Privacy Policy
-      </h2>
+          <p>Email: contact@adcampin.com</p>
+          <p>Website: https://learnplaylab.adcampin.com</p>
+        </section>
 
-      <p className="mb-10">
-        We may update this Privacy Policy from time to time. When we do, we will
-        revise the “Effective date” at the top of this page. We encourage you to
-        review this Privacy Policy periodically for any changes.
-      </p>
+      </div>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        9. Contact Us
-      </h2>
+      {/* Footer */}
+      <div className="text-center text-gray-500 text-sm py-10">
+        © 2026 Learn Play Lab • A division of AdCampin
+      </div>
 
-      <p>
-        If you have any questions about this Privacy Policy, please contact us:
-      </p>
-
-      <p className="mt-3">📧 contact@adcampin.com</p>
-
-      <p>🌐 https://learnplaylab.adcampin.com/</p>
-    </main>
+    </div>
   );
 }

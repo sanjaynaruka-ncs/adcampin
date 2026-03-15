@@ -1,141 +1,117 @@
 export default function PrivacyPolicy() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-16 text-gray-200">
-      <h1 className="text-4xl font-bold mb-6">
-        Privacy Policy – Tic Tac Toe
-      </h1>
+    <div className="min-h-screen bg-gradient-to-b from-[#0b1120] to-black text-gray-200">
 
-      <p className="mb-6">
-        Welcome to <strong>Tic Tac Toe</strong>, a mobile game developed and
-        published by <strong>Learn Play Lab</strong>, a division of{" "}
-        <strong>AdCampin</strong> ("we," "our," or "us").
-        This Privacy Policy explains how we handle your information when you
-        use our mobile game available on the Google Play Store.
-      </p>
+      {/* Header */}
+      <div className="max-w-5xl mx-auto px-6 pt-20 pb-10">
+        <h1 className="text-4xl font-bold text-white mb-3">
+          Privacy Policy – Tic Tac Toe
+        </h1>
+        <p className="text-gray-400">
+          Last updated: January 1, 2026
+        </p>
+      </div>
 
-      <p className="mb-10">
-        By installing or using <strong>Tic Tac Toe</strong>, you agree to the
-        terms of this Privacy Policy.
-      </p>
+      {/* Content */}
+      <div className="max-w-3xl mx-auto bg-[#0f172a] border border-gray-800 rounded-xl px-8 py-10 shadow-lg space-y-8">
 
-      <h2 className="text-2xl font-semibold mb-4">
-        1. Information We Collect
-      </h2>
+        <p>
+          Welcome to <strong>Tic Tac Toe</strong>, a mobile game developed and
+          published by <strong>Learn Play Lab</strong>, a division of
+          <strong> AdCampin</strong>.
+          This Privacy Policy explains how we handle your information when you
+          use our mobile game available on the Google Play Store.
+        </p>
 
-      <p className="mb-4">
-        We do <strong>not</strong> collect any personally identifiable
-        information from users. Our app does not require sign-up, login,
-        or personal data entry.
-      </p>
+        <p>
+          By installing or using <strong>Tic Tac Toe</strong>, you agree to the
+          terms of this Privacy Policy.
+        </p>
 
-      <p className="mb-6">
-        However, the app may collect limited technical data automatically, such
-        as:
-      </p>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            1. Information We Collect
+          </h2>
 
-      <ul className="list-disc ml-6 mb-8 space-y-2">
-        <li>Device model and operating system version</li>
-        <li>
-          App usage data and crash analytics (via Google Play Services or
-          Firebase, if enabled)
-        </li>
-      </ul>
+          <p className="mb-4">
+            We do <strong>not</strong> collect personally identifiable
+            information. The app does not require login, signup, or personal
+            data entry.
+          </p>
 
-      <p className="mb-10">
-        This information is used <strong>only to improve app performance and
-        user experience.</strong>
-      </p>
+          <p>However, limited technical data may be collected automatically:</p>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        2. How We Use Information
-      </h2>
+          <ul className="list-disc ml-6 mt-3 space-y-2 text-gray-300">
+            <li>Device model and OS version</li>
+            <li>App usage statistics</li>
+            <li>Crash analytics (Google Play Services / Firebase)</li>
+          </ul>
+        </section>
 
-      <p className="mb-4">
-        Any automatically collected technical data (if any) is used only to:
-      </p>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            2. How We Use Information
+          </h2>
 
-      <ul className="list-disc ml-6 mb-10 space-y-2">
-        <li>Analyze performance issues</li>
-        <li>Improve game stability and user experience</li>
-        <li>Detect and fix bugs or crashes</li>
-      </ul>
+          <ul className="list-disc ml-6 space-y-2 text-gray-300">
+            <li>Improve app performance</li>
+            <li>Fix bugs and crashes</li>
+            <li>Enhance user experience</li>
+          </ul>
 
-      <p className="mb-10">
-        We do not sell, rent, or share your data with third parties.
-      </p>
+          <p className="mt-4">
+            We do not sell, rent, or share your data with third parties.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        3. Third-Party Services
-      </h2>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            3. Third-Party Services
+          </h2>
 
-      <p className="mb-4">
-        Our app may use third-party tools such as:
-      </p>
+          <ul className="list-disc ml-6 space-y-2 text-gray-300">
+            <li>Google Play Services</li>
+            <li>Firebase Crashlytics / Analytics</li>
+          </ul>
 
-      <ul className="list-disc ml-6 mb-8 space-y-2">
-        <li>Google Play Services (for basic functionality)</li>
-        <li>Firebase Crashlytics / Analytics (for crash and performance reports)</li>
-      </ul>
+          <p className="mt-4">
+            Privacy policy:{" "}
+            <a
+              href="https://policies.google.com/privacy"
+              className="text-blue-400 hover:underline"
+            >
+              https://policies.google.com/privacy
+            </a>
+          </p>
+        </section>
 
-      <p className="mb-8">
-        These third parties may collect data in accordance with their own
-        privacy policies.
-      </p>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            4. Children’s Privacy
+          </h2>
 
-      <p className="mb-10">
-        Google Play Services Privacy Policy:{" "}
-        <a
-          href="https://policies.google.com/privacy"
-          className="text-blue-400 underline"
-        >
-          https://policies.google.com/privacy
-        </a>
-      </p>
+          <p>
+            This game is safe for all ages. We do not knowingly collect
+            personal information from children under 13.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        4. Children’s Privacy
-      </h2>
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-3">
+            5. Contact
+          </h2>
 
-      <p className="mb-10">
-        Our game is safe for all ages and does not contain harmful content.
-        We do not knowingly collect personal data from children under
-        13 years of age.
-      </p>
+          <p>Email: contact@adcampin.com</p>
+          <p>Website: https://learnplaylab.adcampin.com</p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        5. Data Security
-      </h2>
+      </div>
 
-      <p className="mb-10">
-        We take reasonable measures to protect any technical data collected
-        through secure servers and encrypted connections.
-      </p>
+      {/* Footer */}
+      <div className="text-center text-gray-500 text-sm py-10">
+        © 2026 Learn Play Lab • A division of AdCampin
+      </div>
 
-      <h2 className="text-2xl font-semibold mb-4">
-        6. Changes to This Policy
-      </h2>
-
-      <p className="mb-10">
-        We may update this Privacy Policy occasionally. Updates will be
-        posted on this page with a new “Last Updated” date.
-      </p>
-
-      <h2 className="text-2xl font-semibold mb-4">
-        7. Contact Us
-      </h2>
-
-      <p>
-        If you have any questions or concerns about this Privacy Policy or our
-        app, contact us at:
-      </p>
-
-      <p className="mt-3">
-        📧 contact@adcampin.com
-      </p>
-
-      <p>
-        🌐 https://learnplaylab.adcampin.com
-      </p>
-    </main>
+    </div>
   );
 }
