@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 type PageProps = {
   params: Promise<{
@@ -47,10 +48,39 @@ export async function generateMetadata({ params }: PageProps) {
 
   const typeTitle = titles[type] || formattedType;
 
-  return {
-    title: `${formattedPlatform} Ads for ${formattedIndustry} (${typeTitle}) | AdCampin`,
-    description: `Discover the best ${formattedPlatform} ads for ${formattedIndustry}. See ${formattedType} and generate high-performing campaigns instantly using AI with AdCampin.`,
-  };
+  const url = `https://adcampin.com/ads/${platform}/${industry}/${type}`;
+const image = `https://adcampin.com/${platform}-ads.webp`;
+
+return {
+  title: `${formattedPlatform} Ads for ${formattedIndustry} (${typeTitle}) | AdCampin`,
+  description: `Discover the best ${formattedPlatform} ads for ${formattedIndustry}. See ${formattedType} and generate high-performing campaigns instantly using AI with AdCampin.`,
+
+  alternates: {
+    canonical: url,
+  },
+
+  openGraph: {
+    title: `${formattedPlatform} Ads for ${formattedIndustry} (${typeTitle})`,
+    description: `Discover the best ${formattedPlatform} ads for ${formattedIndustry}.`,
+    url: url,
+    siteName: "AdCampin",
+    images: [
+      {
+        url: image,
+        width: 1200,
+        height: 630,
+      }
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: `${formattedPlatform} Ads for ${formattedIndustry}`,
+    description: `Discover high-performing ${formattedPlatform} ads for ${formattedIndustry}.`,
+    images: [image],
+  }
+};
 }
 
 function generateFaq(platform: string, industry: string) {
@@ -104,6 +134,16 @@ export default async function Page({ params }: PageProps) {
       {/* HERO */}
 
       <section className="mb-20">
+        <div className="max-w-xl mx-auto">
+        <Image
+            src={`/${platform}-ads.webp`}
+            alt={`${platform} advertising examples`}
+            width={1200}
+            height={630}
+            className="w-full h-auto rounded-xl shadow-lg"
+            priority
+        />
+        </div>
 
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           {formattedPlatform} Ads {formattedType} for {formattedIndustry}

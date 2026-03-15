@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabase";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
 
@@ -31,12 +32,18 @@ export default function Navbar() {
       <div className="flex items-center justify-between">
 
         {/* Logo */}
-        <h1
-          className="text-4xl font-bold tracking-tight cursor-pointer"
+        <div
+          className="cursor-pointer flex items-center"
           onClick={() => router.push("/")}
         >
-          AdCampin
-        </h1>
+          <Image
+            src="/logo-v2.webp"
+            alt="AdCampin"
+            width={160}
+            height={40}
+            priority
+          />
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-4">
