@@ -34,14 +34,56 @@ function formatText(text: string) {
 }
 
 export async function generateMetadata({ params }: PageProps) {
+
   const { platform, industry } = await params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
 
+  const url = `https://adcampin.com/ads/${platform}/${industry}`;
+  const image = `https://adcampin.com/${platform}-ads.webp`;
+
   return {
     title: `${formattedPlatform} Ads for ${formattedIndustry} | AdCampin`,
     description: `Generate high-performing ${formattedPlatform} ads for ${formattedIndustry} businesses using AI with AdCampin.`,
+
+    alternates: {
+      canonical: url,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+      },
+    },
+
+    openGraph: {
+      title: `${formattedPlatform} Ads for ${formattedIndustry} | AdCampin`,
+      description: `Generate high-performing ${formattedPlatform} ads for ${formattedIndustry} businesses using AI.`,
+      url: url,
+      siteName: "AdCampin",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: `${formattedPlatform} ads for ${formattedIndustry}`,
+        },
+      ],
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `${formattedPlatform} Ads for ${formattedIndustry}`,
+      description: `Generate high-performing ${formattedPlatform} ads for ${formattedIndustry} businesses.`,
+      images: [image],
+    },
+
   };
 }
 
