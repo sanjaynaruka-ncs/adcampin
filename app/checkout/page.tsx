@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Navbar from "../components/navbar";
 import Script from "next/script";
+import { supabase } from "../../lib/supabase";
 
 function CheckoutContent() {
   const params = useSearchParams();
@@ -15,73 +16,84 @@ function CheckoutContent() {
   const handlePay = async () => {
     console.log("Pay button clicked");
 
-  const res = await fetch("/api/create-order", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      amount: Number(price),
-    }),
-  });
+    const { data } = await supabase.auth.getUser();
+    const email = data?.user?.email;
 
-  const order = await res.json();
-
-  const options = {
-    key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-    amount: order.amount,
-    currency: "INR",
-    name: "AdCampin",
-    description: `${plan} Plan`,
-    order_id: order.id,
-
-    handler: async function (response: any) {
-
-    const res = await fetch("/api/payment-success", {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-        payment_id: response.razorpay_payment_id,
-        order_id: response.razorpay_order_id,
-        signature: response.razorpay_signature,
-        plan: plan,
-        billing: billing,
-        }),
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-        window.location.href = "/dashboard";
-    } else {
-        alert("Payment verification failed.");
+    if (!email) {
+      alert("Please login before making a payment.");
+      return;
     }
 
-    },
+    const res = await fetch("/api/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: Number(price),
+      }),
+    });
 
-    theme: {
-      color: "#2563eb",
-    },
-  };
+    const order = await res.json();
 
-  if (!(window as any).Razorpay) {
-    alert("Payment system not loaded. Please refresh.");
-    return;
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: "INR",
+      name: "AdCampin",
+      description: `${plan} Plan`,
+      order_id: order.id,
+
+      handler: async function (response: any) {
+
+        const res = await fetch("/api/payment-success", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            payment_id: response.razorpay_payment_id,
+            order_id: response.razorpay_order_id,
+            signature: response.razorpay_signature,
+            plan: plan,
+            billing: billing,
+            email: email,
+            amount: Number(price),
+          }),
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          window.location.href = "/dashboard";
+        } else {
+          alert("Payment verification failed.");
+        }
+
+      },
+
+      theme: {
+        color: "#2563eb",
+      },
+    };
+
+    if (!(window as any).Razorpay) {
+      alert("Payment system not loaded. Please refresh.");
+      return;
     }
 
     const razor = new (window as any).Razorpay(options);
-  razor.open();
+    razor.open();
 
-};
+  };
 
   return (
     <>
-    <Script
+      <Script
         src="https://checkout.razorpay.com/v1/checkout.js"
         strategy="afterInteractive"
-        />
+      />
+
       <Navbar />
 
       <main className="min-h-screen bg-gradient-to-b from-[#0b1b3b] to-black text-white px-6 py-20">
