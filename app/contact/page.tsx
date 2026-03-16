@@ -65,6 +65,12 @@ export default function ContactPage() {
           onSubmit={handleSubmit}
           className="space-y-6 bg-white/5 border border-white/10 p-8 rounded-xl backdrop-blur"
         >
+          <input
+            type="text"
+            name="website"
+            autoComplete="off"
+            className="hidden"
+          />
 
           {/* NAME */}
 
