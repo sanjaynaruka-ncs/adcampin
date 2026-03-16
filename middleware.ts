@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
 
   const host = request.headers.get("host");
-  const pathname = request.nextUrl.pathname;
+  const { pathname } = request.nextUrl;
 
   // Skip static files
   if (
@@ -16,7 +16,18 @@ export function middleware(request: NextRequest) {
   }
 
   if (host === "learnplaylab.adcampin.com") {
-    return NextResponse.rewrite(new URL("/learnplaylab", request.url));
+
+    // allow subpages like privacy policies
+    if (pathname !== "/") {
+      return NextResponse.rewrite(
+        new URL(`/learnplaylab${pathname}`, request.url)
+      );
+    }
+
+    // homepage
+    return NextResponse.rewrite(
+      new URL("/learnplaylab", request.url)
+    );
   }
 
   return NextResponse.next();
