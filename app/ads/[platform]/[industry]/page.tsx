@@ -226,12 +226,30 @@ const adCopies: string[] = [
           {formattedPlatform} Advertising Strategy
         </h2>
 
-        <p className="text-gray-300 max-w-3xl mx-auto">
-          Successful campaigns for {formattedIndustry} businesses often focus
-          on local targeting, strong visual creatives and compelling offers.
-          Businesses typically start with lead generation campaigns and
-          retarget interested users to convert them into customers.
-        </p>
+        <div className="space-y-6 max-w-3xl mx-auto text-gray-300">
+
+          <p>
+            Successful {formattedPlatform} campaigns for {formattedIndustry} businesses
+            usually focus on clear targeting, strong creatives and compelling offers.
+            Businesses often begin with awareness campaigns and gradually move
+            into lead generation and retargeting campaigns.
+          </p>
+
+          <p>
+            Many {formattedIndustry} companies use location targeting to reach
+            potential customers nearby. This allows ads to appear only to users
+            within the service area, which improves conversion rates and reduces
+            wasted ad spend.
+          </p>
+
+          <p>
+            Retargeting campaigns are also extremely effective. These campaigns
+            show ads to people who previously visited your website or interacted
+            with your brand, increasing the chances of turning interested users
+            into paying customers.
+          </p>
+
+        </div>
 
       </section>
 
@@ -302,15 +320,28 @@ const adCopies: string[] = [
           Targeting Suggestions
         </h2>
 
-        <ul className="space-y-4 text-gray-300 max-w-2xl mx-auto">
+        <ul className="space-y-4 text-gray-300 max-w-2xl mx-auto text-left">
 
-          <li>• Target audiences within your service location</li>
+          <li>
+          Target audiences within your service location to ensure your ads reach
+          potential customers who can actually use your {formattedIndustry} services.
+          </li>
 
-          <li>• Focus on demographics most likely to purchase</li>
+          <li>
+          Focus on demographics that are most likely to purchase your services,
+          including age groups, household income levels and interests related
+          to {formattedIndustry}.
+          </li>
 
-          <li>• Retarget users who previously interacted with your business</li>
+          <li>
+          Retarget users who previously interacted with your website or ads.
+          Retargeting campaigns typically produce higher conversion rates.
+          </li>
 
-          <li>• Use lookalike audiences to reach new potential customers</li>
+          <li>
+          Use lookalike audiences to find new customers who share similar
+          characteristics with your existing clients.
+          </li>
 
         </ul>
 
