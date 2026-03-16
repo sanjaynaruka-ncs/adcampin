@@ -4,7 +4,7 @@ export default function LearnPlayLab() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center text-center px-6 py-20">
 
-      <img
+      <Image
         src="/learnplaylab-logo.webp"
         alt="Learn Play Lab"
         className="w-32 mb-6"
@@ -28,12 +28,11 @@ export default function LearnPlayLab() {
             target="_blank"
             rel="noopener noreferrer"
           >
+
             <Image
               src="/mathuvo.webp"
               alt="Mathuvo"
-              width={160}
-              height={160}
-              className="rounded-xl shadow-lg"
+              className="w-32 mb-6"
             />
           </a>
 
@@ -55,9 +54,7 @@ export default function LearnPlayLab() {
             <Image
               src="/tictactoe.webp"
               alt="Tic Tac Toe"
-              width={160}
-              height={160}
-              className="rounded-xl shadow-lg"
+              className="w-32 mb-6"
             />
           </a>
 
