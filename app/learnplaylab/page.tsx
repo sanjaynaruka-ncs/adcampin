@@ -19,6 +19,7 @@ export default function LearnPlayLab() {
 
       <div className="flex flex-wrap justify-center gap-16 mt-10">
 
+        {/* Mathuvo */}
         <div className="flex flex-col items-center gap-4">
           <a
             href="https://play.google.com/store/apps/details?id=com.adcampin.mathuvo"
@@ -35,6 +36,7 @@ export default function LearnPlayLab() {
           </a>
         </div>
 
+        {/* Tic Tac Toe */}
         <div className="flex flex-col items-center gap-4">
           <a
             href="https://play.google.com/store/apps/details?id=com.adcampin.tictactoe_new"
