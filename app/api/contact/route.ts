@@ -14,6 +14,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true });
     }
 
+    // Block link spam
+    const linkPattern = /(https?:\/\/|www\.)/i;
+
+    if (linkPattern.test(message)) {
+      return NextResponse.json({ success: true });
+    }
+
     await resend.emails.send({
       from: "AdCampin <noreply@adcampin.com>",
       to: "contact@adcampin.com",
