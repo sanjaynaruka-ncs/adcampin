@@ -1,8 +1,9 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const params = useSearchParams();
 
   const plan = params.get("plan") || "Pro";
@@ -15,7 +16,6 @@ export default function CheckoutPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#0b1b3b] to-black text-white px-6 py-20">
-
       <div className="max-w-3xl mx-auto">
 
         <h1 className="text-4xl font-bold text-center mb-12">
@@ -53,7 +53,14 @@ export default function CheckoutPage() {
         </div>
 
       </div>
-
     </main>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div className="text-white p-10">Loading...</div>}>
+      <CheckoutContent />
+    </Suspense>
   );
 }
