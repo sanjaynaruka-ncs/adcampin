@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { industries } from "@/lib/industries";
 import { platforms } from "@/lib/platforms";
 
@@ -62,11 +63,22 @@ export default async function Page({ params }: PageProps) {
           {formattedPlatform} Ads for {formattedIndustry}
         </h1>
 
-        <p className="text-gray-300 max-w-2xl mx-auto mb-6">
+        <p className="text-gray-300 max-w-2xl mx-auto mb-10">
           Generate high-performing {formattedPlatform} ads for {formattedIndustry} businesses
           using AI. AdCampin helps create ad copy, targeting strategy,
           creatives and optimization instantly.
         </p>
+
+        <div className="flex justify-center mb-10">
+          <Image
+            src="/ads-preview.webp"
+            alt={`${formattedPlatform} ads for ${formattedIndustry}`}
+            width={900}
+            height={500}
+            className="rounded-xl border border-slate-700"
+            priority
+          />
+        </div>
 
         <Link
           href="/signup"
