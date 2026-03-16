@@ -4,13 +4,10 @@ export default function LearnPlayLab() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center text-center px-6 py-20">
 
-      <Image
+      <img
         src="/learnplaylab-logo.webp"
         alt="Learn Play Lab"
-        width={128}
-        height={128}
-        className="mb-6"
-        priority
+        className="w-32 mb-6"
       />
 
       <h1 className="text-4xl font-bold mb-6">
