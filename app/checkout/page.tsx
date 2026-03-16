@@ -35,11 +35,29 @@ function CheckoutContent() {
     description: `${plan} Plan`,
     order_id: order.id,
 
-    handler: function (response: any) {
+    handler: async function (response: any) {
 
-      alert("Payment successful!");
+    const res = await fetch("/api/payment-success", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+        payment_id: response.razorpay_payment_id,
+        order_id: response.razorpay_order_id,
+        signature: response.razorpay_signature,
+        plan: plan,
+        billing: billing,
+        }),
+    });
 
-      window.location.href = "/dashboard";
+    const data = await res.json();
+
+    if (data.success) {
+        window.location.href = "/dashboard";
+    } else {
+        alert("Payment verification failed.");
+    }
 
     },
 
