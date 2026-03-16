@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
+import { supabase } from "@/lib/supabase";
 
 export async function POST(req: Request) {
 
@@ -31,10 +32,28 @@ export async function POST(req: Request) {
 
     }
 
-    /*
-      TODO (Next Step)
-      Activate user plan in Supabase
-    */
+    // Example plan settings
+
+        let credits = 0;
+
+        if (plan === "Pro") credits = 500;
+        if (plan === "Business") credits = 3000;
+
+        // Update user plan
+
+        const { error } = await supabase
+        .from("users")
+        .update({
+            plan: plan,
+            credits: credits,
+            billing_cycle: billing,
+            updated_at: new Date().toISOString(),
+        })
+        .eq("email", body.email);
+
+        if (error) {
+        console.error("Supabase update error:", error);
+        }
 
     console.log("Payment verified:", payment_id);
 
