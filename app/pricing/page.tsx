@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
 import { supabase } from "../../lib/supabase";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Pricing() {
 
@@ -114,16 +115,21 @@ export default function Pricing() {
               </ul>
 
               <div className="mt-auto">
-                <button
-                  onClick={() =>
-                    !user
-                      ? goSignup()
-                      : router.push(`/checkout?plan=Pro&price=${proPrice}&billing=${yearly ? "yearly" : "monthly"}`)
-                  }
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
-                >
-                  {user ? "Activate Pro" : "Start With Pro"}
-                </button>
+                {user ? (
+                  <Link
+                    href={`/checkout?plan=Pro&price=${proPrice}&billing=${yearly ? "yearly" : "monthly"}`}
+                    className="block w-full text-center bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    Activate Pro
+                  </Link>
+                ) : (
+                  <button
+                    onClick={goSignup}
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    Start With Pro
+                  </button>
+                )}
               </div>
 
             </div>
@@ -210,16 +216,21 @@ export default function Pricing() {
               </ul>
 
               <div className="mt-auto">
-                <button
-                onClick={() =>
-                  !user
-                    ? goSignup()
-                    : router.push(`/checkout?plan=Business&price=${businessPrice}&billing=${yearly ? "yearly" : "monthly"}`)
-                }
+                {user ? (
+              <Link
+                href={`/checkout?plan=Business&price=${businessPrice}&billing=${yearly ? "yearly" : "monthly"}`}
+                className="block w-full text-center bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
+              >
+                Activate Business
+              </Link>
+            ) : (
+              <button
+                onClick={goSignup}
                 className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
               >
-                {user ? "Activate Business" : "Start With Business"}
+                Start With Business
               </button>
+            )}
               </div>
 
             </div>
