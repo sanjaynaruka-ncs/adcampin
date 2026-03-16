@@ -71,7 +71,17 @@ export default async function Page({ params }: PageProps) {
 
         <div className="flex justify-center mb-10">
           <Image
-            src="/ads-preview.webp"
+            src={
+              platform === "facebook"
+                ? "/facebook-ads.webp"
+                : platform === "google"
+                ? "/google-ads.webp"
+                : platform === "instagram"
+                ? "/instagram-ads.webp"
+                : platform === "linkedin"
+                ? "/linkedin-ads.webp"
+                : "/google-ads.webp"
+            }
             alt={`${formattedPlatform} ads for ${formattedIndustry}`}
             width={900}
             height={500}
