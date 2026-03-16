@@ -1,16 +1,11 @@
-import Image from "next/image";
-
 export default function LearnPlayLab() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center text-center px-6 py-20">
 
-      <Image
+      <img
         src="/learnplaylab/learnplaylab-logo.webp"
         alt="Learn Play Lab"
-        width={128}
-        height={128}
         className="w-32 mb-6"
-        priority
       />
 
       <h1 className="text-4xl font-bold mb-6">
@@ -31,12 +26,10 @@ export default function LearnPlayLab() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
+            <img
               src="/learnplaylab/mathuvo.webp"
               alt="Mathuvo"
-              width={128}
-              height={128}
-              className="w-32 mb-6 rounded-xl shadow-lg"
+              className="w-32 rounded-xl shadow-lg"
             />
           </a>
 
@@ -55,12 +48,10 @@ export default function LearnPlayLab() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
+            <img
               src="/learnplaylab/tictactoe.webp"
               alt="Tic Tac Toe"
-              width={128}
-              height={128}
-              className="w-32 mb-6 rounded-xl shadow-lg"
+              className="w-32 rounded-xl shadow-lg"
             />
           </a>
 
