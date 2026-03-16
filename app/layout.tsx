@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
   },
+  verification: {
+  google: "google-site-verification=rSxHxCVfV9lASsz4y6MeWov8SqtcBEpKP15SHjOC2co",
+  },
 };
 
 const geistSans = Geist({
