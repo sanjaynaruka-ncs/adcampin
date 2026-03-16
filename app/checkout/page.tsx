@@ -61,9 +61,9 @@ function CheckoutContent() {
   return (
     <>
     <Script
-    src="https://checkout.razorpay.com/v1/checkout.js"
-    strategy="beforeInteractive"
-    />
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        strategy="afterInteractive"
+        />
       <Navbar />
 
       <main className="min-h-screen bg-gradient-to-b from-[#0b1b3b] to-black text-white px-6 py-20">
