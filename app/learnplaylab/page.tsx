@@ -7,7 +7,10 @@ export default function LearnPlayLab() {
       <Image
         src="/learnplaylab/learnplaylab-logo.webp"
         alt="Learn Play Lab"
+        width={128}
+        height={128}
         className="w-32 mb-6"
+        priority
       />
 
       <h1 className="text-4xl font-bold mb-6">
@@ -28,11 +31,12 @@ export default function LearnPlayLab() {
             target="_blank"
             rel="noopener noreferrer"
           >
-
             <Image
               src="/learnplaylab/mathuvo.webp"
               alt="Mathuvo"
-              className="w-32 mb-6"
+              width={128}
+              height={128}
+              className="w-32 mb-6 rounded-xl shadow-lg"
             />
           </a>
 
@@ -52,9 +56,11 @@ export default function LearnPlayLab() {
             rel="noopener noreferrer"
           >
             <Image
-             src="/learnplaylab/tictactoe.webp"
+              src="/learnplaylab/tictactoe.webp"
               alt="Tic Tac Toe"
-              className="w-32 mb-6"
+              width={128}
+              height={128}
+              className="w-32 mb-6 rounded-xl shadow-lg"
             />
           </a>
 
