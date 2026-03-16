@@ -65,7 +65,7 @@ function CheckoutContent() {
         const data = await res.json();
 
         if (data.success) {
-          window.location.href = "/dashboard";
+          window.location.href = "/payment-success";
         } else {
           alert("Payment verification failed.");
         }
