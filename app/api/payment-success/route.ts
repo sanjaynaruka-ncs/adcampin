@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { supabase } from "@/lib/supabase";
+import { Resend } from "resend";
 
 export async function POST(req: Request) {
 
@@ -67,6 +68,25 @@ export async function POST(req: Request) {
     });
 
     console.log("Payment verified:", payment_id);
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+        await resend.emails.send({
+        from: "AdCampin <invoice@adcampin.com>",
+        to: body.email,
+        subject: "Your AdCampin Invoice",
+        html: `
+            <h2>Payment Successful 🎉</h2>
+            <p>Thank you for subscribing to AdCampin.</p>
+
+            <p><strong>Plan:</strong> ${plan}</p>
+            <p><strong>Billing:</strong> ${billing}</p>
+            <p><strong>Amount:</strong> ₹${body.amount}</p>
+            <p><strong>Payment ID:</strong> ${payment_id}</p>
+
+            <p>You can now access your upgraded features.</p>
+        `,
+        });
 
     return NextResponse.json({
       success: true
