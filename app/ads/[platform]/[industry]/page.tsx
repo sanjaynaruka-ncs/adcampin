@@ -93,6 +93,31 @@ export default async function Page({ params }: PageProps) {
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
+  const adExamples: string[] = [
+  `Find the Best ${formattedIndustry} Services Near You`,
+  `Top Rated ${formattedIndustry} Experts in Your Area`,
+  `Professional ${formattedIndustry} Services Available Today`,
+  `Trusted ${formattedIndustry} Specialists Ready to Help`,
+  `Affordable ${formattedIndustry} Services – Contact Today`,
+  `Local ${formattedIndustry} Experts With Great Reviews`,
+  `Looking for Reliable ${formattedIndustry}? Get a Quote`,
+  `Book Your ${formattedIndustry} Service in Minutes`
+];
+
+const adCopies: string[] = [
+  `Grow your ${formattedIndustry} business with targeted ${formattedPlatform} advertising.`,
+  `Reach customers searching for ${formattedIndustry} services today.`,
+  `Promote your ${formattedIndustry} services to the right audience.`,
+  `Boost your ${formattedIndustry} business with powerful ${formattedPlatform} ads.`,
+  `Get more leads for your ${formattedIndustry} services instantly.`,
+  `Advertise your ${formattedIndustry} business to local customers.`,
+  `High-converting ${formattedPlatform} ads for ${formattedIndustry} professionals.`,
+  `Turn clicks into customers with better ${formattedIndustry} ads.`,
+  `Scale your ${formattedIndustry} marketing using AI-powered campaigns.`,
+  `Generate more ${formattedIndustry} leads with targeted ads.`,
+  `Reach high-intent customers looking for ${formattedIndustry} services.`,
+  `Launch optimized ${formattedPlatform} ads for your ${formattedIndustry} business.`
+];
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-16 text-white text-center">
@@ -166,30 +191,27 @@ export default async function Page({ params }: PageProps) {
       <section className="mb-24">
 
         <h2 className="text-3xl font-bold mb-8">
-          Example {formattedPlatform} Ads for {formattedIndustry}
-        </h2>
+                Example {formattedPlatform} Ads for {formattedIndustry}
+              </h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-6">
 
-          <div className="bg-slate-800 p-6 rounded-lg">
+        {adExamples.map((example: string, i: number) => (
+
+          <div key={i} className="bg-slate-800 p-6 rounded-lg">
+
             <h3 className="font-semibold mb-2">
-              Find the Best {formattedIndustry} Services Today
+              {example}
             </h3>
+
             <p className="text-gray-300 text-sm">
-              Discover trusted {formattedIndustry} professionals near you.
-              Contact today and grow your business faster.
+              Promote your {formattedIndustry} services using high-converting
+              {formattedPlatform} ads designed to attract new customers.
             </p>
+
           </div>
 
-          <div className="bg-slate-800 p-6 rounded-lg">
-            <h3 className="font-semibold mb-2">
-              Top Rated {formattedIndustry} Solutions
-            </h3>
-            <p className="text-gray-300 text-sm">
-              Reach more customers with high-converting {formattedPlatform} ads
-              designed specifically for {formattedIndustry} businesses.
-            </p>
-          </div>
+         ))}
 
         </div>
 
@@ -259,20 +281,13 @@ export default async function Page({ params }: PageProps) {
 
         <div className="space-y-4 max-w-3xl mx-auto">
 
-          <div className="bg-slate-800 p-4 rounded">
-            Grow your {formattedIndustry} business with high-performing
-            {formattedPlatform} ads. Reach new customers today.
-          </div>
+          {adCopies.map((copy: string, i: number) => (
 
-          <div className="bg-slate-800 p-4 rounded">
-            Looking for trusted {formattedIndustry} services?
-            Discover top-rated professionals near you.
-          </div>
+            <div key={i} className="bg-slate-800 p-4 rounded">
+              {copy}
+            </div>
 
-          <div className="bg-slate-800 p-4 rounded">
-            Promote your {formattedIndustry} services with
-            targeted {formattedPlatform} campaigns.
-          </div>
+          ))}
 
         </div>
 
