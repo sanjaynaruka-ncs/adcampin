@@ -3,6 +3,7 @@
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Navbar from "../components/navbar";
+import Script from "next/script";
 
 function CheckoutContent() {
   const params = useSearchParams();
@@ -11,12 +12,49 @@ function CheckoutContent() {
   const price = params.get("price") || "999";
   const billing = params.get("billing") || "monthly";
 
-  const handlePay = () => {
-    alert("Razorpay checkout will open here");
+  const handlePay = async () => {
+
+  const res = await fetch("/api/create-order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      amount: Number(price),
+    }),
+  });
+
+  const order = await res.json();
+
+  const options = {
+    key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+    amount: order.amount,
+    currency: "INR",
+    name: "AdCampin",
+    description: `${plan} Plan`,
+    order_id: order.id,
+
+    handler: function (response: any) {
+
+      alert("Payment successful!");
+
+      window.location.href = "/dashboard";
+
+    },
+
+    theme: {
+      color: "#2563eb",
+    },
   };
+
+  const razor = new (window as any).Razorpay(options);
+  razor.open();
+
+};
 
   return (
     <>
+    <Script src="https://checkout.razorpay.com/v1/checkout.js" />
       <Navbar />
 
       <main className="min-h-screen bg-gradient-to-b from-[#0b1b3b] to-black text-white px-6 py-20">
