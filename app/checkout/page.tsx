@@ -47,14 +47,22 @@ function CheckoutContent() {
     },
   };
 
-  const razor = new (window as any).Razorpay(options);
+  if (!(window as any).Razorpay) {
+    alert("Payment system not loaded. Please refresh.");
+    return;
+    }
+
+    const razor = new (window as any).Razorpay(options);
   razor.open();
 
 };
 
   return (
     <>
-    <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+    <Script
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    strategy="beforeInteractive"
+    />
       <Navbar />
 
       <main className="min-h-screen bg-gradient-to-b from-[#0b1b3b] to-black text-white px-6 py-20">
