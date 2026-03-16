@@ -356,15 +356,57 @@ const adCopies: string[] = [
           Why {formattedIndustry} Businesses Use {formattedPlatform} Ads
         </h2>
 
-        <ul className="space-y-4 text-gray-300">
+        <ul className="space-y-4 text-gray-300 text-left max-w-3xl mx-auto">
 
-          <li>• Reach highly targeted audiences interested in {formattedIndustry}</li>
+          <li>
+          Reach highly targeted audiences interested in {formattedIndustry} services
+          using advanced targeting options available on {formattedPlatform}.
+          </li>
 
-          <li>• Generate qualified leads and new customers</li>
+          <li>
+          Generate qualified leads and attract potential customers who are actively
+          searching for reliable {formattedIndustry} providers.
+          </li>
 
-          <li>• Promote offers, services and brand awareness</li>
+          <li>
+          Promote seasonal offers, discounts and special packages to increase
+          engagement and encourage immediate action.
+          </li>
 
-          <li>• Retarget users who previously interacted with your business</li>
+          <li>
+          Build strong brand awareness for your {formattedIndustry} business
+          in your local service area.
+          </li>
+
+          <li>
+          Retarget users who previously interacted with your business
+          or visited your website.
+          </li>
+
+          <li>
+          Showcase your expertise and unique selling points through
+          engaging ad creatives and compelling messaging.
+          </li>
+
+          <li>
+          Increase website traffic and generate more inquiries
+          from interested prospects.
+          </li>
+
+          <li>
+          Use performance data to continuously improve campaigns
+          and maximize return on ad spend.
+          </li>
+
+          <li>
+          Expand your reach to new audiences using lookalike
+          or similar audience targeting strategies.
+          </li>
+
+          <li>
+          Scale your advertising campaigns as your {formattedIndustry}
+          business grows.
+          </li>
 
         </ul>
 
@@ -418,15 +460,16 @@ const adCopies: string[] = [
           Frequently Asked Questions
         </h2>
 
-        <div className="space-y-6">
+        <div className="space-y-6 text-left max-w-3xl mx-auto">
 
           <div>
             <h3 className="font-semibold">
               Are {formattedPlatform} ads effective for {formattedIndustry} businesses?
             </h3>
             <p className="text-gray-300 text-sm">
-              Yes. {formattedPlatform} ads allow precise targeting, making them
-              highly effective for reaching customers interested in
+              Yes. {formattedPlatform} ads allow businesses to target specific
+              audiences based on location, interests and behavior, making them
+              highly effective for attracting customers interested in
               {formattedIndustry} services.
             </p>
           </div>
@@ -436,8 +479,73 @@ const adCopies: string[] = [
               How much should a {formattedIndustry} business spend on ads?
             </h3>
             <p className="text-gray-300 text-sm">
-              Budgets vary depending on location and competition, but many
-              businesses start with small campaigns and scale after seeing results.
+              Budgets vary depending on market competition and location.
+              Many businesses start with smaller daily budgets and increase
+              spending once campaigns begin generating profitable results.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold">
+              What type of ads work best for {formattedIndustry} services?
+            </h3>
+            <p className="text-gray-300 text-sm">
+              Ads highlighting clear benefits, customer testimonials,
+              service guarantees and special offers typically perform
+              best for {formattedIndustry} businesses.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold">
+              Should {formattedIndustry} businesses use local targeting?
+            </h3>
+            <p className="text-gray-300 text-sm">
+              Yes. Local targeting ensures ads reach users within
+              the service area, which improves lead quality
+              and reduces wasted advertising spend.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold">
+              How long does it take to see results from {formattedPlatform} ads?
+            </h3>
+            <p className="text-gray-300 text-sm">
+              Many campaigns start generating clicks and leads
+              within a few days, but optimization over several weeks
+              typically produces the best results.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold">
+              Can small {formattedIndustry} businesses afford online advertising?
+            </h3>
+            <p className="text-gray-300 text-sm">
+              Yes. Even small businesses can start with modest budgets
+              and scale campaigns once they begin generating positive ROI.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold">
+              What is the biggest advantage of using {formattedPlatform} ads?
+            </h3>
+            <p className="text-gray-300 text-sm">
+              The biggest advantage is precise targeting combined
+              with measurable results, allowing businesses to
+              continuously improve campaign performance.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold">
+              Can AI help optimize {formattedPlatform} campaigns?
+            </h3>
+            <p className="text-gray-300 text-sm">
+              Yes. Tools like AdCampin can generate optimized ad copy,
+              targeting strategies and campaign structures automatically.
             </p>
           </div>
 
