@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "AdCampin",
   description: "Launch high-converting ads in seconds with AI.",
   icons: {
@@ -28,9 +29,36 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
+        {/* PAGE CONTENT */}
         {children}
+
+        {/* GLOBAL FOOTER */}
+        <footer className="border-t border-white/10 mt-20">
+          <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
+
+            <p className="mb-4 md:mb-0">
+              © {new Date().getFullYear()} AdCampin. All rights reserved.
+            </p>
+
+            <div className="flex space-x-6">
+              <Link href="/privacy" className="hover:text-white transition">
+                Privacy Policy
+              </Link>
+
+              <Link href="/terms" className="hover:text-white transition">
+                Terms of Service
+              </Link>
+
+              <Link href="/contact" className="hover:text-white transition">
+                Contact
+              </Link>
+            </div>
+
+          </div>
+        </footer>
+
       </body>
     </html>
   );
