@@ -13,6 +13,7 @@ function CheckoutContent() {
   const billing = params.get("billing") || "monthly";
 
   const handlePay = async () => {
+    console.log("Pay button clicked");
 
   const res = await fetch("/api/create-order", {
     method: "POST",
