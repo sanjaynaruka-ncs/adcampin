@@ -115,11 +115,14 @@ export default function Pricing() {
 
               <div className="mt-auto">
                 <button
-                  disabled={!!user}
-                  onClick={!user ? goSignup : undefined}
-                  className="w-full bg-slate-700 text-white py-3 rounded-lg"
+                  onClick={() =>
+                    !user
+                      ? goSignup()
+                      : router.push(`/checkout?plan=Pro&price=${proPrice}&billing=${yearly ? "yearly" : "monthly"}`)
+                  }
+                  className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
                 >
-                  {user ? "Current Plan" : "Get Started"}
+                  {user ? "Activate Pro" : "Start With Pro"}
                 </button>
               </div>
 
@@ -208,11 +211,15 @@ export default function Pricing() {
 
               <div className="mt-auto">
                 <button
-                  onClick={!user ? goSignup : undefined}
-                  className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
-                >
-                  {user ? "Activate Business" : "Start With Business"}
-                </button>
+                onClick={() =>
+                  !user
+                    ? goSignup()
+                    : router.push(`/checkout?plan=Business&price=${businessPrice}&billing=${yearly ? "yearly" : "monthly"}`)
+                }
+                className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
+              >
+                {user ? "Activate Business" : "Start With Business"}
+              </button>
               </div>
 
             </div>
@@ -239,12 +246,12 @@ export default function Pricing() {
               </ul>
 
               <div className="mt-auto">
-                <button
-                  onClick={() => router.push("/contact")}
-                  className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
+                <a
+                  href="mailto:sales@adcampin.com"
+                  className="w-full block text-center bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
                 >
                   Contact Sales
-                </button>
+                </a>
               </div>
 
             </div>
