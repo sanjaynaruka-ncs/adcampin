@@ -44,7 +44,6 @@ export default function Pricing() {
       <main className="min-h-screen bg-gradient-to-b from-[#0f172a] to-[#0b1a33] py-16 flex justify-center">
         <div className="w-full max-w-6xl px-6">
 
-          {/* TITLE */}
           <h1 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">
             Smarter Ad Campaigns. Simple Pricing.
           </h1>
@@ -53,16 +52,14 @@ export default function Pricing() {
             Generate ads, landing pages, and creatives with AI in seconds.
           </p>
 
-          {/* MONTHLY YEARLY TOGGLE */}
+          {/* TOGGLE */}
           <div className="flex justify-center mb-10">
             <div className="bg-slate-800 border border-slate-700 rounded-full flex p-1">
 
               <button
                 onClick={() => setYearly(false)}
                 className={`px-6 py-2 rounded-full text-sm ${
-                  !yearly
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-400"
+                  !yearly ? "bg-blue-600 text-white" : "text-gray-400"
                 }`}
               >
                 Monthly
@@ -71,9 +68,7 @@ export default function Pricing() {
               <button
                 onClick={() => setYearly(true)}
                 className={`px-6 py-2 rounded-full text-sm ${
-                  yearly
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-400"
+                  yearly ? "bg-blue-600 text-white" : "text-gray-400"
                 }`}
               >
                 Yearly (Save 20%)
@@ -91,7 +86,7 @@ export default function Pricing() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-            {/* FREE PLAN */}
+            {/* FREE */}
             <div className="bg-slate-800/50 backdrop-blur p-8 rounded-xl shadow border border-slate-700 flex flex-col h-full opacity-80">
 
               <h2 className="text-xl font-semibold text-white mb-4">
@@ -115,26 +110,18 @@ export default function Pricing() {
               </ul>
 
               <div className="mt-auto">
-                {user ? (
-                  <Link
-                    href={`/checkout?plan=Pro&price=${proPrice}&billing=${yearly ? "yearly" : "monthly"}`}
-                    className="block w-full text-center bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
-                  >
-                    Activate Pro
-                  </Link>
-                ) : (
-                  <button
-                    onClick={goSignup}
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
-                  >
-                    Start With Pro
-                  </button>
-                )}
+                <button
+                  disabled={!!user}
+                  onClick={!user ? goSignup : undefined}
+                  className="w-full bg-slate-700 text-white py-3 rounded-lg"
+                >
+                  {user ? "Current Plan" : "Get Started"}
+                </button>
               </div>
 
             </div>
 
-            {/* PRO PLAN */}
+            {/* PRO */}
             <div className="bg-slate-800/70 backdrop-blur p-8 rounded-xl shadow-lg border-2 border-blue-600 relative flex flex-col h-full">
 
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-sm px-4 py-1 rounded-full">
@@ -171,17 +158,26 @@ export default function Pricing() {
               </ul>
 
               <div className="mt-auto">
-                <button
-                  onClick={!user ? goSignup : undefined}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
-                >
-                  {user ? "Activate Pro" : "Start With Pro"}
-                </button>
+                {user ? (
+                  <Link
+                    href={`/checkout?plan=Pro&price=${proPrice}&billing=${yearly ? "yearly" : "monthly"}`}
+                    className="block w-full text-center bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    Activate Pro
+                  </Link>
+                ) : (
+                  <button
+                    onClick={goSignup}
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    Start With Pro
+                  </button>
+                )}
               </div>
 
             </div>
 
-            {/* BUSINESS PLAN */}
+            {/* BUSINESS */}
             <div className="bg-slate-800/60 backdrop-blur p-8 rounded-xl shadow border border-slate-700 flex flex-col h-full">
 
               <h2 className="text-xl font-semibold text-white mb-4">
@@ -217,25 +213,25 @@ export default function Pricing() {
 
               <div className="mt-auto">
                 {user ? (
-              <Link
-                href={`/checkout?plan=Business&price=${businessPrice}&billing=${yearly ? "yearly" : "monthly"}`}
-                className="block w-full text-center bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
-              >
-                Activate Business
-              </Link>
-            ) : (
-              <button
-                onClick={goSignup}
-                className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
-              >
-                Start With Business
-              </button>
-            )}
+                  <Link
+                    href={`/checkout?plan=Business&price=${businessPrice}&billing=${yearly ? "yearly" : "monthly"}`}
+                    className="block w-full text-center bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
+                  >
+                    Activate Business
+                  </Link>
+                ) : (
+                  <button
+                    onClick={goSignup}
+                    className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
+                  >
+                    Start With Business
+                  </button>
+                )}
               </div>
 
             </div>
 
-            {/* ENTERPRISE PLAN */}
+            {/* ENTERPRISE */}
             <div className="bg-slate-800/60 backdrop-blur p-8 rounded-xl shadow border border-amber-400/30 flex flex-col h-full">
 
               <h2 className="text-xl font-semibold text-white mb-4">
@@ -258,8 +254,8 @@ export default function Pricing() {
 
               <div className="mt-auto">
                 <a
-                  href="mailto:sales@adcampin.com"
-                  className="w-full block text-center bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
+                  href="mailto:sales@adcampin.com?subject=Enterprise Plan Inquiry"
+                  className="block w-full text-center bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
                 >
                   Contact Sales
                 </a>
@@ -269,7 +265,6 @@ export default function Pricing() {
 
           </div>
 
-          {/* AI CREDIT NOTE */}
           <p className="text-center text-xs text-white-500 mt-10">
            AI features use between 2–5 credits depending on the generation type.
           </p>
