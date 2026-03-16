@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
   },
   verification: {
-  google: "google-site-verification=rSxHxCVfV9lASsz4y6MeWov8SqtcBEpKP15SHjOC2co",
+    google: "rSxHxCVfV9lASsz4y6MeWov8SqtcBEpKP15SHjOC2co",
   },
 };
 
