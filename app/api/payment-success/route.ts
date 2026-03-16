@@ -34,26 +34,37 @@ export async function POST(req: Request) {
 
     // Example plan settings
 
-        let credits = 0;
+    let credits = 0;
 
-        if (plan === "Pro") credits = 500;
-        if (plan === "Business") credits = 3000;
+    if (plan === "Pro") credits = 500;
+    if (plan === "Business") credits = 3000;
 
-        // Update user plan
+    // Update user plan
 
-        const { error } = await supabase
-        .from("users")
-        .update({
-            plan: plan,
-            credits: credits,
-            billing_cycle: billing,
-            updated_at: new Date().toISOString(),
-        })
-        .eq("email", body.email);
+    const { error } = await supabase
+      .from("users")
+      .update({
+        plan: plan,
+        credits: credits,
+        billing_cycle: billing,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("email", body.email);
 
-        if (error) {
-        console.error("Supabase update error:", error);
-        }
+    if (error) {
+      console.error("Supabase update error:", error);
+    }
+
+    // Save payment record
+
+    await supabase.from("payments").insert({
+      user_email: body.email,
+      plan: plan,
+      billing: billing,
+      amount: body.amount,
+      razorpay_payment_id: payment_id,
+      razorpay_order_id: order_id,
+    });
 
     console.log("Payment verified:", payment_id);
 
