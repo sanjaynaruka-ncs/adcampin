@@ -44,8 +44,8 @@ export async function generateMetadata({ params }: PageProps) {
   const image = `https://adcampin.com/${platform}-ads.webp`;
 
   return {
-    title: `${formattedPlatform} Ads for ${formattedIndustry} | AdCampin`,
-    description: `Generate high-performing ${formattedPlatform} ads for ${formattedIndustry} businesses using AI with AdCampin.`,
+    title: `${formattedPlatform} Ads for ${formattedIndustry} (2026 Guide): Cost, Strategy & Examples`,
+    description: `Learn how ${formattedIndustry} businesses use ${formattedPlatform} ads to attract customers. Includes campaign strategy, targeting tips, ad examples and cost estimates for 2026.`,
 
     alternates: {
       canonical: url,
