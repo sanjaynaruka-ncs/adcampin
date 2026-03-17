@@ -553,6 +553,32 @@ const adCopies: string[] = [
 
       </section>
 
+      {/* RELATED INDUSTRIES */}
+
+      <section className="mb-24">
+
+        <h2 className="text-3xl font-bold mb-8">
+          More {formattedPlatform} Advertising Guides
+        </h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+
+          {industries.slice(0, 12).map((ind) => (
+
+            <Link
+              key={ind.slug}
+              href={`/ads/${platform}/${ind.slug}`}
+              className="bg-slate-800 p-4 rounded hover:bg-slate-700 transition"
+            >
+              {formattedPlatform} Ads for {formatText(ind.slug)}
+            </Link>
+
+          ))}
+
+        </div>
+
+      </section>
+
 
       {/* FINAL CTA */}
 
