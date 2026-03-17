@@ -44,7 +44,8 @@ export async function generateMetadata({ params }: PageProps) {
   const image = `https://adcampin.com/${platform}-ads.webp`;
 
   return {
-    title: `${formattedPlatform} Ads for ${formattedIndustry} (2026 Guide): Cost, Strategy & Examples`,
+    
+    title: `${formattedPlatform} Ads for ${formattedIndustry} (${year} Guide): Cost, Strategy & Examples`,
     description: `Learn how ${formattedIndustry} businesses use ${formattedPlatform} ads to attract customers. Includes campaign strategy, targeting tips, ad examples and cost estimates for 2026.`,
 
     alternates: {
@@ -93,6 +94,7 @@ export default async function Page({ params }: PageProps) {
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
+  const year = new Date().getFullYear();
   const adExamples: string[] = [
   `Find the Best ${formattedIndustry} Services Near You`,
   `Top Rated ${formattedIndustry} Experts in Your Area`,
