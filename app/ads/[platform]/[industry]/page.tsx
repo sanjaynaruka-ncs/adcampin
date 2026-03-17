@@ -137,8 +137,8 @@ const adCopies: string[] = [
       <section className="mb-20">
 
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          {formattedPlatform} Ads for {formattedIndustry}
-        </h1>
+        {formattedPlatform} Ads for {formattedIndustry} ({new Date().getFullYear()} Guide)
+      </h1>
 
         <p className="text-gray-300 max-w-2xl mx-auto mb-10">
           Generate high-performing {formattedPlatform} ads for {formattedIndustry} businesses
