@@ -167,8 +167,7 @@ const adCopies: string[] = [
           />
         </div>
 
-        <Link
-          href="/signup"
+        <Link href={`/signup?platform=${platform}&industry=${industry}`}
           className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
         >
           Generate Ads Now
@@ -617,7 +616,7 @@ const adCopies: string[] = [
         </p>
 
         <Link
-          href="/signup"
+          href={`/signup?platform=${platform}&industry=${industry}`}
           className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
         >
           Start Free Trial
