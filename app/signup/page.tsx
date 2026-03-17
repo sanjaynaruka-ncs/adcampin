@@ -5,17 +5,18 @@ import { supabase } from "../../lib/supabase";
 import Navbar from "../components/navbar";
 import { useSearchParams } from "next/navigation";
 
-export default function Signup() {
+function SignupContent() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+
   const searchParams = useSearchParams();
 
-const platform = searchParams.get("platform") || "Facebook";
-const industry = searchParams.get("industry") || "Dentists";
+  const platform = searchParams.get("platform") || "facebook";
+  const industry = searchParams.get("industry") || "dentists";
 
   async function handleSignup() {
 
@@ -37,7 +38,7 @@ const industry = searchParams.get("industry") || "Dentists";
   }
 
   return (
-      <Suspense fallback={<div className="text-white p-10">Loading...</div>}>
+    <>
       <Navbar />
 
       <main className="min-h-screen bg-gradient-to-b from-[#0f172a] to-[#0b1a33] p-6 flex flex-col items-center justify-center">
@@ -125,6 +126,7 @@ const industry = searchParams.get("industry") || "Dentists";
           <h2 className="text-2xl font-bold mb-8 text-white text-center">
             Create Account
           </h2>
+
 
           {/* Full Name */}
 
@@ -214,6 +216,14 @@ const industry = searchParams.get("industry") || "Dentists";
         </div>
 
       </main>
-  </Suspense>
+    </>
+  );
+}
+
+export default function Signup() {
+  return (
+    <Suspense fallback={<div className="text-white p-10">Loading...</div>}>
+      <SignupContent />
+    </Suspense>
   );
 }
