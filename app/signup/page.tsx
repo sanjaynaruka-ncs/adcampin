@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { supabase } from "../../lib/supabase";
 import Navbar from "../components/navbar";
+import { useSearchParams } from "next/navigation";
 
 export default function Signup() {
 
@@ -11,6 +12,10 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const searchParams = useSearchParams();
+
+const platform = searchParams.get("platform") || "Facebook";
+const industry = searchParams.get("industry") || "Dentists";
 
   async function handleSignup() {
 
@@ -74,9 +79,21 @@ export default function Signup() {
 
           <div className="text-gray-300 text-sm space-y-3">
 
-            <p><strong>Campaign:</strong> Facebook Lead Generation</p>
+            <p>
+              <strong>Campaign:</strong>{" "}
+              {(platform || "facebook")
+                .split("-")
+                .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+                .join(" ")} Lead Generation
+            </p>
 
-            <p><strong>Industry:</strong> Dentists</p>
+            <p>
+              <strong>Industry:</strong>{" "}
+              {(industry || "dentists")
+                .split("-")
+                .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+                .join(" ")}
+            </p>
 
             <p>
               <strong>Ad Copy:</strong><br/>
