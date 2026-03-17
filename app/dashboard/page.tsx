@@ -61,7 +61,7 @@ export default function Dashboard() {
     0
   );
 
-  const estimatedReach = totalBudget * 25;
+  const estimatedCampaignValue = usedCampaigns * 500;
 
   const chartData = campaigns.slice(0, 5).map((c) => {
 
@@ -261,18 +261,20 @@ export default function Dashboard() {
             </p>
           </div>
 
-          {/* ESTIMATED REACH */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-              Estimated Reach
-            </h2>
-            <p className="text-3xl mt-2 text-black dark:text-white">
-              {estimatedReach.toLocaleString()}
-            </p>
-            <p className="text-sm text-orange-500 mt-1">
-              people
-            </p>
-          </div>
+          {/* ESTIMATED CAMPAIGN VALUE */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
+              <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                Estimated Campaign Value
+              </h2>
+
+              <p className="text-3xl mt-2 text-black dark:text-white">
+                ${estimatedCampaignValue.toLocaleString()}
+              </p>
+
+              <p className="text-sm text-orange-500 mt-1">
+                worth of campaigns generated
+              </p>
+            </div>
 
         </div>
 
