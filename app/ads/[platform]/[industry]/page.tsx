@@ -44,9 +44,16 @@ export async function generateMetadata({ params }: PageProps) {
   const image = `https://adcampin.com/${platform}-ads.webp`;
 
   return {
-    
-    title: `${formattedPlatform} Ads for ${formattedIndustry} (${year} Guide): Cost, Strategy & Examples`,
-    description: `Learn how ${formattedIndustry} businesses use ${formattedPlatform} ads to attract customers. Includes campaign strategy, targeting tips, ad examples and cost estimates for 2026.`,
+
+    title: `${formattedPlatform} Ads for ${formattedIndustry} (${new Date().getFullYear()} Guide): Cost, Strategy & Examples`,
+    description: `Learn how ${formattedIndustry} businesses use ${formattedPlatform} ads to attract customers. Includes campaign strategy, targeting tips, ad examples and cost estimates for ${new Date().getFullYear()}.`,
+    keywords: [
+      `${formattedPlatform} ads for ${formattedIndustry}`,
+      `${formattedIndustry} advertising`,
+      `${formattedPlatform} marketing`,
+      `${formattedIndustry} marketing strategy`,
+      `${formattedPlatform} ad examples`,
+    ],
 
     alternates: {
       canonical: url,
@@ -63,10 +70,11 @@ export async function generateMetadata({ params }: PageProps) {
     },
 
     openGraph: {
-      title: `${formattedPlatform} Ads for ${formattedIndustry} | AdCampin`,
-      description: `Generate high-performing ${formattedPlatform} ads for ${formattedIndustry} businesses using AI.`,
-      url: url,
-      siteName: "AdCampin",
+    title: `${formattedPlatform} Ads for ${formattedIndustry} (${new Date().getFullYear()} Guide)`,
+    description: `Generate high-performing ${formattedPlatform} ads for ${formattedIndustry}.`,
+    url: url,
+    siteName: "AdCampin",
+    locale: "en_US",
       images: [
         {
           url: image,
@@ -167,6 +175,20 @@ const adCopies: string[] = [
         </Link>
 
       </section>
+
+      <div className="text-sm text-gray-400 mb-12">
+
+        <p>In this guide:</p>
+
+        <ul className="space-y-1">
+        <li>Advertising Strategy</li>
+        <li>Ad Examples</li>
+        <li>Campaign Costs</li>
+        <li>Targeting Tips</li>
+        <li>Ad Copy Examples</li>
+        </ul>
+
+        </div>
 
 
       {/* INDUSTRY OVERVIEW */}
