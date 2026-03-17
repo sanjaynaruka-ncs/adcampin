@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { supabase } from "../../lib/supabase";
 import Navbar from "../components/navbar";
 import { useSearchParams } from "next/navigation";
@@ -37,7 +37,7 @@ const industry = searchParams.get("industry") || "Dentists";
   }
 
   return (
-    <>
+      <Suspense fallback={<div className="text-white p-10">Loading...</div>}>
       <Navbar />
 
       <main className="min-h-screen bg-gradient-to-b from-[#0f172a] to-[#0b1a33] p-6 flex flex-col items-center justify-center">
@@ -214,6 +214,6 @@ const industry = searchParams.get("industry") || "Dentists";
         </div>
 
       </main>
-    </>
+  </Suspense>
   );
 }
