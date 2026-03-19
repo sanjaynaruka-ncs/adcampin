@@ -4,6 +4,7 @@ import { useState, Suspense } from "react";
 import { supabase } from "../../lib/supabase";
 import Navbar from "../components/navbar";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 function SignupContent() {
 
@@ -72,49 +73,17 @@ function SignupContent() {
 
         {/* AI CAMPAIGN PREVIEW */}
 
-        <div className="w-full max-w-2xl bg-slate-900/70 border border-slate-700 rounded-xl p-6 mb-12 text-left">
+        <div className="w-full max-w-4xl mb-12">
 
-          <h2 className="text-white font-semibold mb-4">
-            Example AI Generated Campaign
-          </h2>
-
-          <div className="text-gray-300 text-sm space-y-3">
-
-            <p>
-              <strong>Campaign:</strong>{" "}
-              {(platform || "facebook")
-                .split("-")
-                .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                .join(" ")} Lead Generation
-            </p>
-
-            <p>
-              <strong>Industry:</strong>{" "}
-              {(industry || "dentists")
-                .split("-")
-                .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                .join(" ")}
-            </p>
-
-            <p>
-              <strong>Ad Copy:</strong><br/>
-              Looking for a trusted dentist near you?  
-              Book your appointment today and get a free consultation.
-            </p>
-
-            <p>
-              <strong>Targeting:</strong><br/>
-              Location: 10km around clinic<br/>
-              Age: 25–55<br/>
-              Interests: Dental care, oral hygiene
-            </p>
-
-            <p>
-              <strong>Recommended Budget:</strong> $20/day<br/>
-              <strong>Estimated Leads:</strong> 10–20 per week
-            </p>
-
-          </div>
+          <Image
+            src="/ai-campaign-preview.webp"
+            alt="AI Generated Advertising Campaign Preview"
+            width={1200}
+            height={675}
+            sizes="(max-width: 768px) 100vw, 900px"
+            className="w-full h-auto rounded-xl border border-slate-700 shadow-lg"
+            priority
+          />
 
         </div>
 
