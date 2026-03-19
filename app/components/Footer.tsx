@@ -4,7 +4,7 @@ export default function Footer() {
 
       <div className="max-w-6xl mx-auto px-6">
 
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-5 gap-10">
 
           {/* Logo / About */}
           <div>
@@ -16,6 +16,12 @@ export default function Footer() {
               AI-powered platform to generate high-converting ad campaigns
               in seconds.
             </p>
+
+            {/* SEO brand reinforcement */}
+            <p className="text-gray-500 text-sm mt-4">
+              AdCampin helps businesses create Facebook Ads, Google Ads,
+              Instagram Ads and LinkedIn Ads using AI-powered campaign generation.
+            </p>
           </div>
 
           {/* Product */}
@@ -25,9 +31,23 @@ export default function Footer() {
             </h4>
 
             <ul className="space-y-2">
-              <li><a href="/pricing">Pricing</a></li>
-              <li><a href="/login">Login</a></li>
-              <li><a href="/signup">Start Free Trial</a></li>
+              <li>
+                <a href="/pricing" className="hover:text-white transition">
+                  Pricing
+                </a>
+              </li>
+
+              <li>
+                <a href="/login" className="hover:text-white transition">
+                  Login
+                </a>
+              </li>
+
+              <li>
+                <a href="/signup" className="hover:text-white transition">
+                  Start Free Trial
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -38,8 +58,17 @@ export default function Footer() {
             </h4>
 
             <ul className="space-y-2">
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li>
+                <a href="/about" className="hover:text-white transition">
+                  About
+                </a>
+              </li>
+
+              <li>
+                <a href="/contact" className="hover:text-white transition">
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -50,14 +79,100 @@ export default function Footer() {
             </h4>
 
             <ul className="space-y-2">
-              <li><a href="/privacy">Privacy Policy</a></li>
-              <li><a href="/terms">Terms of Service</a></li>
+              <li>
+                <a href="/privacy" className="hover:text-white transition">
+                  Privacy Policy
+                </a>
+              </li>
+
+              <li>
+                <a href="/terms" className="hover:text-white transition">
+                  Terms of Service
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">
+              Social
+            </h4>
+
+            <ul className="space-y-2">
+
+              <li>
+                <a
+                  href="https://www.youtube.com/@AdCampIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition"
+                >
+                  YouTube
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://instagram.com/adcamp.india"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition"
+                >
+                  Instagram
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/107494017/admin/dashboard/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition"
+                >
+                  LinkedIn
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.facebook.com/adcampin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition"
+                >
+                  Facebook
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://x.com/AdCampIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition"
+                >
+                  X (Twitter)
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://in.pinterest.com/adcampin/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition"
+                >
+                  Pinterest
+                </a>
+              </li>
+
             </ul>
           </div>
 
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
           © {new Date().getFullYear()} AdCampin. All rights reserved.
         </div>
 
