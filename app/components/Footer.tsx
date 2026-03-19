@@ -32,19 +32,19 @@ export default function Footer() {
 
             <ul className="space-y-2">
               <li>
-                <a href="/pricing" className="hover:text-white transition">
+                <a href="/pricing" className="hover:text-blue-400 transition">
                   Pricing
                 </a>
               </li>
 
               <li>
-                <a href="/login" className="hover:text-white transition">
+                <a href="/login" className="hover:text-blue-400 transition">
                   Login
                 </a>
               </li>
 
               <li>
-                <a href="/signup" className="hover:text-white transition">
+                <a href="/signup" className="hover:text-blue-400 transition">
                   Start Free Trial
                 </a>
               </li>
@@ -59,13 +59,13 @@ export default function Footer() {
 
             <ul className="space-y-2">
               <li>
-                <a href="/about" className="hover:text-white transition">
+                <a href="/about" className="hover:text-blue-400 transition">
                   About
                 </a>
               </li>
 
               <li>
-                <a href="/contact" className="hover:text-white transition">
+                <a href="/contact" className="hover:text-blue-400 transition">
                   Contact
                 </a>
               </li>
@@ -80,13 +80,13 @@ export default function Footer() {
 
             <ul className="space-y-2">
               <li>
-                <a href="/privacy" className="hover:text-white transition">
+                <a href="/privacy" className="hover:text-blue-400 transition">
                   Privacy Policy
                 </a>
               </li>
 
               <li>
-                <a href="/terms" className="hover:text-white transition">
+                <a href="/terms" className="hover:text-blue-400 transition">
                   Terms of Service
                 </a>
               </li>
@@ -106,7 +106,7 @@ export default function Footer() {
                   href="https://www.youtube.com/@AdCampIn"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition"
+                  className="hover:text-blue-400 transition"
                 >
                   YouTube
                 </a>
@@ -117,7 +117,7 @@ export default function Footer() {
                   href="https://instagram.com/adcamp.india"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition"
+                  className="hover:text-blue-400 transition"
                 >
                   Instagram
                 </a>
@@ -128,7 +128,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/company/107494017/admin/dashboard/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition"
+                  className="hover:text-blue-400 transition"
                 >
                   LinkedIn
                 </a>
@@ -139,7 +139,7 @@ export default function Footer() {
                   href="https://www.facebook.com/adcampin"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition"
+                  className="hover:text-blue-400 transition"
                 >
                   Facebook
                 </a>
@@ -150,7 +150,7 @@ export default function Footer() {
                   href="https://x.com/AdCampIn"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition"
+                  className="hover:text-blue-400 transition"
                 >
                   X (Twitter)
                 </a>
@@ -161,7 +161,7 @@ export default function Footer() {
                   href="https://in.pinterest.com/adcampin/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition"
+                  className="hover:text-blue-400 transition"
                 >
                   Pinterest
                 </a>
