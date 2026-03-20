@@ -33,12 +33,14 @@ export async function POST(req: Request) {
 
     return NextResponse.json(order);
 
-  } catch (error) {
-    console.error("Create Order Error:", error);
+    } catch (error: any) {
+
+    console.error("❌ Razorpay Order Error:", error);
 
     return NextResponse.json(
-      { error: "Order creation failed" },
+      { error: error?.message || "Order creation failed" },
       { status: 500 }
     );
+
   }
 }
