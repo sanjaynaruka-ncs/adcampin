@@ -13,8 +13,8 @@ function CheckoutContent() {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const plan = params.get("plan") || "Pro";
 
-  const basePrice = 1; // ✅ TEMP TEST PRICE
-  
+ 
+const basePrice = 1; // ✅ TEMP TEST PRICE
 //  const basePrice = Number(params.get("price") || "999");
 
   const billing = params.get("billing") || "monthly";
@@ -22,8 +22,12 @@ function CheckoutContent() {
 // ✅ GST logic based on selected country
 const isIndia = country === "India";
 
-const gst = isIndia ? Math.round(basePrice * 0.18) : 0;
-const totalPrice = basePrice + gst;
+const gst = 0; // ✅ disable GST for test
+// const gst = isIndia ? Math.round(basePrice * 0.18) : 0;
+
+
+const totalPrice = 1; // ✅ exact match (CRITICAL)
+// const totalPrice = basePrice + gst;
 
   const countryInput =
     (typeof window !== "undefined"
