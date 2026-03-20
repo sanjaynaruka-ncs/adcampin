@@ -90,6 +90,19 @@ export default function Footer() {
                   Terms of Service
                 </a>
               </li>
+
+              {/* ✅ NEW */}
+              <li>
+                <a href="/refund-policy" className="hover:text-blue-400 transition">
+                  Refund Policy
+                </a>
+              </li>
+
+              <li>
+                <a href="/shipping-policy" className="hover:text-blue-400 transition">
+                  Shipping Policy
+                </a>
+              </li>
             </ul>
           </div>
 
