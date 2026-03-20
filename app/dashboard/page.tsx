@@ -22,17 +22,18 @@ export default function Dashboard() {
   const [campaigns, setCampaigns] = useState<any[]>([]);
   const [credits, setCredits] = useState(0);
   const [plan, setPlan] = useState("free");
+  const [planExpiry, setPlanExpiry] = useState<string | null>(null);
   const [totalCampaignCount, setTotalCampaignCount] = useState(0);
   const [selectedCampaigns, setSelectedCampaigns] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState(false);
 
   const PLAN_NAME =
   plan === "pro"
-    ? "Pro Plan"
+    ? "🌟 Pro"
     : plan === "business"
-    ? "Business Plan"
+    ? "👑 Business"
     : plan === "enterprise"
-    ? "Enterprise Plan"
+    ? "🔥 Enterprise"
     : "Free";
 
   let CAMPAIGN_LIMIT = 3;
@@ -86,6 +87,8 @@ export default function Dashboard() {
   useEffect(() => {
     async function loadData() {
 
+      await fetch("/api/check-expiry", { method: "POST" });
+      await fetch("/api/send-expiry-reminders", { method: "POST" });
       const { data: { session } } = await supabase.auth.getSession();
       const userData = { user: session?.user };
 
@@ -96,13 +99,29 @@ export default function Dashboard() {
 
       const { data: profile } = await supabase
         .from("profiles")
-        .select("ai_credits, total_campaigns_created, plan")
+        .select("ai_credits, total_campaigns_created, plan, plan_expires_at")
         .eq("id", userData.user.id)
         .single();
+      
+      console.log("PROFILE DATA:", profile);
+    
 
       setCredits(profile?.ai_credits || 0);
       setTotalCampaignCount(profile?.total_campaigns_created || 0);
-      setPlan(profile?.plan || "free");
+      const currentPlan = (profile?.plan || "free").toLowerCase();
+      const expiry = profile?.plan_expires_at;
+
+      if (expiry && new Date(expiry) < new Date()) {
+        console.log("⚠️ Plan expired → downgrading");
+
+        setPlan("free");
+        setCredits(50);
+
+        // 🔥 OPTIONAL: call API to update DB (we'll add later)
+      } else {
+        setPlan(currentPlan);
+      }
+      setPlanExpiry(profile?.plan_expires_at || null);
 
       const { data } = await supabase
         .from("campaigns")
@@ -112,7 +131,7 @@ export default function Dashboard() {
 
       setCampaigns(data || []);
     }
-
+    router.refresh();
     loadData();
   }, [router]);
 
@@ -138,6 +157,7 @@ export default function Dashboard() {
           },
           (payload) => {
             setCredits(payload.new.ai_credits);
+            setPlan((payload.new.plan || "free").toLowerCase());
           }
         )
         .subscribe();
@@ -224,6 +244,12 @@ export default function Dashboard() {
             <p className="text-3xl mt-2 text-black dark:text-white">
               {PLAN_NAME}
             </p>
+
+            {plan !== "free" && planExpiry && (
+              <p className="text-sm text-gray-500 mt-2">
+                Expires on {new Date(planExpiry).toLocaleDateString()}
+              </p>
+            )}
 
             <button
               onClick={() => router.push("/pricing")}
