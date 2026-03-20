@@ -46,8 +46,12 @@ const totalPrice = basePrice + gst;
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        amount: Number(totalPrice),
-      }),
+      amount: Number(totalPrice),
+      email: user?.email,
+      user_id: user?.id,
+      plan: plan,
+      billing: billing,
+    }),
     });
 
     const order = await res.json();
