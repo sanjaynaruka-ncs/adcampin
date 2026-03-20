@@ -12,7 +12,11 @@ function CheckoutContent() {
   const [country, setCountry] = useState("India");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const plan = params.get("plan") || "Pro";
-  const basePrice = Number(params.get("price") || "999");
+
+  const basePrice = 1; // ✅ TEMP TEST PRICE
+  
+//  const basePrice = Number(params.get("price") || "999");
+
   const billing = params.get("billing") || "monthly";
 
 // ✅ GST logic based on selected country
