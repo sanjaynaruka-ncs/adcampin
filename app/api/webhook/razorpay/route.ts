@@ -11,6 +11,7 @@ export async function POST(req: Request) {
     const signature = req.headers.get("x-razorpay-signature")!;
     const secret = process.env.RAZORPAY_WEBHOOK_SECRET!;
 
+    // ✅ Verify signature
     const expectedSignature = crypto
       .createHmac("sha256", secret)
       .update(body)
@@ -23,35 +24,67 @@ export async function POST(req: Request) {
 
     const event = JSON.parse(body);
 
-    const paymentId = event.payload?.payment?.entity?.id;
-
     const payment = event.payload?.payment?.entity;
+    const paymentId = payment?.id;
 
-    const email = payment?.email || "unknown";
-    const amount = payment?.amount / 100; // Razorpay gives in paise
+    // ✅ Extract from notes (CRITICAL)
+    const notes = payment?.notes || {};
+
+    const email = notes.email || payment?.email || "unknown";
+    const plan = notes.plan || "Free";
+    const billing = notes.billing || "monthly";
+    const user_id = notes.user_id || null;
+
+    const amount = payment?.amount / 100;
+
+    // 🚫 Prevent duplicate BEFORE insert (FIXED)
+    const { data: existing } = await supabaseAdmin
+      .from("payments")
+      .select("id")
+      .eq("razorpay_payment_id", paymentId)
+      .maybeSingle();
+
+    if (existing) {
+      console.log("⚠️ Duplicate webhook ignored:", paymentId);
+      return NextResponse.json({ success: true });
+    }
 
     // 💾 Save payment
     await supabaseAdmin.from("payments").insert({
-    user_email: email,
-    amount,
-    razorpay_payment_id: paymentId,
+      user_email: email,
+      plan,
+      billing,
+      amount,
+      razorpay_payment_id: paymentId,
     });
 
-    // 🚫 Prevent duplicate processing
-    const { data: existing } = await supabaseAdmin
-    .from("payments")
-    .select("id")
-    .eq("razorpay_payment_id", paymentId)
-    .maybeSingle();
+    // ✅ Update user plan (MAIN LOGIC)
+    if (user_id) {
+      let credits = 0;
 
-if (existing) {
-  console.log("⚠️ Duplicate webhook ignored:", paymentId);
-  return NextResponse.json({ success: true });
-}
+      if (plan === "Pro") credits = 500;
+      if (plan === "Business") credits = 3000;
+
+      const expiryDate =
+        billing === "yearly"
+          ? new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+          : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+
+      await supabaseAdmin
+        .from("profiles")
+        .update({
+          plan,
+          ai_credits: credits,
+          plan_expires_at: expiryDate.toISOString(),
+        })
+        .eq("id", user_id);
+
+      console.log("✅ User updated:", user_id);
+    }
 
     console.log("✅ Webhook verified");
     console.log("📦 Event type:", event.event);
-    console.log("💰 Payment ID:", event.payload?.payment?.entity?.id);
+    console.log("💰 Payment ID:", paymentId);
 
     return NextResponse.json({ success: true });
 
