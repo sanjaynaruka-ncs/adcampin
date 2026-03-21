@@ -1,18 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Share2 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 export default function ROITab() {
   const [adSpend, setAdSpend] = useState(1000);
   const [revenue, setRevenue] = useState(3000);
   const [roi, setRoi] = useState<number | null>(null);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+  const ad = searchParams.get("ad");
+  const rev = searchParams.get("rev");
+
+  if (ad) setAdSpend(Number(ad));
+  if (rev) setRevenue(Number(rev));
+}, [searchParams]);
 
   function calculateROI() {
     if (adSpend <= 0) return;
     const result = ((revenue - adSpend) / adSpend) * 100;
     setRoi(result);
   }
+
+  useEffect(() => {
+  if (adSpend && revenue) {
+    calculateROI();
+  }
+}, [adSpend, revenue]);
 
   return (
     <div className="bg-slate-800/60 backdrop-blur p-6 rounded-xl border border-slate-700">
@@ -76,6 +92,17 @@ export default function ROITab() {
             >
               <Share2 size={16} />
               Share this Result
+            </button>
+
+            <button
+              onClick={() => {
+                const url = `${window.location.origin}${window.location.pathname}?ad=${adSpend}&rev=${revenue}`;
+                navigator.clipboard.writeText(url);
+                alert("🔗 Share link copied!");
+              }}
+              className="w-full bg-slate-700 hover:bg-slate-600 text-white py-2 rounded-lg mt-2"
+            >
+              🔗 Share ROI Calculator
             </button>
 
           </div>
