@@ -91,6 +91,17 @@ export default function AdsTab({ campaign, exportAds }: any) {
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold">
               {ad.cta}
             </button>
+            
+            <button
+              onClick={() => {
+                const url = window.location.href;
+                navigator.clipboard.writeText(url);
+                alert("Link copied! Share it 🚀");
+              }}
+              className="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg"
+            >
+              Share this Ad
+            </button>
 
             <div className="mt-6 flex gap-3 flex-wrap">
 
