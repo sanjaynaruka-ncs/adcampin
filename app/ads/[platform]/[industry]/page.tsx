@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { industries } from "@/lib/industries";
 import { platforms } from "@/lib/platforms";
+import SEOShareEmbed from "@/app/components/seo_share_embed";
 
 export function generateStaticParams() {
 
@@ -623,6 +624,9 @@ const adCopies: string[] = [
         </Link>
 
       </section>
+      <div className="flex justify-center">
+        <SEOShareEmbed title={`${formattedPlatform} Ads for ${formattedIndustry}`} />
+      </div>
 
     </main>
   );
