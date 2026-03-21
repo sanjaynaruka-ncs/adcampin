@@ -57,7 +57,7 @@ export async function POST(req: Request) {
       });
     }
 
-    const plan = profile.plan || "free";
+    const plan = (profile.plan || "free").toLowerCase();
 
     // 🔒 FEATURE LOCK CHECK (using feature_guard.ts)
     const landingAllowed = checkFeature(plan, "landing_page");
