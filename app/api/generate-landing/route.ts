@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getSupabaseServer } from "@/lib/supabase_server";
 import { CREDIT_COST, deductCredits } from "@/lib/credits";
 import { checkFeature } from "@/lib/feature_guard";
+import { sendAlertEmail } from "@/lib/email";
 
 const PLAN_LIMITS: any = {
   free: 3,
@@ -164,6 +165,17 @@ ${product}
     );
 
     const data = await response.json();
+
+    // 🚨 OpenAI usage alert (approx via tokens)
+    const usageTokens = data?.usage?.total_tokens || 0;
+
+    // ⚠️ Set threshold (adjust later based on real usage)
+    if (usageTokens > 1000) {
+      await sendAlertEmail(
+        "⚠️ OpenAI Usage Alert (Landing Page)",
+        `High token usage detected: ${usageTokens} tokens used in landing generation.`
+      );
+    }
 
     if (!response.ok) {
       console.error("LANDING STEP 8: OpenAI API error:", data);
