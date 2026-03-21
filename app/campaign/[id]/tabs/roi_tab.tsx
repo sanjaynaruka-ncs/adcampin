@@ -13,8 +13,10 @@ export default function ROITab({
   defaultAd = 0,
   defaultRev = 0,
 }: ROITabProps) {
-  const [adSpend, setAdSpend] = useState<number>(defaultAd);
-  const [revenue, setRevenue] = useState<number>(defaultRev);
+
+  // ✅ FIX: use string instead of number
+  const [adSpend, setAdSpend] = useState<string>(String(defaultAd));
+  const [revenue, setRevenue] = useState<string>(String(defaultRev));
   const [roi, setRoi] = useState<number | null>(null);
 
   const searchParams = useSearchParams();
@@ -24,19 +26,23 @@ export default function ROITab({
     const ad = searchParams.get("ad");
     const rev = searchParams.get("rev");
 
-    if (ad) setAdSpend(Number(ad));
-    if (rev) setRevenue(Number(rev));
+    if (ad) setAdSpend(ad);
+    if (rev) setRevenue(rev);
   }, [searchParams]);
 
   function calculateROI() {
-    if (adSpend <= 0) return;
-    const result = ((revenue - adSpend) / adSpend) * 100;
+    const ad = Number(adSpend);
+    const rev = Number(revenue);
+
+    if (!ad || ad <= 0) return;
+
+    const result = ((rev - ad) / ad) * 100;
     setRoi(result);
   }
 
   // ✅ Auto calculate
   useEffect(() => {
-    if (adSpend > 0 && revenue > 0) {
+    if (Number(adSpend) > 0 && Number(revenue) > 0) {
       calculateROI();
     }
   }, [adSpend, revenue]);
@@ -55,7 +61,7 @@ export default function ROITab({
           <input
             type="number"
             value={adSpend}
-            onChange={(e) => setAdSpend(Number(e.target.value))}
+            onChange={(e) => setAdSpend(e.target.value)}
             className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white"
           />
         </div>
@@ -68,7 +74,7 @@ export default function ROITab({
           <input
             type="number"
             value={revenue}
-            onChange={(e) => setRevenue(Number(e.target.value))}
+            onChange={(e) => setRevenue(e.target.value)}
             className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white"
           />
         </div>
@@ -114,9 +120,10 @@ export default function ROITab({
             Share ROI Calculator
           </button>
 
+          {/* Embed */}
           <button
             onClick={() => {
-              const embedCode = `<iframe src="${window.location.origin}/roi?ad=${adSpend}&rev=${revenue}" ...>`
+              const embedCode = `<iframe src="${window.location.origin}/roi?ad=${adSpend}&rev=${revenue}" width="100%" height="500" style="border:none;border-radius:12px;"></iframe>`;
               navigator.clipboard.writeText(embedCode);
               alert("📋 Embed code copied!");
             }}
