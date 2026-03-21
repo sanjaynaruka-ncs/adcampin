@@ -23,28 +23,40 @@ export default function ROITab() {
 
       <div className="space-y-4">
 
-        <input
-          type="number"
-          placeholder="Ad Spend (₹)"
-          value={adSpend}
-          onChange={(e) => setAdSpend(Number(e.target.value))}
-          className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400"
-        />
+        {/* Ad Spend */}
+        <div className="space-y-1">
+            <label className="text-sm text-gray-300">
+            💰 Ad Spend (How much you spend on ads)
+            </label>
+            <input
+            type="number"
+            value={adSpend}
+            onChange={(e) => setAdSpend(Number(e.target.value))}
+            className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400"
+            />
+        </div>
 
-        <input
-          type="number"
-          placeholder="Revenue (₹)"
-          value={revenue}
-          onChange={(e) => setRevenue(Number(e.target.value))}
-          className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400"
-        />
+        {/* Revenue */}
+        <div className="space-y-1">
+            <label className="text-sm text-gray-300">
+            📈 Revenue Generated (From those ads)
+            </label>
+            <input
+            type="number"
+            value={revenue}
+            onChange={(e) => setRevenue(Number(e.target.value))}
+            className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400"
+            />
+        </div>
 
         <button
-          onClick={calculateROI}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg"
+            onClick={calculateROI}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg"
         >
-          Calculate ROI
+            Calculate ROI
         </button>
+
+        </div>
 
         {roi !== null && (
           <div className="bg-slate-900 border border-slate-700 p-5 rounded-xl text-center space-y-4">
@@ -70,7 +82,5 @@ export default function ROITab() {
         )}
 
       </div>
-
-    </div>
   );
 }
