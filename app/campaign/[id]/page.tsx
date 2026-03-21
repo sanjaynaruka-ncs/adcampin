@@ -13,6 +13,7 @@ import StrategyTab from "./tabs/strategy_tab";
 import PredictionTab from "./tabs/prediction_tab";
 import BudgetTab from "./tabs/budget_tab";
 import ImageVariationsTab from "./tabs/image_variations_tab";
+import ROITab from "./tabs/roi_tab";
 
 type TabType =
   | "overview"
@@ -23,7 +24,8 @@ type TabType =
   | "landing"
   | "strategy"
   | "prediction"
-  | "budget";
+  | "budget"
+  | "roi";
 
 export default function CampaignDetails() {
   const router = useRouter();
@@ -349,6 +351,7 @@ ${JSON.stringify(campaign.ads, null, 2)}
               { id: "optimize", label: "Optimize" },
               { id: "variations", label: "Variations" },
               { id: "landing", label: "Landing Page" },
+              { id: "roi", label: "ROI" }, // ✅ ADD THIS LINE
               { id: "strategy", label: "Strategy" },
               { id: "prediction", label: "Prediction" },
               { id: "budget", label: "Budget" },
@@ -422,6 +425,10 @@ ${JSON.stringify(campaign.ads, null, 2)}
 
           {activeTab === "budget" && (
             <BudgetTab campaign={campaign} />
+          )}
+
+          {activeTab === "roi" && (
+            <ROITab />
           )}
 
         </div>
