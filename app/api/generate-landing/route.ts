@@ -42,11 +42,12 @@ export async function POST(req: Request) {
     // Fetch profile
     const { data: profile, error: profileError } = await supabaseServer
       .from("profiles")
-      .select("plan, total_campaigns_created")
+      .select("plan, total_campaigns_created, ai_credits")
       .eq("id", userId)
       .single();
 
     console.log("LANDING STEP 3: Profile result:", profile);
+    console.log("LANDING STEP 3.1: Credits:", profile?.ai_credits);
 
     if (profileError || !profile) {
       console.log("LANDING STEP 4: Profile not found");
@@ -85,6 +86,12 @@ export async function POST(req: Request) {
       });
     }
 
+    if (!profile.ai_credits || profile.ai_credits <= 0) {
+      return NextResponse.json({
+        landingPage: "",
+        error: "Not enough AI credits"
+      });
+    }
     // Deduct credits
     const creditCheck = await deductCredits(
       supabaseServer,
