@@ -54,6 +54,7 @@ export default function RootLayout({
       >
         {/* PAGE CONTENT */}
         {children}
+        <Footer />
       </body>
     </html>
   );
