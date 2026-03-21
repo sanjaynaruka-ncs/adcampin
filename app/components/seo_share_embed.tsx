@@ -44,11 +44,6 @@ Powered by <a href="https://adcampin.com" target="_blank">AdCampin</a>
       >
         📋 Embed {title}
       </button>
-
-      <p className="text-xs text-gray-400 text-center">
-        Share or embed these ad examples on your website or blog.
-      </p>
-
     </div>
   );
 }
