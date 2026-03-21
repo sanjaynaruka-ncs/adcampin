@@ -125,11 +125,6 @@ export default function CampaignDetails() {
     loadCampaign();
   }, [params?.id, router]);
 
-    useEffect(() => {
-    const active = document.querySelector(".active-tab");
-    active?.scrollIntoView({ behavior: "smooth", inline: "center" });
-  }, [activeTab]);
-
   async function optimizeCampaign() {
 
   console.log("STEP 6: optimizeCampaign started");
