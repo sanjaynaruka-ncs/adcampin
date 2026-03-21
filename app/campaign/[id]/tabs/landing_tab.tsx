@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { Share2 } from "lucide-react";
 import { useState } from "react";
 
 export default function LandingTab({
@@ -90,6 +91,18 @@ export default function LandingTab({
               >
                 Download HTML
               </button>
+
+              <button
+              onClick={() => {
+                const url = window.location.href;
+                navigator.clipboard.writeText(url);
+                alert("Link copied! Share it 🚀");
+              }}
+              className="bg-purple-600 hover:bg-purple-700 px-5 py-3 rounded-lg text-white font-medium flex items-center gap-2"
+            >
+              <Share2 size={18} />
+              Share this Landing Page
+            </button>
             </>
           )}
 

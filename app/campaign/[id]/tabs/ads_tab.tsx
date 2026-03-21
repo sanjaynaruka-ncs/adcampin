@@ -1,5 +1,5 @@
 "use client";
-
+import { Share2 } from "lucide-react";
 export default function AdsTab({ campaign, exportAds }: any) {
 
   if (!campaign?.ads) {
@@ -98,8 +98,9 @@ export default function AdsTab({ campaign, exportAds }: any) {
                 navigator.clipboard.writeText(url);
                 alert("Link copied! Share it 🚀");
               }}
-              className="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg"
+              className="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg flex items-center gap-2"
             >
+              <Share2 size={16} />
               Share this Ad
             </button>
 
