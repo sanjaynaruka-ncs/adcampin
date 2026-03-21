@@ -5,6 +5,27 @@ import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/Footer";
 import { Suspense } from "react";
 
+
+export const metadata = {
+  title: "ROI Calculator – Calculate Ad ROI Instantly | AdCampin",
+  description:
+    "Free ROI calculator to measure your advertising performance. Calculate return on investment for Facebook Ads, Google Ads, and more.",
+  keywords: [
+    "ROI calculator",
+    "ads ROI calculator",
+    "marketing ROI",
+    "facebook ads ROI",
+    "google ads ROI",
+  ],
+  openGraph: {
+    title: "ROI Calculator – AdCampin",
+    description:
+      "Calculate your ad ROI instantly. Free tool for marketers and businesses.",
+    url: "https://adcampin.com/roi",
+    siteName: "AdCampin",
+    type: "website",
+  },
+};
 export default function ROIPublicPage() {
   return (
     <>
@@ -50,6 +71,14 @@ export default function ROIPublicPage() {
                 more.
             </p>
             </div>
+
+            <h2 className="text-xl font-semibold text-white">
+            How to Use This ROI Calculator?
+            </h2>
+
+            <p>
+            Enter your ad spend and revenue generated from campaigns. The calculator will instantly show your ROI percentage to help you evaluate performance.
+            </p>
         </div>
       </main>
 
