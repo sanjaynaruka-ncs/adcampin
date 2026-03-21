@@ -93,20 +93,22 @@ export async function POST(req: Request) {
       });
     }
     // Deduct credits
-    const creditCheck = await deductCredits(
-      supabaseServer,
-      userId,
-      CREDIT_COST.LANDING_PAGE
-    );
-
-    console.log("LANDING STEP 6: Credit check result:", creditCheck);
-
-    if (!creditCheck.success) {
+    if (!profile.ai_credits || profile.ai_credits <= 0) {
       return NextResponse.json({
         landingPage: "",
-        error: creditCheck.error || "Not enough AI credits"
+        error: "Not enough AI credits"
       });
     }
+
+    // Deduct manually
+    await supabaseServer
+      .from("profiles")
+      .update({
+        ai_credits: profile.ai_credits - CREDIT_COST.LANDING_PAGE
+      })
+      .eq("id", userId);
+
+console.log("LANDING STEP 6: Credits deducted manually");
 
     const prompt = `
 You are a professional website designer.
