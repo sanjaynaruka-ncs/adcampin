@@ -348,7 +348,7 @@ ${JSON.stringify(campaign.ads, null, 2)}
             Campaign Report
           </h1>
 
-          <div className="flex gap-3 mb-8 border-b border-slate-700 pb-4 overflow-x-auto whitespace-nowrap pr-6 scroll-smooth">
+          <div className="flex gap-2 mb-8 border-b border-slate-700 pb-4 overflow-x-auto whitespace-nowrap">
             {[
               { id: "overview", label: "Overview" },
               { id: "ads", label: "Ads" },
@@ -364,7 +364,7 @@ ${JSON.stringify(campaign.ads, null, 2)}
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as TabType)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition flex-shrink-0 ${
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition flex-shrink-0 ${
                     activeTab === tab.id ? "active-tab" : ""
                   } ${
                   activeTab === tab.id
