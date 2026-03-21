@@ -125,6 +125,11 @@ export default function CampaignDetails() {
     loadCampaign();
   }, [params?.id, router]);
 
+    useEffect(() => {
+    const active = document.querySelector(".active-tab");
+    active?.scrollIntoView({ behavior: "smooth", inline: "center" });
+  }, [activeTab]);
+
   async function optimizeCampaign() {
 
   console.log("STEP 6: optimizeCampaign started");
@@ -343,7 +348,7 @@ ${JSON.stringify(campaign.ads, null, 2)}
             Campaign Report
           </h1>
 
-          <div className="flex gap-3 mb-8 border-b border-slate-700 pb-4 overflow-x-auto whitespace-nowrap">
+          <div className="flex gap-3 mb-8 border-b border-slate-700 pb-4 overflow-x-auto whitespace-nowrap pr-6 scroll-smooth">
             {[
               { id: "overview", label: "Overview" },
               { id: "ads", label: "Ads" },
@@ -360,6 +365,8 @@ ${JSON.stringify(campaign.ads, null, 2)}
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as TabType)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition flex-shrink-0 ${
+                    activeTab === tab.id ? "active-tab" : ""
+                  } ${
                   activeTab === tab.id
                     ? "bg-blue-600 text-white"
                     : "bg-slate-700 text-gray-300 hover:bg-slate-600"
