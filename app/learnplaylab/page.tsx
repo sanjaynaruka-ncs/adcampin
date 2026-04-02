@@ -144,11 +144,29 @@ export default function LearnPlayLab() {
         </p>
       </div>
 
-      {/* FOOTER */}
-      <div className="text-center text-gray-500 text-sm mt-10">
-        © {new Date().getFullYear()} Learn Play Lab · Built by AdCampin
+     {/* FOOTER */}
+    <div className="border-t border-white/10 pt-10 mt-20">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+
+        <div>
+          © {new Date().getFullYear()} Learn Play Lab
+        </div>
+
+        <div className="flex gap-6">
+          <a href="/" className="hover:text-white transition">
+            Home
+          </a>
+          <a href="https://adcampin.com" target="_blank" className="hover:text-white transition">
+            AdCampin
+          </a>
+          <a href="/learnplaylab/lalify/privacy-policy" className="hover:text-white transition">
+            Privacy
+          </a>
+        </div>
+
       </div>
+    </div>
 
     </div>
-  );
+);
 }
