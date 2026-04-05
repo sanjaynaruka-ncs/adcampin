@@ -38,6 +38,15 @@ export default function Home() {
               10 Google Ads Headlines That Get More Clicks (Local Businesses)
             </a>
           </li>
+
+          <li>
+            <a
+              href="/blog/chatgpt-prompts-ad-copy"
+              className="hover:underline"
+            >
+              Best ChatGPT Prompts for Ad Copy (With Results)
+            </a>
+          </li>
         </ul>
       </section>
 
