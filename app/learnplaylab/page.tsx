@@ -99,7 +99,7 @@ export default function LearnPlayLab() {
 
         {/* Lalify */}
         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center gap-4 hover:border-white/20 transition">
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <a href="https://play.google.com/store/apps/details?id=com.adcampin.lalify" target="_blank" rel="noopener noreferrer">
             <img
               src="/lalify.webp"
               alt="Lalify"
