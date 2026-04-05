@@ -11,6 +11,12 @@ export default function BlogIndex() {
             Facebook Ad Copy for Real Estate (10 High-Converting Examples)
           </Link>
         </li>
+
+        <li>
+          <Link href="/blog/google-ads-headlines-local-business">
+            Google Ads Headlines for Local Businesses (Proven Templates)
+          </Link>
+        </li>
       </ul>
     </main>
   );
