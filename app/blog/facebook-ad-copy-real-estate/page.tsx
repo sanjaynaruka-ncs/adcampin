@@ -124,41 +124,14 @@ const faqs = [
 
 export default function BlogPage() {
   return (
-    <main
-      style={{
-        maxWidth: "780px",
-        margin: "0 auto",
-        padding: "48px 24px 80px",
-        fontFamily: "'Georgia', 'Times New Roman', serif",
-        color: "#1a1a1a",
-        lineHeight: "1.75",
-      }}
-    >
+    <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       {/* H1 */}
-      <h1
-        style={{
-          fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-          fontWeight: "800",
-          lineHeight: "1.2",
-          marginBottom: "20px",
-          fontFamily: "'Georgia', serif",
-          letterSpacing: "-0.5px",
-        }}
-      >
+      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
         Facebook Ad Copy for Real Estate (10 High-Converting Examples)
       </h1>
 
       {/* Intro */}
-      <p
-        style={{
-          fontSize: "1.125rem",
-          color: "#444",
-          marginBottom: "48px",
-          borderLeft: "3px solid #c8a96e",
-          paddingLeft: "16px",
-          fontStyle: "italic",
-        }}
-      >
+      <p className="mt-1 text-lg font-semibold text-white">
         Most real estate Facebook ads are forgettable — vague, pushy, or just a
         listing photo with a phone number. These 10 examples are different.
         They're built around actual buyer and seller psychology, and you can
@@ -167,16 +140,7 @@ export default function BlogPage() {
 
       {/* Main Section */}
       <section>
-        <h2
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "700",
-            marginBottom: "32px",
-            paddingBottom: "10px",
-            borderBottom: "2px solid #f0e6d3",
-            fontFamily: "'Georgia', serif",
-          }}
-        >
+        <h2 className="text-2xl font-semibold mb-8 border-b border-gray-700 pb-3">
           10 Real Estate Facebook Ad Copy Examples That Actually Convert
         </h2>
 
@@ -189,54 +153,18 @@ export default function BlogPage() {
               borderBottom: index < ads.length - 1 ? "1px solid #e8e0d5" : "none",
             }}
           >
-            <h3
-              style={{
-                fontSize: "1.1rem",
-                fontWeight: "700",
-                color: "#8b6914",
-                marginBottom: "4px",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                fontFamily: "'Georgia', serif",
-              }}
-            >
+            <h3 className="text-lg font-semibold text-yellow-400 mb-2">
               Example {ad.id}
             </h3>
 
             {/* Ad Card */}
-            <div
-              style={{
-                background: "#fafaf8",
-                border: "1px solid #e2d9cc",
-                borderRadius: "10px",
-                padding: "24px 28px",
-                margin: "14px 0 20px",
-              }}
-            >
+            <div className="bg-white/5 border border-gray-700 rounded-xl p-6 my-4">
               {/* Headline */}
               <div style={{ marginBottom: "14px" }}>
-                <span
-                  style={{
-                    fontSize: "0.7rem",
-                    fontWeight: "700",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    color: "#999",
-                    fontFamily: "'Arial', sans-serif",
-                  }}
-                >
+                <span className="text-xs uppercase tracking-wide text-gray-400">
                   Headline
                 </span>
-                <p
-                  style={{
-                    margin: "4px 0 0",
-                    fontSize: "1.15rem",
-                    fontWeight: "700",
-                    color: "#1a1a1a",
-                    fontFamily: "'Georgia', serif",
-                    lineHeight: "1.4",
-                  }}
-                >
+                <p className="mt-1 text-lg font-semibold text-white">
                   {ad.headline}
                 </p>
               </div>
@@ -258,16 +186,7 @@ export default function BlogPage() {
                 >
                   Primary Text
                 </span>
-                <p
-                  style={{
-                    margin: "6px 0 0",
-                    fontSize: "0.975rem",
-                    color: "#333",
-                    whiteSpace: "pre-line",
-                    lineHeight: "1.7",
-                    fontFamily: "'Georgia', serif",
-                  }}
-                >
+                <p className="mt-1 text-lg font-semibold text-white">
                   {ad.primaryText}
                 </p>
               </div>
@@ -292,36 +211,11 @@ export default function BlogPage() {
             </div>
 
             {/* Explanation */}
-            <div
-              style={{
-                background: "#f5f0e8",
-                borderLeft: "3px solid #c8a96e",
-                padding: "14px 18px",
-                borderRadius: "0 6px 6px 0",
-              }}
-            >
-              <p
-                style={{
-                  margin: "0 0 6px",
-                  fontSize: "0.875rem",
-                  color: "#555",
-                  lineHeight: "1.65",
-                  fontFamily: "'Arial', sans-serif",
-                }}
-              >
+            <div className="bg-white/5 border-l-2 border-yellow-500 p-4 rounded-r-lg">
+              <p className="mt-1 text-lg font-semibold text-white">
                 {ad.explanation}
               </p>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: "0.8rem",
-                  fontWeight: "700",
-                  color: "#8b6914",
-                  fontFamily: "'Arial', sans-serif",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.06em",
-                }}
-              >
+              <p className="mt-1 text-lg font-semibold text-white">
                 Psychological Trigger: {ad.trigger}
               </p>
             </div>
@@ -330,36 +224,11 @@ export default function BlogPage() {
       </section>
 
       {/* CTA / AdCampin Section */}
-      <section
-        style={{
-          background: "linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%)",
-          borderRadius: "14px",
-          padding: "40px 36px",
-          margin: "60px 0",
-          color: "#fff",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "1.4rem",
-            fontWeight: "800",
-            marginBottom: "14px",
-            fontFamily: "'Georgia', serif",
-            color: "#f0e6d3",
-            lineHeight: "1.3",
-          }}
-        >
+      <section className="bg-white/5 border border-gray-700 rounded-2xl p-8 my-12">
+        <h2 className="text-2xl font-semibold mb-8 border-b border-gray-700 pb-3">
           Want to Generate Ads Like These in Seconds?
         </h2>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: "#c9c9d8",
-            lineHeight: "1.75",
-            marginBottom: "24px",
-            fontFamily: "'Georgia', serif",
-          }}
-        >
+        <p className="mt-1 text-lg font-semibold text-white">
           Writing ad copy from scratch takes time — and testing 10 variations
           takes even more. <a href="/pricing"><strong>AdCampin</strong></a>{" "}
           is built specifically for real estate marketers who need high-quality
@@ -368,20 +237,8 @@ export default function BlogPage() {
           copy in under a minute.
         </p>
         <a
-          href="/create-campaign"
-          style={{
-            display: "inline-block",
-            padding: "13px 28px",
-            background: "#c8a96e",
-            color: "#1a1a1a",
-            borderRadius: "8px",
-            fontWeight: "700",
-            fontSize: "0.95rem",
-            fontFamily: "'Arial', sans-serif",
-            textDecoration: "none",
-            letterSpacing: "0.02em",
-            transition: "opacity 0.2s",
-          }}
+        href="/create-campaign"
+        className="inline-block bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition"
         >
           Generate Your First Ad Free →
         </a>
@@ -392,16 +249,7 @@ export default function BlogPage() {
 
       {/* FAQ Section */}
       <section style={{ marginTop: "60px" }}>
-        <h2
-          style={{
-            fontSize: "1.4rem",
-            fontWeight: "700",
-            marginBottom: "30px",
-            fontFamily: "'Georgia', serif",
-            paddingBottom: "10px",
-            borderBottom: "2px solid #f0e6d3",
-          }}
-        >
+        <h2 className="text-2xl font-semibold mb-8 border-b border-gray-700 pb-3">
           Frequently Asked Questions
         </h2>
 
@@ -412,27 +260,10 @@ export default function BlogPage() {
               marginBottom: "32px",
             }}
           >
-            <h3
-              style={{
-                fontSize: "1.05rem",
-                fontWeight: "700",
-                color: "#1a1a1a",
-                marginBottom: "10px",
-                fontFamily: "'Georgia', serif",
-                lineHeight: "1.4",
-              }}
-            >
+            <h3 className="text-lg font-semibold text-yellow-400 mb-2">
               {faq.q}
             </h3>
-            <p
-              style={{
-                margin: 0,
-                fontSize: "0.975rem",
-                color: "#444",
-                lineHeight: "1.75",
-                fontFamily: "'Georgia', serif",
-              }}
-            >
+            <p className="mt-1 text-lg font-semibold text-white">
               {faq.a}
             </p>
           </div>
@@ -440,17 +271,7 @@ export default function BlogPage() {
       </section>
 
       {/* Footer note */}
-      <footer
-        style={{
-          marginTop: "60px",
-          paddingTop: "24px",
-          borderTop: "1px solid #e8e0d5",
-          fontSize: "0.825rem",
-          color: "#999",
-          fontFamily: "'Arial', sans-serif",
-          lineHeight: "1.6",
-        }}
-      >
+      <footer className="mt-12 pt-6 border-t border-gray-700 text-sm text-gray-400">
         <p>
           All ad copy examples are templates. Replace bracketed placeholders
           like [City] and [Price] with your actual listing details before
