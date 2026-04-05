@@ -1,3 +1,4 @@
+import Navbar from "../../components/navbar";
 export const metadata = {
   title: "Google Ads Headlines for Local Businesses (Proven Templates)",
   description:
@@ -6,6 +7,8 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
+  <>
+    <Navbar />
     <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       {/* H1 */}
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
@@ -19,8 +22,9 @@ export default function BlogPage() {
         built for real businesses in real cities. If you want to skip straight
         to building your own,{" "}
         <a href="/create-campaign" className="text-yellow-400 underline">
-          start your campaign here
-        </a>
+          start your campaign here</a>. 
+
+Also check <a href="/blog/facebook-ad-copy-real-estate" className="text-yellow-400 underline">real estate ad examples</a> for more inspiration.
         .
       </p>
 
@@ -168,6 +172,9 @@ export default function BlogPage() {
           Psychological Trigger: Risk Reversal + Confidence
         </p>
       </div>
+      <p className="text-gray-300 text-sm mb-8">
+  You can also explore <a href="/blog/best-chatgpt-prompts-ad-copy" className="text-yellow-400 underline">ChatGPT ad prompts</a> to generate similar copy faster.
+</p>
 
       {/* Ad 6 */}
       <div className="bg-white/5 border border-gray-700 rounded-xl p-6 my-4">
@@ -326,6 +333,9 @@ export default function BlogPage() {
       </p>
 
       {/* CTA */}
+      <p className="text-gray-300 mb-6">
+        If you're testing creatives, also read <a href="/blog/facebook-ad-copy-real-estate" className="text-yellow-400 underline">these Facebook ad copy examples</a>.
+        </p>
       <div className="bg-white/5 border border-gray-700 rounded-2xl p-8 my-12">
         <h2 className="text-2xl font-semibold mb-3 text-white mt-2">
           Generate Your Own Headlines — Instantly
@@ -404,5 +414,6 @@ export default function BlogPage() {
         </p>
       </footer>
     </main>
+    </>
   );
 }
