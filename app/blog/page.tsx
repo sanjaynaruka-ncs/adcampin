@@ -1,23 +1,47 @@
 import Link from "next/link";
 
 export default function BlogIndex() {
+  const posts = [
+    {
+      title: "Facebook Ad Copy for Real Estate (10 High-Converting Examples)",
+      href: "/blog/facebook-ad-copy-real-estate",
+    },
+    {
+      title: "Google Ads Headlines for Local Businesses (Proven Templates)",
+      href: "/blog/google-ads-headlines-local-business",
+    },
+  ];
+
   return (
-    <main style={{ padding: "40px", maxWidth: "800px", margin: "0 auto" }}>
-      <h1>Blog</h1>
+    <main className="max-w-5xl mx-auto px-6 py-16 text-white">
+      
+      {/* Header */}
+      <div className="mb-12">
+        <h1 className="text-4xl font-bold mb-4">Blog</h1>
+        <p className="text-gray-400 max-w-2xl">
+          Practical guides and proven templates to help you create high-converting ads faster.
+        </p>
+      </div>
 
-      <ul>
-        <li>
-          <Link href="/blog/facebook-ad-copy-real-estate">
-            Facebook Ad Copy for Real Estate (10 High-Converting Examples)
-          </Link>
-        </li>
+      {/* Blog Cards */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {posts.map((post, index) => (
+          <Link key={index} href={post.href}>
+            <div className="bg-white/5 border border-gray-700 rounded-xl p-6 hover:border-gray-500 transition cursor-pointer h-full">
+              
+              <h2 className="text-lg font-semibold text-white mb-3">
+                {post.title}
+              </h2>
 
-        <li>
-          <Link href="/blog/google-ads-headlines-local-business">
-            Google Ads Headlines for Local Businesses (Proven Templates)
+              <p className="text-gray-400 text-sm">
+                Click to read →
+              </p>
+
+            </div>
           </Link>
-        </li>
-      </ul>
+        ))}
+      </div>
+
     </main>
   );
 }
