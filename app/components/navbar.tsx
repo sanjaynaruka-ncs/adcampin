@@ -64,6 +64,13 @@ export default function Navbar() {
             Pricing
           </Link>
 
+          <Link
+          href="/blog"
+          className="text-white text-sm hover:text-gray-300"
+        >
+          Blog
+        </Link>
+
           {!user && (
             <button
               onClick={() => router.push("/login")}
@@ -114,6 +121,14 @@ export default function Navbar() {
               Dashboard
             </Link>
           )}
+
+          <Link
+            href="/pricing"
+            className="text-white text-sm"
+            onClick={() => setMenuOpen(false)}
+          >
+            Pricing
+          </Link>
 
           <Link
             href="/pricing"
