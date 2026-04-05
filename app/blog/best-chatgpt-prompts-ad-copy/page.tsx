@@ -1,3 +1,4 @@
+import Navbar from "../../components/navbar";
 export const metadata = {
   title: "Best ChatGPT Prompts for Ad Copy (With Results)",
   description:
@@ -6,6 +7,8 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
+     <>
+    <Navbar />
     <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
         Best ChatGPT Prompts for Ad Copy (With Results)
@@ -18,6 +21,7 @@ export default function BlogPage() {
         <a href="/create-campaign" className="text-yellow-400 underline hover:text-yellow-300">
           create your campaign now
         </a>
+        Check our <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline">Google Ads headlines guide</a> for more ideas.
         .
       </p>
 
@@ -152,6 +156,8 @@ export default function BlogPage() {
           </p>
           <p className="text-yellow-400 text-sm mt-2 font-medium">
             Psychological trigger: Value stacking / cognitive ease
+
+            You can also explore <a href="/blog/facebook-ad-copy-real-estate" className="text-yellow-400 underline">real estate ad examples</a> for inspiration.
           </p>
         </div>
       </div>
@@ -436,11 +442,13 @@ export default function BlogPage() {
             Pricing
           </a>{" "}
           ·{" "}
+          If you're testing prompts, also read <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline">these headline templates</a>.
           <a href="/create-campaign" className="underline hover:text-gray-300">
             Create Campaign
           </a>
         </p>
       </footer>
     </main>
+    </>
   );
 }
