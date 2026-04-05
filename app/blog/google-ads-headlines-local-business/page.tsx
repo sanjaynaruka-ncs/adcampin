@@ -6,9 +6,66 @@ export const metadata = {
 };
 
 export default function BlogPage() {
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Google Ads Headlines for Local Businesses (Proven Templates)",
+    description: "10 proven Google Ads headline templates for local businesses to increase clicks and conversions.",
+    author: {
+      "@type": "Organization",
+      name: "AdCampin",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "AdCampin",
+    },
+    mainEntityOfPage: "https://www.adcampin.com/blog/google-ads-headlines-local-business",
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How many headlines should I write for a Google Ads campaign?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Google allows up to 15 headlines per responsive search ad. Aim for at least 8–10 so Google can test variations.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Should I include my city name in every Google Ads headline?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Not every headline, but include your service area in at least a few headlines to improve relevance and CTR.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What's the biggest mistake in Google Ads headlines?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Leading with your business name instead of the customer’s need reduces performance significantly.",
+        },
+      },
+    ],
+  };
   return (
-  <>
-    <Navbar />
+        <>
+        <Navbar />
+
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
     <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       {/* H1 */}
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">

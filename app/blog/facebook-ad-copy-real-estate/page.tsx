@@ -124,9 +124,66 @@ const faqs = [
 ];
 
 export default function BlogPage() {
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Facebook Ad Copy for Real Estate (10 High-Converting Examples)",
+    description: "10 high-converting real estate Facebook ad copy examples with templates.",
+    author: {
+      "@type": "Organization",
+      name: "AdCampin",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "AdCampin",
+    },
+    mainEntityOfPage: "https://www.adcampin.com/blog/facebook-ad-copy-real-estate",
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How long should a Facebook ad for real estate be?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Keep the primary text under 150 words for feed placements. Mobile users skim and your hook must appear early.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What's the best CTA for real estate Facebook ads?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Use direct CTAs like Book a Viewing or Get Free Valuation based on buyer stage.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Should I use video or image ads for real estate?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Short walkthrough videos perform well, but static images with strong copy also convert for lead generation.",
+        },
+      },
+    ],
+  };
   return (
-  <>
-    <Navbar />
+        <>
+        <Navbar />
+
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
     <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       {/* H1 */}
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">

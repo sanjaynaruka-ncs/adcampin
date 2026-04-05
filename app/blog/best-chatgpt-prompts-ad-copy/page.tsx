@@ -6,9 +6,30 @@ export const metadata = {
 };
 
 export default function BlogPage() {
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Best ChatGPT Prompts for Ad Copy (With Results)",
+    description: "10 proven ChatGPT prompts to generate high-converting ad copy with real examples and results.",
+    author: {
+      "@type": "Organization",
+      name: "AdCampin",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "AdCampin",
+    },
+    mainEntityOfPage: "https://www.adcampin.com/blog/best-chatgpt-prompts-ad-copy",
+  };
   return (
-     <>
-    <Navbar />
+    <>
+  <Navbar />
+
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+  />
     <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
         Best ChatGPT Prompts for Ad Copy (With Results)
