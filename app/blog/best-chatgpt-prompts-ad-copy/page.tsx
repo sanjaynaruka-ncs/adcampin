@@ -39,7 +39,7 @@ export default function BlogPage() {
         Writing ad copy that actually converts is hard. ChatGPT makes it faster—but only if you
         prompt it right. Here are 10 prompts that work, with real output examples so you know
         exactly what to expect. Or skip ahead and{" "}
-        <a href="/create-campaign" className="text-yellow-400 underline hover:text-yellow-300">
+        <a href="/signup" className="text-yellow-400 underline hover:text-yellow-300">
           create your campaign now</a>. 
 
 Also check our <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline">Google Ads headlines guide</a> for more ideas.
@@ -387,7 +387,7 @@ Also check our <a href="/blog/google-ads-headlines-local-business" className="te
         entirely. Once you have a strong base prompt, test 3–5 variations by swapping the hook
         style or CTA, then run them against each other. That's how good copy becomes great
         copy. If you'd rather skip the iteration and go straight to results,{" "}
-        <a href="/create-campaign" className="text-yellow-400 underline hover:text-yellow-300">
+        <a href="/signup" className="text-yellow-400 underline hover:text-yellow-300">
           create your campaign on AdCampin
         </a>{" "}
         and get platform-ready ad copy in seconds.
@@ -409,7 +409,7 @@ Also check our <a href="/blog/google-ads-headlines-local-business" className="te
         </p>
         
           <a 
-          href="/create-campaign"
+          href="/signup"
           className="inline-block bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition"
             >
           Generate Your Ads Now →
@@ -464,7 +464,7 @@ Also check our <a href="/blog/google-ads-headlines-local-business" className="te
       Pricing
     </a>{" "}
     ·{" "}
-    <a href="/create-campaign" className="underline hover:text-gray-300">
+    <a href="/signup" className="underline hover:text-gray-300">
       Create Campaign
     </a>
   </p>

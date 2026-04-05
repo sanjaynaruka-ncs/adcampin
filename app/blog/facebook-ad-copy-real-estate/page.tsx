@@ -195,7 +195,7 @@ export default function BlogPage() {
         Most real estate Facebook ads are forgettable — vague, pushy, or just a
         listing photo with a phone number. These 10 examples are different.
         They're built around actual buyer and seller psychology, and you can
-        adapt every one of them today. Or generate similar ads instantly using our <a href="/create-campaign" className="text-yellow-400 underline">AI ad generator</a>. 
+        adapt every one of them today. Or generate similar ads instantly using our <a href="/signup" className="text-yellow-400 underline">AI ad generator</a>. 
 
 Also check our <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline">Google Ads headlines guide</a> for more ideas.
       </p>
@@ -306,7 +306,7 @@ Also check our <a href="/blog/google-ads-headlines-local-business" className="te
           copy in under a minute.
         </p>
         <a
-        href="/create-campaign"
+        href="/signup"
         className="inline-block bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition"
         >
           Generate Your First Ad Free →

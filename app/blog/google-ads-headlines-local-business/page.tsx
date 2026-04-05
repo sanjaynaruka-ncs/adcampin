@@ -78,7 +78,7 @@ export default function BlogPage() {
         but because their headlines don't stop the scroll. These templates are
         built for real businesses in real cities. If you want to skip straight
         to building your own,{" "}
-        <a href="/create-campaign" className="text-yellow-400 underline">
+        <a href="/signup" className="text-yellow-400 underline">
           start your campaign here</a>. 
 
 Also check <a href="/blog/facebook-ad-copy-real-estate" className="text-yellow-400 underline">real estate ad examples</a> for more inspiration.
@@ -386,7 +386,7 @@ Also check <a href="/blog/facebook-ad-copy-real-estate" className="text-yellow-4
         price range. Keep it under 30 characters per headline, test at least
         three variations per ad group, and let the data tell you which angle
         your local audience responds to. Don't write what sounds good to you —
-        write what your customers are already typing. You can also generate variations using our <a href="/create-campaign" className="text-yellow-400 underline">AI ad tool</a>.
+        write what your customers are already typing. You can also generate variations using our <a href="/signup" className="text-yellow-400 underline">AI ad tool</a>.
       </p>
 
       {/* CTA */}
@@ -409,7 +409,7 @@ Also check <a href="/blog/facebook-ad-copy-real-estate" className="text-yellow-4
           handles the rest.
         </p>
         
-          <a href="/create-campaign"
+          <a href="/signup"
           className="inline-block bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition"
         >
           Create Your Campaign Free →
