@@ -35,7 +35,8 @@ type PageProps = {
   };
 };
 
-function formatText(text: string) {
+function formatText(text?: string) {
+  if (!text) return "";
   return text
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -43,9 +44,10 @@ function formatText(text: string) {
 }
 
 
-export default async function Page({ params }: PageProps) {
+export default function Page({ params }: PageProps) {
 
-const { platform, industry } = params;
+const platform = params?.platform || "";
+const industry = params?.industry || "";
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
