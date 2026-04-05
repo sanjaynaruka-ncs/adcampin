@@ -10,6 +10,10 @@ export default function BlogIndex() {
       title: "Google Ads Headlines for Local Businesses (Proven Templates)",
       href: "/blog/google-ads-headlines-local-business",
     },
+    {
+      title: "Best ChatGPT Prompts for Ad Copy (With Results)",
+      href: "/blog/best-chatgpt-prompts-ad-copy",
+    },
   ];
 
   return (

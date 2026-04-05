@@ -19,7 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   pages.push(
     { url: `${baseUrl}/blog`, lastModified: new Date() },
     { url: `${baseUrl}/blog/facebook-ad-copy-real-estate`, lastModified: new Date() },
-    { url: `${baseUrl}/blog/google-ads-headlines-local-business`, lastModified: new Date() }
+    { url: `${baseUrl}/blog/google-ads-headlines-local-business`, lastModified: new Date() },
+    { url: `${baseUrl}/blog/best-chatgpt-prompts-ad-copy`, lastModified: new Date() }
   );
 
   // NOTE:
