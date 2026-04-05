@@ -19,9 +19,9 @@ export default function BlogPage() {
         prompt it right. Here are 10 prompts that work, with real output examples so you know
         exactly what to expect. Or skip ahead and{" "}
         <a href="/create-campaign" className="text-yellow-400 underline hover:text-yellow-300">
-          create your campaign now
-        </a>
-        Check our <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline">Google Ads headlines guide</a> for more ideas.
+          create your campaign now</a>. 
+
+Also check our <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline">Google Ads headlines guide</a> for more ideas.
         .
       </p>
 
@@ -156,8 +156,9 @@ export default function BlogPage() {
           </p>
           <p className="text-yellow-400 text-sm mt-2 font-medium">
             Psychological trigger: Value stacking / cognitive ease
-
+            <p className="text-gray-300 text-sm mt-4">
             You can also explore <a href="/blog/facebook-ad-copy-real-estate" className="text-yellow-400 underline">real estate ad examples</a> for inspiration.
+          </p>
           </p>
         </div>
       </div>
@@ -442,7 +443,16 @@ export default function BlogPage() {
             Pricing
           </a>{" "}
           ·{" "}
-          If you're testing prompts, also read <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline">these headline templates</a>.
+<p>
+  © {new Date().getFullYear()} AdCampin · AI-Powered Ad Copy Generation ·{" "}
+  <a href="/pricing" className="underline hover:text-gray-300">
+    Pricing
+  </a>{" "}
+  ·{" "}
+  <a href="/create-campaign" className="underline hover:text-gray-300">
+    Create Campaign
+  </a>
+</p>
           <a href="/create-campaign" className="underline hover:text-gray-300">
             Create Campaign
           </a>
