@@ -6,101 +6,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const baseUrl = "https://www.adcampin.com";
 
-  const platforms = [
-    "facebook",
-    "google",
-    "instagram",
-    "linkedin"
-  ];
-
-  const industries = [
-    "dentists",
-    "lawyers",
-    "real-estate",
-    "restaurants",
-    "plumbers",
-    "electricians",
-    "roofing",
-    "car-dealers",
-    "auto-repair",
-    "car-rentals",
-    "gyms",
-    "yoga-studios",
-    "fitness-coaches",
-    "personal-trainers",
-    "martial-arts",
-    "salons",
-    "barbershops",
-    "spas",
-    "beauty-clinics",
-    "cosmetic-surgeons",
-    "photographers",
-    "videographers",
-    "wedding-planners",
-    "event-organizers",
-    "hotels",
-    "resorts",
-    "travel-agencies",
-    "tour-operators",
-    "clinics",
-    "chiropractors",
-    "physiotherapists",
-    "mental-health-therapists",
-    "schools",
-    "colleges",
-    "online-courses",
-    "coaching-centers",
-    "tutors",
-    "consultants",
-    "business-coaches",
-    "life-coaches",
-    "marketing-agencies",
-    "seo-agencies",
-    "saas",
-    "startups",
-    "software-companies",
-    "it-services",
-    "app-development",
-    "accountants",
-    "tax-consultants",
-    "financial-advisors",
-    "insurance-agents"
-  ];
-
-  const types = [
-    "examples",
-    "strategy",
-    "cost",
-    "ideas"
-  ];
-
   const pages: MetadataRoute.Sitemap = [];
 
-  // Static Pages
+  // Core Static Pages
   pages.push(
     { url: `${baseUrl}/`, lastModified: new Date() },
     { url: `${baseUrl}/pricing`, lastModified: new Date() },
     { url: `${baseUrl}/about`, lastModified: new Date() }
   );
 
-  // SEO Pages
-  platforms.forEach((platform) => {
-    industries.forEach((industry) => {
+  // Blog Pages (High-quality SEO focus)
+  pages.push(
+    { url: `${baseUrl}/blog`, lastModified: new Date() },
+    { url: `${baseUrl}/blog/facebook-ad-copy-real-estate`, lastModified: new Date() },
+    { url: `${baseUrl}/blog/google-ads-headlines-local-business`, lastModified: new Date() }
+  );
 
-      pages.push({
-        url: `${baseUrl}/ads/${platform}/${industry}`,
-        lastModified: new Date()
-      });
-
-      types.forEach((type) => {
-        pages.push({
-          url: `${baseUrl}/ads/${platform}/${industry}/${type}`,
-          lastModified: new Date()
-        });
-      });
-
-    });
-  });
+  // NOTE:
+  // Programmatic SEO pages (/ads/*) intentionally removed
+  // Reason:
+  // - These pages are currently set to "noindex"
+  // - Including them in sitemap creates conflicting signals
+  // - Focus is now on high-quality blog-based SEO
 
   return pages;
 }
