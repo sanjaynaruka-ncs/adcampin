@@ -437,27 +437,17 @@ Also check our <a href="/blog/google-ads-headlines-local-business" className="te
       </div>
 
       <footer className="mt-12 pt-6 border-t border-gray-700 text-sm text-gray-400">
-        <p>
-          © {new Date().getFullYear()} AdCampin · AI-Powered Ad Copy Generation ·{" "}
-          <a href="/pricing" className="underline hover:text-gray-300">
-            Pricing
-          </a>{" "}
-          ·{" "}
-<p>
-  © {new Date().getFullYear()} AdCampin · AI-Powered Ad Copy Generation ·{" "}
-  <a href="/pricing" className="underline hover:text-gray-300">
-    Pricing
-  </a>{" "}
-  ·{" "}
-  <a href="/create-campaign" className="underline hover:text-gray-300">
-    Create Campaign
-  </a>
-</p>
-          <a href="/create-campaign" className="underline hover:text-gray-300">
-            Create Campaign
-          </a>
-        </p>
-      </footer>
+  <p>
+    © {new Date().getFullYear()} AdCampin · AI-Powered Ad Copy Generation ·{" "}
+    <a href="/pricing" className="underline hover:text-gray-300">
+      Pricing
+    </a>{" "}
+    ·{" "}
+    <a href="/create-campaign" className="underline hover:text-gray-300">
+      Create Campaign
+    </a>
+  </p>
+</footer>
     </main>
     </>
   );

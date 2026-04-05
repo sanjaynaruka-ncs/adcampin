@@ -1,3 +1,4 @@
+import Navbar from "../../components/navbar";
 export const metadata = {
   title: "Facebook Ad Copy for Real Estate (10 High-Converting Examples)",
   description:
@@ -124,6 +125,8 @@ const faqs = [
 
 export default function BlogPage() {
   return (
+  <>
+    <Navbar />
     <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       {/* H1 */}
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
@@ -135,7 +138,9 @@ export default function BlogPage() {
         Most real estate Facebook ads are forgettable — vague, pushy, or just a
         listing photo with a phone number. These 10 examples are different.
         They're built around actual buyer and seller psychology, and you can
-        adapt every one of them today. Or generate similar ads instantly using our <a href="/create-campaign">AI ad generator</a>.
+        adapt every one of them today. Or generate similar ads instantly using our <a href="/create-campaign" className="text-yellow-400 underline">AI ad generator</a>. 
+
+Also check our <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline">Google Ads headlines guide</a> for more ideas.
       </p>
 
       {/* Main Section */}
@@ -221,9 +226,16 @@ export default function BlogPage() {
             </div>
           </article>
         ))}
+
+        <p className="text-gray-300 text-sm mb-8">
+    You can also explore <a href="/blog/best-chatgpt-prompts-ad-copy" className="text-yellow-400 underline">ChatGPT ad prompts</a> to generate similar copy faster.
+  </p>
       </section>
 
       {/* CTA / AdCampin Section */}
+      <p className="text-gray-300 mb-6">
+  If you're testing different ad angles, also check <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline">these Google Ads headline templates</a>.
+</p>
       <section className="bg-white/5 border border-gray-700 rounded-2xl p-8 my-12">
         <h2 className="text-2xl font-semibold mb-8 border-b border-gray-700 pb-3">
           Want to Generate Ads Like These in Seconds?
@@ -279,5 +291,6 @@ export default function BlogPage() {
         </p>
       </footer>
     </main>
+    </>
   );
 }
