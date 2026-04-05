@@ -29,10 +29,10 @@ export function generateStaticParams() {
 }
 
 type PageProps = {
-  params: Promise<{
+  params: {
     platform: string;
     industry: string;
-  }>;
+  };
 };
 
 function formatText(text: string) {
@@ -42,72 +42,10 @@ function formatText(text: string) {
     .join(" ");
 }
 
-export async function generateMetadata({ params }: PageProps) {
-
-  const { platform, industry } = await params;
-
-  const formattedPlatform = formatText(platform);
-  const formattedIndustry = formatText(industry);
-
-  const url = `https://adcampin.com/ads/${platform}/${industry}`;
-  const image = `https://adcampin.com/${platform}-ads.webp`;
-
-  return {
-
-    title: `${formattedPlatform} Ads for ${formattedIndustry} (${new Date().getFullYear()} Guide): Cost, Strategy & Examples`,
-    description: `Learn how ${formattedIndustry} businesses use ${formattedPlatform} ads to attract customers. Includes campaign strategy, targeting tips, ad examples and cost estimates for ${new Date().getFullYear()}.`,
-    keywords: [
-      `${formattedPlatform} ads for ${formattedIndustry}`,
-      `${formattedIndustry} advertising`,
-      `${formattedPlatform} marketing`,
-      `${formattedIndustry} marketing strategy`,
-      `${formattedPlatform} ad examples`,
-    ],
-
-    alternates: {
-      canonical: url,
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-      },
-    },
-
-    openGraph: {
-    title: `${formattedPlatform} Ads for ${formattedIndustry} (${new Date().getFullYear()} Guide)`,
-    description: `Generate high-performing ${formattedPlatform} ads for ${formattedIndustry}.`,
-    url: url,
-    siteName: "AdCampin",
-    locale: "en_US",
-      images: [
-        {
-          url: image,
-          width: 1200,
-          height: 630,
-          alt: `${formattedPlatform} ads for ${formattedIndustry}`,
-        },
-      ],
-      type: "website",
-    },
-
-    twitter: {
-      card: "summary_large_image",
-      title: `${formattedPlatform} Ads for ${formattedIndustry}`,
-      description: `Generate high-performing ${formattedPlatform} ads for ${formattedIndustry} businesses.`,
-      images: [image],
-    },
-
-  };
-}
 
 export default async function Page({ params }: PageProps) {
 
-  const { platform, industry } = await params;
+const { platform, industry } = params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);

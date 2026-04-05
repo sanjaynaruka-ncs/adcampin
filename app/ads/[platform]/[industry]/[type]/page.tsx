@@ -10,11 +10,11 @@ export const metadata = {
 };
 
 type PageProps = {
-  params: Promise<{
+  params: {
     platform: string;
     industry: string;
     type: string;
-  }>;
+  };
 };
 
 function formatText(text: string) {
@@ -24,72 +24,6 @@ function formatText(text: string) {
     .join(" ");
 }
 
-export async function generateMetadata({ params }: PageProps) {
-
-  const { platform, industry, type } = await params;
-
-  const formattedPlatform = formatText(platform);
-  const formattedIndustry = formatText(industry);
-  const formattedType = formatText(type);
-
-  const faqs = generateFaq(formattedPlatform, formattedIndustry);
-
-    const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map((faq) => ({
-        "@type": "Question",
-        "name": faq.q,
-        "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.a
-        }
-    }))
-    };
-
-  const titles: Record<string, string> = {
-    examples: `10 High Converting Examples`,
-    strategy: `Complete Strategy Guide`,
-    cost: `Cost & Budget Guide`,
-    ideas: `Best Ad Ideas`
-  };
-
-  const typeTitle = titles[type] || formattedType;
-
-  const url = `https://adcampin.com/ads/${platform}/${industry}/${type}`;
-const image = `https://adcampin.com/${platform}-ads.webp`;
-
-return {
-  title: `${formattedPlatform} Ads for ${formattedIndustry} (${typeTitle}) | AdCampin`,
-  description: `Discover the best ${formattedPlatform} ads for ${formattedIndustry}. See ${formattedType} and generate high-performing campaigns instantly using AI with AdCampin.`,
-
-  alternates: {
-    canonical: url,
-  },
-
-  openGraph: {
-    title: `${formattedPlatform} Ads for ${formattedIndustry} (${typeTitle})`,
-    description: `Discover the best ${formattedPlatform} ads for ${formattedIndustry}.`,
-    url: url,
-    siteName: "AdCampin",
-    images: [
-      {
-        url: image,
-        width: 1200,
-        height: 630,
-      }
-    ],
-    type: "website",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: `${formattedPlatform} Ads for ${formattedIndustry}`,
-    description: `Discover high-performing ${formattedPlatform} ads for ${formattedIndustry}.`,
-    images: [image],
-  }
-};
-}
 
 function generateFaq(platform: string, industry: string) {
   return [
@@ -127,9 +61,9 @@ const types = [
   "ideas"
 ];
 
-export default async function Page({ params }: PageProps) {
+export default function Page({ params }: PageProps) {
 
-  const { platform, industry, type } = await params;
+const { platform, industry, type } = params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
@@ -388,23 +322,24 @@ export default async function Page({ params }: PageProps) {
         </div>
 
         </section>
-     <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": generateFaq(formattedPlatform, formattedIndustry).map((faq) => ({
-                "@type": "Question",
-                "name": faq.q,
-                "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.a
-                }
-            }))
-            })
-        }}
-        />
+          <script
+            type="application/ld+json"
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": generateFaq(formattedPlatform, formattedIndustry).map((faq) => ({
+                  "@type": "Question",
+                  "name": faq.q,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.a
+                  }
+                }))
+              })
+            }}
+          />
     </main>
   );
 }
