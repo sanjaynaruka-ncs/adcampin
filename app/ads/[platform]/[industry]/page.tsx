@@ -4,6 +4,14 @@ import { industries } from "@/lib/industries";
 import { platforms } from "@/lib/platforms";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
 
+export const metadata = {
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+  },
+};
+
 export function generateStaticParams() {
 
   const params = [];

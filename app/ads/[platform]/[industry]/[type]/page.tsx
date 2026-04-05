@@ -1,6 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 
+export const metadata = {
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+  },
+};
+
 type PageProps = {
   params: Promise<{
     platform: string;

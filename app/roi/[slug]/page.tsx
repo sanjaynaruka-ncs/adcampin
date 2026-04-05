@@ -1,5 +1,13 @@
 import ROITab from "@/app/campaign/[id]/tabs/roi_tab";
 
+export const metadata = {
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+  },
+};
+
 export default function ROILanding({ params }: any) {
 
   const presets: any = {
