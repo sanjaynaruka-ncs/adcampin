@@ -3,7 +3,7 @@ import Image from "next/image";
 import { industries } from "@/lib/industries";
 import { platforms } from "@/lib/platforms";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
-import Navbar from "./../../../../components/navbar";
+import Navbar from "../../../../../components/navbar";
 export const metadata = {
   robots: {
     index: true,
@@ -11,20 +11,16 @@ export const metadata = {
   },
 };
 
-const cities = ["new-york", "london", "dubai"];
-
 export function generateStaticParams() {
+
   const params = [];
 
   for (const platform of platforms) {
     for (const industry of industries) {
-      for (const city of cities) {
-        params.push({
-          platform,
-          industry: industry.slug,
-          city,
-        });
-      }
+      params.push({
+        platform,
+        industry: industry.slug
+      });
     }
   }
 
@@ -36,6 +32,7 @@ type PageProps = {
     platform: string;
     industry: string;
     city: string;
+    type: string;
   };
 };
 
@@ -50,11 +47,15 @@ function formatText(text?: string) {
 
 export default function Page({ params }: PageProps) {
 
-const { platform, industry, city } = params;
+const platform = params?.platform || "";
+const industry = params?.industry || "";
+const city = params?.city || "";
+const type = params?.type || "";
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
   const formattedCity = formatText(city);
+  const formattedType = formatText(type);
   const year = new Date().getFullYear();
   const adExamples: string[] = [
   `Find the Best ${formattedIndustry} Services Near You`,
@@ -92,7 +93,7 @@ const adCopies: string[] = [
       <section className="mb-20">
 
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-        {formattedPlatform} Ads for {formattedIndustry} in {formattedCity} ({new Date().getFullYear()} Guide)
+        {formattedPlatform} Ads {formattedType} for {formattedIndustry} in {formattedCity} ({new Date().getFullYear()} Guide)
       </h1>
 
         <p className="text-gray-300 max-w-2xl mx-auto mb-10">
@@ -118,7 +119,7 @@ const adCopies: string[] = [
                 ? "/linkedin-ads.webp"
                 : "/google-ads.webp"
             }
-            alt={`${formattedPlatform} ads for ${formattedIndustry} in ${formattedCity}`}
+            alt={`${formattedPlatform} ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`}
             width={900}
             height={500}
             className="rounded-xl border border-slate-700"
@@ -126,12 +127,10 @@ const adCopies: string[] = [
           />
         </div>
 
-        <a
-            href={`/signup?platform=${platform}&industry=${industry}&city=${city}`}
-            className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
-            >
-            Generate Ads Now
-            </a>
+        <a href={`/signup?platform=${platform}&industry=${industry}&city=${city}&type=${type}`}
+          className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
+        ></a>
+          Generate Ads Now
 
       </section>
 
@@ -174,7 +173,7 @@ const adCopies: string[] = [
       <section className="mb-24">
 
         <h2 className="text-3xl font-bold mb-8">
-                Example {formattedPlatform} Ads for {formattedIndustry} in {formattedCity}
+                Example {formattedPlatform} Ads {formattedType} for {formattedIndustry} in {formattedCity}
               </h2>
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -576,7 +575,7 @@ const adCopies: string[] = [
         </p>
 
         <Link
-          href={`/signup?platform=${platform}&industry=${industry}&city=${city}`}
+          href={`/signup?platform=${platform}&industry=${industry}`}
           className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
         >
           Start Free Trial
@@ -584,7 +583,7 @@ const adCopies: string[] = [
 
       </section>
       <div className="flex justify-center">
-        <SEOShareEmbed title={`${formattedPlatform} Ads for ${formattedIndustry} in ${formattedCity}`} />
+        <SEOShareEmbed title={`${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`} />
       </div>
       
       <script
@@ -594,8 +593,8 @@ const adCopies: string[] = [
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": `${formattedPlatform} Ads for ${formattedIndustry} in ${formattedCity}`,
-            "description": `Guide to ${formattedPlatform} ads for ${formattedIndustry} businesses in ${formattedCity}.`,
+            "headline": `${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`,
+            "description": `Guide to ${formattedPlatform} ads ${formattedType} for ${formattedIndustry} businesses in ${formattedCity}.`,
             "author": {
               "@type": "Organization",
               "name": "AdCampin"
@@ -604,7 +603,7 @@ const adCopies: string[] = [
               "@type": "Organization",
               "name": "AdCampin"
             },
-            "mainEntityOfPage": `https://www.adcampin.com/ads/${platform}/${industry}/${city}`
+            "mainEntityOfPage": `https://www.adcampin.com/ads/${platform}/${industry}/${city}/${type}`
           })
         }}
       />
