@@ -23,8 +23,8 @@ async function getPosts() {
 
   const posts = slugs.map(async (slug) => {
     try {
-      // Try to import blogTitle from each article
-      const mod = await import(`./${slug}/page`);
+      // ✅ FIX: Use absolute import path (prevents fallback bug)
+      const mod = await import(`@/app/blog/${slug}/page`);
 
       return {
         title:
@@ -35,7 +35,7 @@ async function getPosts() {
         href: `/blog/${slug}`,
       };
     } catch {
-      // Fallback to slug-based title
+      // Fallback to slug-based title (only if import fails)
       return {
         title: slug
           .replace(/-/g, " ")
