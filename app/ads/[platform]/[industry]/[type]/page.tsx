@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "../../../../components/navbar";
 
 export const metadata = {
   robots: {
-    index: false,
+    index: true,
     follow: true,
     nocache: true,
   },
@@ -71,6 +72,8 @@ const { platform, industry, type } = params;
   const faqs = generateFaq(formattedPlatform, formattedIndustry);
 
   return (
+  <>
+    <Navbar />
     <main className="max-w-6xl mx-auto px-6 py-16 text-white text-center">
 
       {/* HERO */}
@@ -341,5 +344,6 @@ const { platform, industry, type } = params;
             }}
           />
     </main>
+    </>
   );
 }

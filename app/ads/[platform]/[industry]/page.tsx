@@ -3,12 +3,12 @@ import Image from "next/image";
 import { industries } from "@/lib/industries";
 import { platforms } from "@/lib/platforms";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
+import Navbar from "../../../components/navbar";
 
 export const metadata = {
   robots: {
-    index: false,
+    index: true,
     follow: true,
-    nocache: true,
   },
 };
 
@@ -79,6 +79,8 @@ const adCopies: string[] = [
 ];
 
   return (
+  <>
+    <Navbar />
     <main className="max-w-6xl mx-auto px-6 py-16 text-white text-center">
 
       {/* HERO SECTION */}
@@ -90,7 +92,11 @@ const adCopies: string[] = [
       </h1>
 
         <p className="text-gray-300 max-w-2xl mx-auto mb-10">
-          Generate high-performing {formattedPlatform} ads for {formattedIndustry} businesses
+          <p className="text-gray-300 max-w-2xl mx-auto mb-10">
+            Looking to generate high-converting {formattedPlatform} ads for {formattedIndustry}? 
+            This guide covers proven strategies, real ad examples, targeting tips and cost insights 
+            to help you attract more customers and grow your business.
+          </p>
           using AI. AdCampin helps create ad copy, targeting strategy,
           creatives and optimization instantly.
         </p>
@@ -575,7 +581,29 @@ const adCopies: string[] = [
       <div className="flex justify-center">
         <SEOShareEmbed title={`${formattedPlatform} Ads for ${formattedIndustry}`} />
       </div>
-
+      
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": `${formattedPlatform} Ads for ${formattedIndustry}`,
+            "description": `Guide to ${formattedPlatform} ads for ${formattedIndustry} businesses.`,
+            "author": {
+              "@type": "Organization",
+              "name": "AdCampin"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "AdCampin"
+            },
+            "mainEntityOfPage": `https://www.adcampin.com/ads/${platform}/${industry}`
+          })
+        }}
+      />
     </main>
+    </>
   );
 }
