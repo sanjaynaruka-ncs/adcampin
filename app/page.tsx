@@ -41,10 +41,38 @@ export default function Home() {
 
           <li>
             <a
-              href="/blog/chatgpt-prompts-ad-copy"
+              href="/blog/best-chatgpt-prompts-ad-copy"
               className="hover:underline"
             >
               Best ChatGPT Prompts for Ad Copy (With Results)
+            </a>
+          </li>
+
+          {/* NEW ARTICLES ADDED FOR SEO BOOST */}
+          <li>
+            <a
+              href="/blog/google-ads-dentists"
+              className="hover:underline"
+            >
+              Google Ads for Dentists (Complete Strategy + Examples)
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/blog/facebook-ads-lawyers"
+              className="hover:underline"
+            >
+              Facebook Ads for Lawyers (What Actually Works in 2026)
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/blog/instagram-ads-gyms"
+              className="hover:underline"
+            >
+              Instagram Ads for Gyms (10 Campaign Ideas That Get Clients)
             </a>
           </li>
         </ul>
