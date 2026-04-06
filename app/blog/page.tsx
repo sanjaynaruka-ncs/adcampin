@@ -1,35 +1,28 @@
 import Link from "next/link";
 import Navbar from "../components/navbar";
+import fs from "fs";
+import path from "path";
+
+// Dynamically read all blog folders and generate posts
+function getPosts() {
+  const blogDir = path.join(process.cwd(), "app/blog");
+
+  return fs
+    .readdirSync(blogDir)
+    // Exclude the blog index file itself
+    .filter((name) => name !== "page.tsx")
+    .map((slug) => ({
+      // Convert slug → readable title
+      title: slug
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (l) => l.toUpperCase()),
+      href: `/blog/${slug}`,
+    }));
+}
 
 export default function BlogIndex() {
-  const posts = [
-    {
-      title: "Facebook Ad Copy for Real Estate (10 High-Converting Examples)",
-      href: "/blog/facebook-ad-copy-real-estate",
-    },
-    {
-      title: "Google Ads Headlines for Local Businesses (Proven Templates)",
-      href: "/blog/google-ads-headlines-local-business",
-    },
-    {
-      title: "Best ChatGPT Prompts for Ad Copy (With Results)",
-      href: "/blog/best-chatgpt-prompts-ad-copy",
-    },
-
-    // NEW ARTICLES ADDED
-    {
-      title: "Google Ads for Dentists (Complete Strategy + Examples)",
-      href: "/blog/google-ads-dentists",
-    },
-    {
-      title: "Facebook Ads for Lawyers (What Actually Works in 2026)",
-      href: "/blog/facebook-ads-lawyers",
-    },
-    {
-      title: "Instagram Ads for Gyms (10 Campaign Ideas That Get Clients)",
-      href: "/blog/instagram-ads-gyms",
-    },
-  ];
+  // Use dynamic posts instead of hardcoded list
+  const posts = getPosts();
 
   return (
     <>

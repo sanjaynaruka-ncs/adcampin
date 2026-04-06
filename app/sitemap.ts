@@ -1,9 +1,10 @@
 import { MetadataRoute } from "next";
+import fs from "fs";
+import path from "path";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-
   const baseUrl = "https://www.adcampin.com";
 
   const pages: MetadataRoute.Sitemap = [];
@@ -15,19 +16,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/about`, lastModified: new Date() }
   );
 
-  // Blog Pages (High-quality SEO focus)
+  // Dynamically fetch all blog pages
+  const blogDir = path.join(process.cwd(), "app/blog");
+
+  const blogPages = fs
+    .readdirSync(blogDir)
+    // Exclude the blog index file
+    .filter((name) => name !== "page.tsx")
+    .map((slug) => ({
+      url: `${baseUrl}/blog/${slug}`,
+      lastModified: new Date(),
+    }));
+
+  // Blog Index + All Blog Articles
   pages.push(
     { url: `${baseUrl}/blog`, lastModified: new Date() },
-
-    // Existing Articles
-    { url: `${baseUrl}/blog/facebook-ad-copy-real-estate`, lastModified: new Date() },
-    { url: `${baseUrl}/blog/google-ads-headlines-local-business`, lastModified: new Date() },
-    { url: `${baseUrl}/blog/best-chatgpt-prompts-ad-copy`, lastModified: new Date() },
-
-    // NEW ARTICLES ADDED
-    { url: `${baseUrl}/blog/google-ads-dentists`, lastModified: new Date() },
-    { url: `${baseUrl}/blog/facebook-ads-lawyers`, lastModified: new Date() },
-    { url: `${baseUrl}/blog/instagram-ads-gyms`, lastModified: new Date() }
+    ...blogPages
   );
 
   // NOTE:

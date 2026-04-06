@@ -5,8 +5,30 @@ import HowItWorksSection from "./components/HowItWorksSection";
 import PricingPreviewSection from "./components/PricingPreviewSection";
 import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
+import fs from "fs";
+import path from "path";
+
+// Dynamically fetch latest blog posts
+function getLatestPosts() {
+  const blogDir = path.join(process.cwd(), "app/blog");
+
+  return fs
+    .readdirSync(blogDir)
+    // Exclude blog index file
+    .filter((name) => name !== "page.tsx")
+    // Get latest 6 posts
+    .slice(-6)
+    .map((slug) => ({
+      title: slug
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (l) => l.toUpperCase()),
+      href: `/blog/${slug}`,
+    }));
+}
 
 export default function Home() {
+  const posts = getLatestPosts();
+
   return (
     <>
       <Navbar />
@@ -21,60 +43,13 @@ export default function Home() {
         <h2 className="text-xl font-semibold mb-4">Latest Guides</h2>
 
         <ul className="space-y-2 text-gray-300">
-          <li>
-            <a
-              href="/blog/facebook-ad-copy-real-estate"
-              className="hover:underline"
-            >
-              10 Real Estate Facebook Ads That Actually Convert
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="/blog/google-ads-headlines-local-business"
-              className="hover:underline"
-            >
-              10 Google Ads Headlines That Get More Clicks (Local Businesses)
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="/blog/best-chatgpt-prompts-ad-copy"
-              className="hover:underline"
-            >
-              Best ChatGPT Prompts for Ad Copy (With Results)
-            </a>
-          </li>
-
-          {/* NEW ARTICLES ADDED FOR SEO BOOST */}
-          <li>
-            <a
-              href="/blog/google-ads-dentists"
-              className="hover:underline"
-            >
-              Google Ads for Dentists (Complete Strategy + Examples)
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="/blog/facebook-ads-lawyers"
-              className="hover:underline"
-            >
-              Facebook Ads for Lawyers (What Actually Works in 2026)
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="/blog/instagram-ads-gyms"
-              className="hover:underline"
-            >
-              Instagram Ads for Gyms (10 Campaign Ideas That Get Clients)
-            </a>
-          </li>
+          {posts.map((post, index) => (
+            <li key={index}>
+              <a href={post.href} className="hover:underline">
+                {post.title}
+              </a>
+            </li>
+          ))}
         </ul>
       </section>
 
