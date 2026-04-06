@@ -15,6 +15,20 @@ export default function BlogIndex() {
       title: "Best ChatGPT Prompts for Ad Copy (With Results)",
       href: "/blog/best-chatgpt-prompts-ad-copy",
     },
+
+    // NEW ARTICLES ADDED
+    {
+      title: "Google Ads for Dentists (Complete Strategy + Examples)",
+      href: "/blog/google-ads-dentists",
+    },
+    {
+      title: "Facebook Ads for Lawyers (What Actually Works in 2026)",
+      href: "/blog/facebook-ads-lawyers",
+    },
+    {
+      title: "Instagram Ads for Gyms (10 Campaign Ideas That Get Clients)",
+      href: "/blog/instagram-ads-gyms",
+    },
   ];
 
   return (
