@@ -17,11 +17,11 @@ function formatText(text?: string) {
     .replace(/\b\w/g, (l) => l.toUpperCase());
 }
 
-// 🔹 SEO Metadata (safe handling)
+// 🔹 SEO Metadata (safe + non-blocking)
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const platform = formatText(params?.platform);
-  const industry = formatText(params?.industry);
-  const city = formatText(params?.city);
+  const platform = formatText(params?.platform || "");
+  const industry = formatText(params?.industry || "");
+  const city = formatText(params?.city || "");
 
   return {
     title: `${platform} Ads for ${industry} in ${city}`,
@@ -30,22 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function CityAdsPage({ params }: Props) {
-  // 🔹 Safety check (prevents runtime crash)
-  if (!params?.platform || !params?.industry || !params?.city) {
-    return (
-      <>
-        <Navbar />
-        <main className="max-w-4xl mx-auto px-6 py-16 text-white">
-          <h1 className="text-2xl font-bold">Invalid Page</h1>
-          <p className="text-gray-400 mt-2">Something went wrong with this URL.</p>
-        </main>
-      </>
-    );
-  }
-
-  const platform = formatText(params.platform);
-  const industry = formatText(params.industry);
-  const city = formatText(params.city);
+  // 🔹 Safe param handling (no hard blocking)
+  const platform = formatText(params?.platform || "");
+  const industry = formatText(params?.industry || "");
+  const city = formatText(params?.city || "");
 
   return (
     <>
