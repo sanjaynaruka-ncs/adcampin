@@ -9,16 +9,19 @@ type Props = {
   };
 };
 
-function formatText(text: string) {
+// 🔹 Format slug → readable text safely
+function formatText(text?: string) {
+  if (!text) return "";
   return text
     .replace(/-/g, " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
 }
 
+// 🔹 SEO Metadata (safe handling)
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const platform = formatText(params.platform);
-  const industry = formatText(params.industry);
-  const city = formatText(params.city);
+  const platform = formatText(params?.platform);
+  const industry = formatText(params?.industry);
+  const city = formatText(params?.city);
 
   return {
     title: `${platform} Ads for ${industry} in ${city}`,
@@ -27,6 +30,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function CityAdsPage({ params }: Props) {
+  // 🔹 Safety check (prevents runtime crash)
+  if (!params?.platform || !params?.industry || !params?.city) {
+    return (
+      <>
+        <Navbar />
+        <main className="max-w-4xl mx-auto px-6 py-16 text-white">
+          <h1 className="text-2xl font-bold">Invalid Page</h1>
+          <p className="text-gray-400 mt-2">Something went wrong with this URL.</p>
+        </main>
+      </>
+    );
+  }
+
   const platform = formatText(params.platform);
   const industry = formatText(params.industry);
   const city = formatText(params.city);
@@ -36,7 +52,7 @@ export default function CityAdsPage({ params }: Props) {
       <Navbar />
 
       <main className="max-w-4xl mx-auto px-6 py-16 text-white">
-
+        
         {/* H1 */}
         <h1 className="text-3xl md:text-4xl font-bold mb-6">
           {platform} Ads for {industry} in {city}
