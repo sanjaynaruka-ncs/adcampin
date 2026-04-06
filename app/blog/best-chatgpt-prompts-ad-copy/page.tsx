@@ -1,5 +1,9 @@
 import Navbar from "../../components/navbar";
-export const metadata = {
+import type { Metadata } from "next";
+
+export const blogTitle = "Best ChatGPT Prompts for Ad Copy (With Results)";
+
+export const metadata: Metadata = {
   title: "Best ChatGPT Prompts for Ad Copy (With Results)",
   description:
     "10 proven ChatGPT prompts to generate high-converting ad copy with real examples and results.",
