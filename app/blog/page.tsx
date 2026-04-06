@@ -3,26 +3,54 @@ import Navbar from "../components/navbar";
 import fs from "fs";
 import path from "path";
 
-// Dynamically read all blog folders and generate posts
-function getPosts() {
+// Dynamically read all blog folders and generate posts with real titles
+async function getPosts() {
   const blogDir = path.join(process.cwd(), "app/blog");
 
-  return fs
+  const slugs = fs
     .readdirSync(blogDir)
-    // Exclude the blog index file itself
-    .filter((name) => name !== "page.tsx")
-    .map((slug) => ({
-      // Convert slug → readable title
-      title: slug
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, (l) => l.toUpperCase()),
-      href: `/blog/${slug}`,
-    }));
+    // Only include valid blog folders (exclude index file)
+    .filter((name) => {
+      const fullPath = path.join(blogDir, name);
+      const pageFile = path.join(fullPath, "page.tsx");
+
+      return (
+        name !== "page.tsx" &&
+        fs.statSync(fullPath).isDirectory() &&
+        fs.existsSync(pageFile)
+      );
+    });
+
+  const posts = slugs.map(async (slug) => {
+    try {
+      // Try to import blogTitle from each article
+      const mod = await import(`./${slug}/page`);
+
+      return {
+        title:
+          mod.blogTitle ||
+          slug
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (l) => l.toUpperCase()),
+        href: `/blog/${slug}`,
+      };
+    } catch {
+      // Fallback to slug-based title
+      return {
+        title: slug
+          .replace(/-/g, " ")
+          .replace(/\b\w/g, (l) => l.toUpperCase()),
+        href: `/blog/${slug}`,
+      };
+    }
+  });
+
+  return Promise.all(posts);
 }
 
-export default function BlogIndex() {
-  // Use dynamic posts instead of hardcoded list
-  const posts = getPosts();
+export default async function BlogIndex() {
+  // Use dynamic posts with real titles
+  const posts = await getPosts();
 
   return (
     <>
