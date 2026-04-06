@@ -29,11 +29,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function CityAdsPage({ params }: Props) {
+export default function CityAdsPage({
+  params,
+}: {
+  params: { platform: string; industry: string; city: string };
+}) {
   // 🔹 Safe param handling (no hard blocking)
-  const platform = formatText(params?.platform || "");
-  const industry = formatText(params?.industry || "");
-  const city = formatText(params?.city || "");
+const platform = formatText(params.platform);
+const industry = formatText(params.industry);
+const city = formatText(params.city);
 
   return (
     <>
