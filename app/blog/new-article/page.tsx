@@ -1,31 +1,12 @@
-import fs from "fs";
-import path from "path";
-
-// Dynamically fetch all valid blog posts (folders with a valid page.tsx)
-export function getPosts() {
-  const blogDir = path.join(process.cwd(), "app/blog");
-
-  return fs
-    .readdirSync(blogDir)
-    // Only include directories that contain a valid page.tsx with default export
-    .filter((name) => {
-      const fullPath = path.join(blogDir, name);
-      const pageFile = path.join(fullPath, "page.tsx");
-
-      // Must be a directory + page.tsx must exist
-      if (!fs.statSync(fullPath).isDirectory() || !fs.existsSync(pageFile)) {
-        return false;
-      }
-
-      // Ensure page.tsx contains a default export (prevents Next.js build error)
-      const content = fs.readFileSync(pageFile, "utf-8");
-      return content.includes("export default");
-    })
-    .map((slug) => ({
-      // Convert slug → readable title (fallback if dynamic title not used)
-      title: slug
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, (l) => l.toUpperCase()),
-      href: `/blog/${slug}`,
-    }));
+export default function NewArticlePage() {
+  return (
+    <main className="max-w-4xl mx-auto px-6 py-12 text-white">
+      <h1 className="text-3xl font-bold mb-4">
+        New Article (Draft)
+      </h1>
+      <p className="text-gray-400">
+        This page is a placeholder to satisfy Next.js build requirements.
+      </p>
+    </main>
+  );
 }
