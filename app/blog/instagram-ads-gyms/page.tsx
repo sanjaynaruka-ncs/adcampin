@@ -1,4 +1,5 @@
 import Navbar from "../../components/navbar";
+export const blogTitle = "Instagram Ads for Gyms (10 Campaign Ideas That Get Clients)";
 
 export const metadata = {
   title: "Instagram Ads for Gyms (10 Campaign Ideas That Get Clients)",

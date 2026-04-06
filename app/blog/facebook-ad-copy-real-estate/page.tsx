@@ -1,4 +1,5 @@
 import Navbar from "../../components/navbar";
+export const blogTitle = "Facebook Ad Copy for Real Estate (10 High-Converting Examples)";
 export const metadata = {
   title: "Facebook Ad Copy for Real Estate (10 High-Converting Examples)",
   description:

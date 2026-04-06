@@ -1,5 +1,5 @@
 import Navbar from "../../components/navbar";
-
+export const blogTitle = "Google Ads for Dentists (Complete Strategy + Examples)";
 export const metadata = {
   title: "Google Ads for Dentists (Complete Strategy + Examples)",
   description:

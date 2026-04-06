@@ -1,5 +1,5 @@
 import Navbar from "../../components/navbar";
-
+export const blogTitle = "Facebook Ads for Lawyers (What Actually Works in 2026)";
 export const metadata = {
   title: "Facebook Ads for Lawyers (What Actually Works in 2026)",
   description:

@@ -1,4 +1,5 @@
 import Navbar from "../../components/navbar";
+export const blogTitle = "Google Ads Headlines for Local Businesses (Proven Templates)";
 export const metadata = {
   title: "Google Ads Headlines for Local Businesses (Proven Templates)",
   description:
