@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -34,7 +33,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-
       {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-2ZZQPM9XM9"
@@ -55,6 +53,20 @@ export default function RootLayout({
       >
         {/* PAGE CONTENT */}
         {children}
+
+        {/* GLOBAL INTERNAL LINKS (SEO BOOST - BLOG DISCOVERY) */}
+        <div className="hidden">
+          {/* Existing Articles */}
+          <Link href="/blog/facebook-ad-copy-real-estate">Real Estate Facebook Ads</Link>
+          <Link href="/blog/google-ads-headlines-local-business">Google Ads Headlines</Link>
+          <Link href="/blog/best-chatgpt-prompts-ad-copy">ChatGPT Prompts for Ads</Link>
+
+          {/* NEW ARTICLES ADDED */}
+          <Link href="/blog/google-ads-dentists">Google Ads for Dentists</Link>
+          <Link href="/blog/facebook-ads-lawyers">Facebook Ads for Lawyers</Link>
+          <Link href="/blog/instagram-ads-gyms">Instagram Ads for Gyms</Link>
+        </div>
+
         <Footer />
       </body>
     </html>
