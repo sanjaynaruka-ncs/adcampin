@@ -74,6 +74,28 @@ const { platform, industry, type } = params;
   return (
   <>
     <Navbar />
+
+    <script
+      type="application/ld+json"
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": `${formattedPlatform} Ads ${formattedType} for ${formattedIndustry}`,
+          "description": `Best ${formattedPlatform} ads ${formattedType} for ${formattedIndustry} businesses.`,
+          "author": {
+            "@type": "Organization",
+            "name": "AdCampin"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "AdCampin"
+          },
+          "mainEntityOfPage": `https://www.adcampin.com/ads/${platform}/${industry}/${type}`
+        })
+      }}
+    />
     <main className="max-w-6xl mx-auto px-6 py-16 text-white text-center">
 
       {/* HERO */}
