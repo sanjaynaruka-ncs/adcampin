@@ -1,4 +1,3 @@
-console.log("TYPE PAGE LOADED");
 import Link from "next/link";
 import Image from "next/image";
 import { platforms } from "@/lib/platforms";
@@ -83,7 +82,7 @@ function getSlug(list: any[], value: string): string {
 
   return typeof found === "string"
   ? found
-  : found?.slug || "";
+  : found?.slug || value;
 }
 
 const platform = getSlug(platforms as any[], params.platform);
@@ -91,9 +90,9 @@ const industry = getSlug(industries as any[], params.industry);
 const city = getSlug(cities as any[], params.city);
 const type = getSlug(types as any[], params.type);
 
-if (!platform || !industry || !city || !type) {
-  notFound();
-}
+// if (!platform || !industry || !city || !type) {
+//   notFound();
+// }
 
 const formattedPlatform = formatText(platform);
 const formattedIndustry = formatText(industry);
@@ -656,11 +655,7 @@ const adCopies: string[] = [
           })
         }}
       />
-      <div className="flex justify-center">
-        <SEOShareEmbed
-          title={`${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`}
-        />
-      </div>
     </main>
-</>
-  )};
+    </>
+  );
+}
