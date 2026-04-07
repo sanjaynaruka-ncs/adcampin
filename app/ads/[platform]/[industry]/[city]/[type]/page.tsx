@@ -1,3 +1,4 @@
+console.log("TYPE PAGE LOADED");
 import Link from "next/link";
 import Image from "next/image";
 import { platforms } from "@/lib/platforms";
@@ -7,8 +8,10 @@ import { types } from "@/lib/types";
 import { notFound } from "next/navigation";
 import Navbar from "../../../../../components/navbar";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
+export const dynamicParams = true;
 
 export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -88,9 +91,9 @@ const industry = getSlug(industries as any[], params.industry);
 const city = getSlug(cities as any[], params.city);
 const type = getSlug(types as any[], params.type);
 
-if (!platform || !industry || !city || !type) {
-  notFound();
-}
+//if (!platform || !industry || !city || !type) {
+  //notFound();
+//}
 
 const formattedPlatform = formatText(platform);
 const formattedIndustry = formatText(industry);

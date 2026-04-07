@@ -4,6 +4,7 @@ import { industries } from "@/lib/industries";
 import { platforms } from "@/lib/platforms";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
 import Navbar from "../../../components/navbar";
+export const dynamicParams = true;
 
 export const metadata = {
   robots: {
