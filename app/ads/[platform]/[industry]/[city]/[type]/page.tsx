@@ -6,14 +6,47 @@ import { cities } from "@/lib/cities";
 import { types } from "@/lib/types";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
 import Navbar from "../../../../../components/navbar";
+import { notFound } from "next/navigation";
 
 export const revalidate = 3600;
-export const metadata = {
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: {
+    platform: string;
+    industry: string;
+    city: string;
+    type: string;
+  };
+}) {
+  function formatText(text?: string): string {
+    if (!text) return "";
+    return text
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (l) => l.toUpperCase());
+  }
+
+  const formattedPlatform = formatText(params.platform);
+  const formattedIndustry = formatText(params.industry);
+  const formattedCity = formatText(params.city);
+  const formattedType = formatText(params.type);
+
+  const title = `${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`;
+  const description = `Guide to ${formattedPlatform} ads ${formattedType} for ${formattedIndustry} businesses in ${formattedCity}.`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://www.adcampin.com/ads/${params.platform}/${params.industry}/${params.city}/${params.type}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 function formatText(text?: string): string {
   if (!text) return "";
@@ -49,6 +82,9 @@ const platform = getSlug(platforms as any[], params.platform);
 const industry = getSlug(industries as any[], params.industry);
 const city = getSlug(cities as any[], params.city);
 const type = getSlug(types as any[], params.type);
+if (!platform || !industry || !city || !type) {
+  notFound();
+}
 
 const formattedPlatform = formatText(platform);
 const formattedIndustry = formatText(industry);
@@ -604,7 +640,10 @@ const adCopies: string[] = [
               "@type": "Organization",
               "name": "AdCampin"
             },
-            "mainEntityOfPage": `https://www.adcampin.com/ads/${platform}/${industry}/${city}/${type}`
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://www.adcampin.com/ads/${platform}/${industry}/${city}/${type}`
+            }
           })
         }}
       />
