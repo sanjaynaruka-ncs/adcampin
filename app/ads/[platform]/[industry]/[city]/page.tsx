@@ -1,13 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { platforms } from "@/lib/platforms";
 import { industries } from "@/lib/industries";
-import { cities } from "@/lib/cities";
 import { types } from "@/lib/types";
-import { notFound } from "next/navigation";
 import Navbar from "./../../../../components/navbar";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
-
 
 export const dynamicParams = true;
 export const revalidate = 3600;

@@ -1,37 +1,7 @@
-/**
- * Dynamic SEO Page: /ads/[platform]/[industry]/[city]/[type]
- *
- * Generates platform/industry/city/type-specific ad guide pages.
- *
- * FIX: In Next.js 13+ App Router, `params` is a Promise and must be awaited
- * in both `generateMetadata` and the Page component. Failing to await params
- * caused all dynamic values to render as undefined/empty strings.
- *
- * All original sections and features are preserved:
- * - Hero with platform image + CTA
- * - Table of contents
- * - Industry overview
- * - Ad examples grid
- * - Strategy section
- * - Cost estimates table
- * - Ad copy list
- * - Targeting suggestions
- * - Benefits list
- * - How it works
- * - FAQ
- * - Related industries links
- * - Final CTA
- * - SEOShareEmbed
- * - JSON-LD structured data
- */
-
 import Link from "next/link";
 import Image from "next/image";
-import { platforms } from "@/lib/platforms";
 import { industries } from "@/lib/industries";
-import { cities } from "@/lib/cities";
 import { types } from "@/lib/types";
-import { notFound } from "next/navigation";
 import Navbar from "../../../../../components/navbar";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
 
@@ -83,9 +53,20 @@ export async function generateMetadata({
   const formattedCity = formatText(city);
   const formattedType = formatText(type);
 
-  const title = `${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`;
-  const description = `Guide to ${formattedPlatform} ads ${formattedType} for ${formattedIndustry} businesses in ${formattedCity}.`;
-
+  const title = `${formattedPlatform} Ads for ${formattedIndustry} in ${formattedCity} (${formattedType}) [2026]`;
+  const description =`See high-converting ${formattedPlatform} ads for ${formattedIndustry} in ${formattedCity}. Real ${formattedType}, targeting tips & cost insights. Updated 2026.`;
+  const keywords = [
+  `${formattedPlatform} ads for ${formattedIndustry}`,
+  `${formattedPlatform} ads in ${formattedCity}`,
+  `${formattedIndustry} ads ${formattedCity}`,
+  `${formattedPlatform} ${formattedIndustry} ads examples`,
+  `${formattedPlatform} ads ${formattedType}`,
+  `${formattedIndustry} marketing ${formattedCity}`,
+  `best ${formattedPlatform} ads for ${formattedIndustry}`,
+  `${formattedPlatform} ads strategy ${formattedCity}`,
+  `${formattedPlatform} advertising cost ${formattedCity}`,
+  `${formattedPlatform} ads guide ${formattedIndustry} 2026`,
+];
   return {
     title,
     description,
