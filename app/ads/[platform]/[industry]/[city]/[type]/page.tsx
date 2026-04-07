@@ -634,6 +634,32 @@ export default async function Page({
 
         </section>
 
+        {/* INTERNAL LINKS */}
+
+        <section className="mb-24">
+          <h2 className="text-3xl font-bold mb-8">
+            Related {formattedPlatform} Ad Pages
+          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+
+            {types.slice(0, 6).map((t: any) => {
+              const slug = typeof t === "string" ? t : t.slug;
+
+              return (
+                <Link
+                  key={slug}
+                  href={`/ads/${platform}/${industry}/${city}/${slug}`}
+                  className="bg-slate-800 p-4 rounded hover:bg-slate-700 transition"
+                >
+                  {formattedPlatform} Ads {formatText(slug)} for {formattedIndustry}
+                </Link>
+              );
+            })}
+
+          </div>
+        </section>
+
         {/* ------------------------------------------------------------------ */}
         {/* FINAL CTA                                                           */}
         {/* ------------------------------------------------------------------ */}
