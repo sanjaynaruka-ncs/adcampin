@@ -23,7 +23,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
           urls.push({
             url: `${baseUrl}/ads/${platform}/${industry}/${city}/${type}`,
-            lastModified: new Date(),
+            lastModified: new Date("2024-01-01"),
+            changeFrequency: "weekly",
+            priority: 0.8,
           });
         });
       });
