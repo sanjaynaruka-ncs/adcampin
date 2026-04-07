@@ -57,16 +57,8 @@ function formatText(text?: string): string {
     .replace(/\b\w/g, (l) => l.toUpperCase());
 }
 
-export default function Page({
-  params,
-}: {
-  params: {
-    platform: string;
-    industry: string;
-    city: string;
-    type: string;
-  };
-}) {
+export default function Page(props: any) {
+  const params = props?.params || {};
 
 function getSlug(list: any[], value: string): string {
   if (!value) return "";
@@ -85,10 +77,11 @@ function getSlug(list: any[], value: string): string {
     : found?.slug || value; // ✅ fallback to original param
 }
 
-const platform = params.platform;
-const industry = params.industry;
-const city = params.city;
-const type = params.type;
+const platform = params?.platform || "";
+const industry = params?.industry || "";
+const city = params?.city || "";
+const type = params?.type || "";
+console.log("PARAMS:", params);
 
 // if (!platform || !industry || !city || !type) {
 //   notFound();
