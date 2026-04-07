@@ -4,9 +4,9 @@ import { platforms } from "@/lib/platforms";
 import { industries } from "@/lib/industries";
 import { cities } from "@/lib/cities";
 import { types } from "@/lib/types";
-import SEOShareEmbed from "@/app/components/seo_share_embed";
-import Navbar from "../../../../../components/navbar";
 import { notFound } from "next/navigation";
+import Navbar from "../../../../../components/navbar";
+import SEOShareEmbed from "@/app/components/seo_share_embed";
 
 export const revalidate = 3600;
 
@@ -69,19 +69,25 @@ export default function Page({
 function getSlug(list: any[], value: string): string {
   if (!value) return "";
 
-  const found = list.find((item: any) =>
-    typeof item === "string"
-      ? item === value
-      : item.slug === value
-  );
+  const normalized = value.toLowerCase().trim();
 
-  return typeof found === "string" ? found : found?.slug || "";
+  const found = list.find((item: any) => {
+    if (typeof item === "string") {
+      return item.toLowerCase() === normalized;
+    }
+    return item.slug?.toLowerCase() === normalized;
+  });
+
+  return typeof found === "string"
+  ? found
+  : found?.slug || "";
 }
 
 const platform = getSlug(platforms as any[], params.platform);
 const industry = getSlug(industries as any[], params.industry);
 const city = getSlug(cities as any[], params.city);
 const type = getSlug(types as any[], params.type);
+
 if (!platform || !industry || !city || !type) {
   notFound();
 }
@@ -647,7 +653,11 @@ const adCopies: string[] = [
           })
         }}
       />
+      <div className="flex justify-center">
+        <SEOShareEmbed
+          title={`${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`}
+        />
+      </div>
     </main>
-    </>
-  );
-}
+</>
+  )};
