@@ -1,15 +1,17 @@
 import { redirect } from "next/navigation";
 export const dynamicParams = true;
 
-export default function Page({
+type PageParams = {
+  platform: string;
+  industry: string;
+  city: string;
+};
+
+export default async function Page({
   params,
 }: {
-  params: {
-    platform: string;
-    industry: string;
-    city: string;
-  };
+  params: Promise<PageParams>;
 }) {
-  // default type fallback
-  redirect(`/ads/${params.platform}/${params.industry}/${params.city}/examples`);
+  const { platform, industry, city } = await params;
+  redirect(`/ads/${platform}/${industry}/${city}/examples`);
 }
