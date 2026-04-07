@@ -81,14 +81,14 @@ function getSlug(list: any[], value: string): string {
   });
 
   return typeof found === "string"
-  ? found
-  : found?.slug || value;
+    ? found
+    : found?.slug || value; // ✅ fallback to original param
 }
 
-const platform = getSlug(platforms as any[], params.platform);
-const industry = getSlug(industries as any[], params.industry);
-const city = getSlug(cities as any[], params.city);
-const type = getSlug(types as any[], params.type);
+const platform = params.platform;
+const industry = params.industry;
+const city = params.city;
+const type = params.type;
 
 // if (!platform || !industry || !city || !type) {
 //   notFound();
