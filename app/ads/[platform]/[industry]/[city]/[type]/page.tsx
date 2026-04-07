@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { industries } from "@/lib/industries";
-import { platforms } from "@/lib/platforms";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
 import Navbar from "../../../../../components/navbar";
 export const metadata = {
@@ -15,48 +14,32 @@ const cities = ["new-york", "london", "dubai"];
 const types = ["examples", "strategy", "cost", "ideas"];
 
 export function generateStaticParams() {
-  const params: {
-    platform: string;
-    industry: string;
-    city: string;
-    type: string;
-  }[] = [];
+  const platforms = ["google", "facebook"];
+  const industries = [
+    { slug: "dentists" },
+    { slug: "lawyers" }
+  ];
+  const cities = ["new-york", "london", "dubai"];
+  const types = ["examples", "strategy", "cost", "ideas"];
 
-  for (const platform of platforms) {
-    for (const industry of industries) {
-      for (const city of cities) {
-        for (const type of types) {
-          params.push({
-            platform,
-            industry: industry.slug,
-            city,
-            type,
-          });
-        }
-      }
-    }
-  }
-
-  return params;
+  return platforms.flatMap((platform) =>
+    industries.flatMap((industry) =>
+      cities.flatMap((city) =>
+        types.map((type) => ({
+          platform,
+          industry: industry.slug,
+          city,
+          type,
+        }))
+      )
+    )
+  );
 }
-
-type PageProps = {
-  params: {
-    platform: string;
-    industry: string;
-    city: string;
-    type: string;
-  };
-};
-
-function formatText(text?: string) {
-  if (!text) return "";
+function formatText(text: string): string {
   return text
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (l) => l.toUpperCase());
 }
-
 
 export default function Page({ params }: { params: { platform: string; industry: string; city: string; type: string } }) {
 
@@ -107,14 +90,15 @@ const adCopies: string[] = [
       </h1>
 
         <p className="text-gray-300 max-w-2xl mx-auto mb-10">
-          <p className="text-gray-300 max-w-2xl mx-auto mb-10">
-            Looking to generate high-converting {formattedPlatform} ads for {formattedIndustry}? 
-            This guide covers proven strategies, real ad examples, targeting tips and cost insights 
-            to help you attract more customers and grow your business.
-          </p>
-          using AI. AdCampin helps create ad copy, targeting strategy,
-          creatives and optimization instantly.
-        </p>
+        Looking to generate high-converting {formattedPlatform} ads for {formattedIndustry}? 
+        This guide covers proven strategies, real ad examples, targeting tips and cost insights 
+        to help you attract more customers and grow your business.
+
+        <br /><br />
+
+        Using AI, AdCampin helps create ad copy, targeting strategy,
+        creatives and optimization instantly.
+      </p>
 
         <div className="flex justify-center mb-10">
           <Image
