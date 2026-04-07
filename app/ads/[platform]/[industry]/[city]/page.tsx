@@ -1,30 +1,3 @@
-/**
- * Dynamic SEO Page: /ads/[platform]/[industry]/[city]/[type]
- *
- * Generates platform/industry/city/type-specific ad guide pages.
- *
- * FIX: In Next.js 13+ App Router, `params` is a Promise and must be awaited
- * in both `generateMetadata` and the Page component. Failing to await params
- * caused all dynamic values to render as undefined/empty strings.
- *
- * All original sections and features are preserved:
- * - Hero with platform image + CTA
- * - Table of contents
- * - Industry overview
- * - Ad examples grid
- * - Strategy section
- * - Cost estimates table
- * - Ad copy list
- * - Targeting suggestions
- * - Benefits list
- * - How it works
- * - FAQ
- * - Related industries links
- * - Final CTA
- * - SEOShareEmbed
- * - JSON-LD structured data
- */
-
 import Link from "next/link";
 import Image from "next/image";
 import { platforms } from "@/lib/platforms";
@@ -34,6 +7,7 @@ import { types } from "@/lib/types";
 import { notFound } from "next/navigation";
 import Navbar from "./../../../../components/navbar";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
+
 
 export const dynamicParams = true;
 export const revalidate = 3600;
