@@ -33,10 +33,22 @@ export default function Page({
   };
 }) {
 
-const platform = params.platform;
-const industry = params.industry;
-const city = params.city;
-const type = params.type;
+function getSlug(list: any[], value: string): string {
+  if (!value) return "";
+
+  const found = list.find((item: any) =>
+    typeof item === "string"
+      ? item === value
+      : item.slug === value
+  );
+
+  return typeof found === "string" ? found : found?.slug || "";
+}
+
+const platform = getSlug(platforms as any[], params.platform);
+const industry = getSlug(industries as any[], params.industry);
+const city = getSlug(cities as any[], params.city);
+const type = getSlug(types as any[], params.type);
 
 const formattedPlatform = formatText(platform);
 const formattedIndustry = formatText(industry);
