@@ -22,14 +22,27 @@ function formatText(text?: string): string {
     .replace(/\b\w/g, (l) => l.toUpperCase());
 }
 
-export default function Page({ params }: { params: { platform: string; industry: string; city: string; type: string } }) {
+export default function Page({
+  params,
+}: {
+  params: {
+    platform: string;
+    industry: string;
+    city: string;
+    type: string;
+  };
+}) {
 
-const { platform, industry, city, type } = params;
+const platform = params.platform;
+const industry = params.industry;
+const city = params.city;
+const type = params.type;
 
-const formattedPlatform = formatText(platform ?? "");
-const formattedIndustry = formatText(industry ?? "");
-const formattedCity = formatText(city ?? "");
-const formattedType = formatText(type ?? "");  const year = new Date().getFullYear();
+const formattedPlatform = formatText(platform);
+const formattedIndustry = formatText(industry);
+const formattedCity = formatText(city);
+const formattedType = formatText(type);
+const year = new Date().getFullYear();
   const adExamples: string[] = [
   `Find the Best ${formattedIndustry} Services Near You`,
   `Top Rated ${formattedIndustry} Experts in Your Area`,
@@ -66,7 +79,7 @@ const adCopies: string[] = [
       <section className="mb-20">
 
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-        {formattedPlatform} Ads {formattedType} for {formattedIndustry} in {formattedCity} ({new Date().getFullYear()} Guide)
+        {formattedPlatform} Ads {formattedType} for {formattedIndustry} in {formattedCity} ({year} Guide)
       </h1>
 
         <p className="text-gray-300 max-w-2xl mx-auto mb-10">
