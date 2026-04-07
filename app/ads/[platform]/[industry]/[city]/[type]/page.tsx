@@ -7,27 +7,13 @@ import { types } from "@/lib/types";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
 import Navbar from "../../../../../components/navbar";
 
+export const revalidate = 3600;
 export const metadata = {
   robots: {
     index: true,
     follow: true,
   },
 };
-
-export function generateStaticParams() {
-  return platforms.flatMap((platform) =>
-    industries.flatMap((industry) =>
-      cities.flatMap((city) =>
-        types.map((type) => ({
-          platform,
-          industry: industry.slug || "",
-          city,
-          type,
-        }))
-      )
-    )
-  );
-}
 
 function formatText(text?: string): string {
   if (!text) return "";
