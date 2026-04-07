@@ -20,7 +20,7 @@ export function generateStaticParams() {
       cities.flatMap((city) =>
         types.map((type) => ({
           platform,
-          industry: industry.slug,
+          industry: industry.slug || "",
           city,
           type,
         }))
@@ -29,7 +29,8 @@ export function generateStaticParams() {
   );
 }
 
-function formatText(text: string): string {
+function formatText(text?: string): string {
+  if (!text) return "";
   return text
     .replace(/-/g, " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
@@ -39,11 +40,10 @@ export default function Page({ params }: { params: { platform: string; industry:
 
 const { platform, industry, city, type } = params;
 
-  const formattedPlatform = formatText(platform);
-  const formattedIndustry = formatText(industry);
-  const formattedCity = formatText(city);
-  const formattedType = formatText(type);
-  const year = new Date().getFullYear();
+const formattedPlatform = formatText(platform ?? "");
+const formattedIndustry = formatText(industry ?? "");
+const formattedCity = formatText(city ?? "");
+const formattedType = formatText(type ?? "");  const year = new Date().getFullYear();
   const adExamples: string[] = [
   `Find the Best ${formattedIndustry} Services Near You`,
   `Top Rated ${formattedIndustry} Experts in Your Area`,
