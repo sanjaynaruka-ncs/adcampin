@@ -11,16 +11,29 @@ export const metadata = {
   },
 };
 
-export function generateStaticParams() {
+const cities = ["new-york", "london", "dubai"];
+const types = ["examples", "strategy", "cost", "ideas"];
 
-  const params = [];
+export function generateStaticParams() {
+  const params: {
+    platform: string;
+    industry: string;
+    city: string;
+    type: string;
+  }[] = [];
 
   for (const platform of platforms) {
     for (const industry of industries) {
-      params.push({
-        platform,
-        industry: industry.slug
-      });
+      for (const city of cities) {
+        for (const type of types) {
+          params.push({
+            platform,
+            industry: industry.slug,
+            city,
+            type,
+          });
+        }
+      }
     }
   }
 
@@ -45,12 +58,9 @@ function formatText(text?: string) {
 }
 
 
-export default function Page({ params }: PageProps) {
+export default function Page({ params }: { params: { platform: string; industry: string; city: string; type: string } }) {
 
-const platform = params?.platform || "";
-const industry = params?.industry || "";
-const city = params?.city || "";
-const type = params?.type || "";
+const { platform, industry, city, type } = params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
@@ -127,10 +137,12 @@ const adCopies: string[] = [
           />
         </div>
 
-        <a href={`/signup?platform=${platform}&industry=${industry}&city=${city}&type=${type}`}
-          className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
-        ></a>
-          Generate Ads Now
+        <a
+        href={`/signup?platform=${platform}&industry=${industry}&city=${city}&type=${type}`}
+        className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
+      >
+        Generate Ads Now
+      </a>
 
       </section>
 
@@ -575,7 +587,7 @@ const adCopies: string[] = [
         </p>
 
         <Link
-          href={`/signup?platform=${platform}&industry=${industry}`}
+        href={`/signup?platform=${platform}&industry=${industry}&city=${city}&type=${type}`}
           className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
         >
           Start Free Trial
