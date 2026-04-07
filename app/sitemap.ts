@@ -1,44 +1,34 @@
 import { MetadataRoute } from "next";
-import fs from "fs";
-import path from "path";
-
-export const dynamic = "force-static";
+import { platforms } from "@/lib/platforms";
+import { industries } from "@/lib/industries";
+import { cities } from "@/lib/cities";
+import { types } from "@/lib/types";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.adcampin.com";
 
-  const pages: MetadataRoute.Sitemap = [];
+  const urls: MetadataRoute.Sitemap = [];
 
-  // Core Static Pages
-  pages.push(
-    { url: `${baseUrl}/`, lastModified: new Date() },
-    { url: `${baseUrl}/pricing`, lastModified: new Date() },
-    { url: `${baseUrl}/about`, lastModified: new Date() }
-  );
+  platforms.forEach((p: any) => {
+    const platform = typeof p === "string" ? p : p.slug;
 
-  // Dynamically fetch all blog pages
-  const blogDir = path.join(process.cwd(), "app/blog");
+    industries.forEach((i: any) => {
+      const industry = typeof i === "string" ? i : i.slug;
 
-  const blogPages = fs
-    .readdirSync(blogDir)
-    // Exclude the blog index file
-    .filter((name) => name !== "page.tsx")
-    .map((slug) => ({
-      url: `${baseUrl}/blog/${slug}`,
-      lastModified: new Date(),
-    }));
+      cities.forEach((c: any) => {
+        const city = typeof c === "string" ? c : c.slug;
 
-  // Blog Index + All Blog Articles
-  pages.push(
-    { url: `${baseUrl}/blog`, lastModified: new Date() },
-    ...blogPages
-  );
+        types.forEach((t: any) => {
+          const type = typeof t === "string" ? t : t.slug;
 
-  // NOTE:
-  // Programmatic SEO pages (/ads/*) intentionally excluded
-  // Reason:
-  // - These pages are large in volume and discovered via internal linking
-  // - Keeping sitemap focused improves crawl efficiency and trust signals
+          urls.push({
+            url: `${baseUrl}/ads/${platform}/${industry}/${city}/${type}`,
+            lastModified: new Date(),
+          });
+        });
+      });
+    });
+  });
 
-  return pages;
+  return urls;
 }
