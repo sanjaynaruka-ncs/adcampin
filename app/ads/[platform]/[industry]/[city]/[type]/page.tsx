@@ -1,8 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { platforms } from "@/lib/platforms";
 import { industries } from "@/lib/industries";
+import { cities } from "@/lib/cities";
+import { types } from "@/lib/types";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
 import Navbar from "../../../../../components/navbar";
+
 export const metadata = {
   robots: {
     index: true,
@@ -10,18 +14,7 @@ export const metadata = {
   },
 };
 
-const cities = ["new-york", "london", "dubai"];
-const types = ["examples", "strategy", "cost", "ideas"];
-
 export function generateStaticParams() {
-  const platforms = ["google", "facebook"];
-  const industries = [
-    { slug: "dentists" },
-    { slug: "lawyers" }
-  ];
-  const cities = ["new-york", "london", "dubai"];
-  const types = ["examples", "strategy", "cost", "ideas"];
-
   return platforms.flatMap((platform) =>
     industries.flatMap((industry) =>
       cities.flatMap((city) =>
@@ -35,6 +28,7 @@ export function generateStaticParams() {
     )
   );
 }
+
 function formatText(text: string): string {
   return text
     .replace(/-/g, " ")
