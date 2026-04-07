@@ -68,23 +68,6 @@ export default function Page({
   };
 }) {
 
-function getSlug(list: any[], value: string): string {
-  if (!value) return "";
-
-  const normalized = value.toLowerCase().trim();
-
-  const found = list.find((item: any) => {
-    if (typeof item === "string") {
-      return item.toLowerCase() === normalized;
-    }
-    return item.slug?.toLowerCase() === normalized;
-  });
-
-  return typeof found === "string"
-    ? found
-    : found?.slug || value;
-}
-
 const platform = params.platform;
 const industry = params.industry;
 const city = params.city;
