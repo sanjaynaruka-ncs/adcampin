@@ -20,18 +20,7 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <div className="bg-slate-950 text-gray-300">
-      {/* Navbar */}
         <Navbar />
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between">
-          <Link href="/" className="font-bold text-white">
-            AdCampin
-          </Link>
-          <div className="space-x-4 text-sm">
-            <Link href="/blog">Blog</Link>
-            <Link href="/signup">Get Started</Link>
-          </div>
-        </div>
-
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold text-white mb-4">
