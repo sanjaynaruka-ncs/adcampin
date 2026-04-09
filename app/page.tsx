@@ -7,6 +7,7 @@ import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
 import fs from "fs";
 import path from "path";
+import Link from "next/link";
 
 // Dynamically fetch latest blog posts
 function getLatestPosts() {
@@ -40,17 +41,22 @@ export default function Home() {
 
       {/* Latest Guides Section (SEO Boost for Blog Indexing) */}
       <section className="mt-16 max-w-5xl mx-auto px-6 text-white">
-        <h2 className="text-xl font-semibold mb-4">Latest Guides</h2>
-
-        <ul className="space-y-2 text-gray-300">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+        Latest Guides
+      </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {posts.map((post, index) => (
-            <li key={index}>
-              <a href={post.href} className="hover:underline">
+            <Link
+              key={index}
+              href={post.href}
+              className="block rounded-lg border border-white/10 bg-slate-800 p-5 hover:bg-slate-700 transition"
+            >
+              <h3 className="text-lg font-semibold text-white">
                 {post.title}
-              </a>
-            </li>
+              </h3>
+            </Link>
           ))}
-        </ul>
+        </div>
       </section>
     </>
   );
