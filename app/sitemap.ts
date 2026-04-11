@@ -13,7 +13,9 @@ import path from "path";
  * 1. Generates ALL programmatic SEO pages (/ads/...)
  * 2. Automatically includes ALL blog pages from /app/blog/*
  *    → No manual updates required after git commit
- * 3. Keeps performance optimized for large scale (20K+ pages)
+ * 3. Uses dynamic lastModified for faster Google re-crawling
+ * 4. Safe file system handling (no crashes in production)
+ * 5. Keeps performance optimized for large scale (20K+ pages)
  */
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -22,7 +24,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const urls: MetadataRoute.Sitemap = [];
 
   // ---------------------------------------------------------------------------
-  // 1. PROGRAMMATIC SEO PAGES (/ads)
+  // 1. STATIC PAGES (IMPORTANT FOR SEO DISCOVERY)
+  // ---------------------------------------------------------------------------
+
+  urls.push(
+    {
+      url: `${baseUrl}`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    }
+  );
+
+  // ---------------------------------------------------------------------------
+  // 2. PROGRAMMATIC SEO PAGES (/ads)
   // ---------------------------------------------------------------------------
 
   platforms.forEach((p: any) => {
@@ -39,7 +60,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
           urls.push({
             url: `${baseUrl}/ads/${platform}/${industry}/${city}/${type}`,
-            lastModified: new Date("2024-01-01"),
+            // ✅ FIX: dynamic date instead of static old date
+            lastModified: new Date(),
             changeFrequency: "weekly",
             priority: 0.8,
           });
@@ -49,7 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // ---------------------------------------------------------------------------
-  // 2. AUTO BLOG DETECTION (/blog/*)
+  // 3. AUTO BLOG DETECTION (/blog/*)
   // ---------------------------------------------------------------------------
 
   try {
@@ -61,14 +83,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       blogFolders.forEach((folder) => {
         const fullPath = path.join(blogDir, folder);
 
-        // Only include folders that contain page.tsx
+        // Only include valid blog folders containing page.tsx
         if (
           fs.statSync(fullPath).isDirectory() &&
           fs.existsSync(path.join(fullPath, "page.tsx"))
         ) {
           urls.push({
             url: `${baseUrl}/blog/${folder}`,
-            lastModified: new Date("2024-01-01"),
+            // ✅ FIX: dynamic lastModified for faster indexing
+            lastModified: new Date(),
             changeFrequency: "weekly",
             priority: 0.9,
           });
