@@ -10,21 +10,29 @@ import path from "path";
  * Dynamic Sitemap Generator
  *
  * FEATURES:
- * 1. Generates ALL programmatic SEO pages (/ads/...)
- * 2. Automatically includes ALL blog pages from /app/blog/*
- *    → No manual updates required after git commit
- * 3. Uses dynamic lastModified for faster Google re-crawling
- * 4. Safe file system handling (no crashes in production)
- * 5. Keeps performance optimized for large scale (20K+ pages)
+ * 1. Splits sitemap automatically into multiple files (Google 50K URL safe)
+ * 2. Generates ALL programmatic SEO pages (/ads/...)
+ * 3. Automatically includes ALL blog pages from /app/blog/*
+ * 4. Uses dynamic lastModified for faster Google re-crawling
+ * 5. Safe file system handling (no crashes in production)
+ * 6. Keeps performance optimized for large scale (75K+ pages)
+ *
+ * OUTPUT:
+ * /sitemap.xml           → Sitemap index
+ * /sitemap/[id].xml      → Split child sitemaps
  */
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.adcampin.com";
+const baseUrl = "https://www.adcampin.com";
+const MAX_URLS_PER_SITEMAP = 50000;
 
+/**
+ * Generate ALL URLs centrally
+ */
+function generateAllUrls(): MetadataRoute.Sitemap {
   const urls: MetadataRoute.Sitemap = [];
 
   // ---------------------------------------------------------------------------
-  // 1. STATIC PAGES (IMPORTANT FOR SEO DISCOVERY)
+  // 1. STATIC PAGES
   // ---------------------------------------------------------------------------
 
   urls.push(
@@ -60,7 +68,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
           urls.push({
             url: `${baseUrl}/ads/${platform}/${industry}/${city}/${type}`,
-            // ✅ FIX: dynamic date instead of static old date
             lastModified: new Date(),
             changeFrequency: "weekly",
             priority: 0.8,
@@ -83,14 +90,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       blogFolders.forEach((folder) => {
         const fullPath = path.join(blogDir, folder);
 
-        // Only include valid blog folders containing page.tsx
         if (
           fs.statSync(fullPath).isDirectory() &&
           fs.existsSync(path.join(fullPath, "page.tsx"))
         ) {
           urls.push({
             url: `${baseUrl}/blog/${folder}`,
-            // ✅ FIX: dynamic lastModified for faster indexing
             lastModified: new Date(),
             changeFrequency: "weekly",
             priority: 0.9,
@@ -102,9 +107,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     console.error("Sitemap blog scan error:", error);
   }
 
-  // ---------------------------------------------------------------------------
-  // FINAL RETURN
-  // ---------------------------------------------------------------------------
-
   return urls;
+}
+
+/**
+ * Generate sitemap index references
+ */
+export async function generateSitemaps() {
+  const allUrls = generateAllUrls();
+  const totalSitemaps = Math.ceil(allUrls.length / MAX_URLS_PER_SITEMAP);
+
+  return Array.from({ length: totalSitemaps }, (_, i) => ({
+    id: i,
+  }));
+}
+
+/**
+ * Serve split sitemap chunks
+ */
+export default async function sitemap({
+  id,
+}: {
+  id: number;
+}): Promise<MetadataRoute.Sitemap> {
+  const allUrls = generateAllUrls();
+
+  const start = id * MAX_URLS_PER_SITEMAP;
+  const end = start + MAX_URLS_PER_SITEMAP;
+
+  return allUrls.slice(start, end);
 }
