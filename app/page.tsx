@@ -4,7 +4,6 @@ import FeaturesSection from "./components/features_section";
 import HowItWorksSection from "./components/HowItWorksSection";
 import PricingPreviewSection from "./components/PricingPreviewSection";
 import CTASection from "./components/CTASection";
-import Footer from "./components/Footer";
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
@@ -61,8 +60,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }
