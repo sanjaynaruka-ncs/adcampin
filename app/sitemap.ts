@@ -18,8 +18,8 @@ import path from "path";
  * 6. Keeps performance optimized for large scale (75K+ pages)
  *
  * OUTPUT:
- * /sitemap.xml           → Sitemap index
- * /sitemap/[id].xml      → Split child sitemaps
+ * /sitemap.xml       → Sitemap index
+ * /sitemap/[id].xml  → Split child sitemaps
  */
 
 const baseUrl = "https://www.adcampin.com";
@@ -111,25 +111,27 @@ function generateAllUrls(): MetadataRoute.Sitemap {
 }
 
 /**
- * Generate sitemap index references
+ * Generate split sitemap IDs for Next.js
  */
-export async function generateSitemaps() {
+export async function generateSitemaps(): Promise<{ id: number }[]> {
   const allUrls = generateAllUrls();
   const totalSitemaps = Math.ceil(allUrls.length / MAX_URLS_PER_SITEMAP);
 
-  return Array.from({ length: totalSitemaps }, (_, i) => ({
-    id: i,
+  return Array.from({ length: totalSitemaps }, (_, index) => ({
+    id: index,
   }));
 }
 
 /**
  * Serve split sitemap chunks
  */
-export default async function sitemap({
-  id,
-}: {
-  id: number;
-}): Promise<MetadataRoute.Sitemap> {
+export default async function sitemap(
+  props: {
+    id: number;
+  }
+): Promise<MetadataRoute.Sitemap> {
+  const { id } = props;
+
   const allUrls = generateAllUrls();
 
   const start = id * MAX_URLS_PER_SITEMAP;
