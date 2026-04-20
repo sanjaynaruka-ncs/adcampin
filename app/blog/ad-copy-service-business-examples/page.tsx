@@ -101,19 +101,19 @@ export default function BlogPage() {
             href="/ads/google/dentists/new-york/examples"
             className="rounded-lg border border-white/10 bg-slate-800 p-6"
           >
-            Dentist Ads (NY)
+            Google Ads for Dentists in New York Examples
           </Link>
           <Link
             href="/ads/google/real-estate/mumbai/examples"
             className="rounded-lg border border-white/10 bg-slate-800 p-6"
           >
-            Real Estate Ads (Mumbai)
+            Google Ads for Real Estate in Mumbai Examples
           </Link>
           <Link
             href="/ads/google/lawyers/houston/examples"
             className="rounded-lg border border-white/10 bg-slate-800 p-6"
           >
-            Lawyer Ads (Houston)
+            Google Ads for Lawyers in Houston Examples
           </Link>
         </div>
       </section>
@@ -205,11 +205,11 @@ export default function BlogPage() {
       />
 
       <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(breadcrumbSchema),
-      }}
-    />
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
     </div>
   );
 }
@@ -235,8 +235,15 @@ const examples = [
     headline: "Injured in an Accident? Talk to a Lawyer Today",
     desc: "No fees unless you win. Free consultation available.",
     why: "Combines fear + safety",
-    explanation:
-      "Removes financial risk while addressing urgent legal need.",
+    explanation: (
+  <>
+    Removes financial risk while addressing urgent legal need. In competitive niches like{" "}
+    <Link href="/ads/google/lawyers/houston/examples">
+      Google Ads for lawyers in Houston examples
+    </Link>{" "}
+    this type of messaging significantly improves conversion rates.
+  </>
+),
   },
   {
     business: "Gym",
