@@ -23,7 +23,18 @@ const schema = {
   "@type": "Article",
   headline: blogTitle,
   description: metadata.description,
-  author: { "@type": "Organization", name: "AdCampin" },
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/best-ad-creatives-facebook-instagram-clicks",
+  },
 };
 
 const faqSchema = {
@@ -53,6 +64,31 @@ const faqSchema = {
         "@type": "Answer",
         text: "Most advertisers refresh creatives every 2–4 weeks to avoid fatigue and maintain CTR.",
       },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/best-ad-creatives-facebook-instagram-clicks",
     },
   ],
 };
@@ -310,10 +346,14 @@ export default function BlogPage() {
                 typical ad pattern.
               </p>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Contrast, motion, faces, and bold text are your most reliable scroll-stoppers. But
-                what works depends heavily on your audience — which is why testing multiple creative
-                formats is non-negotiable.
-              </p>
+              Contrast, motion, faces, and bold text are your most reliable scroll-stoppers. But
+              what works depends heavily on your audience — which is why testing multiple creative
+              formats is non-negotiable. For example, campaigns like{" "}
+              <Link href="/ads/google/dentists/new-york/examples">
+                Google Ads examples for dentists in New York
+              </Link>{" "}
+              often rely on creative testing to improve CTR significantly.
+            </p>
               <Link
                 href="/blog/ab-testing-ads-better-performance-2026"
                 className="inline-block mt-4 text-sm text-rose-400 hover:text-rose-300"
@@ -493,6 +533,11 @@ export default function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </div>
   );
