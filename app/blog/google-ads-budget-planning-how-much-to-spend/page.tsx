@@ -107,10 +107,18 @@ export default function BlogPage() {
                 exp: "If your average customer is worth $1,000 and you can afford to spend $200 to acquire them, that gives you a clear framework for budget planning and scaling decisions.",
               },
               {
-                title: "3. Estimate CPC Benchmarks",
-                desc: "Research average cost-per-click in your niche before setting expectations.",
-                exp: "Some industries pay $1 per click while others pay $50+. Knowing CPC benchmarks helps estimate how many clicks your budget can actually buy each month.",
-              },
+                  title: "3. Estimate CPC Benchmarks",
+                  desc: "Research average cost-per-click in your niche before setting expectations.",
+                  exp: (
+                    <>
+                      Some industries pay $1 per click while others pay $50+. For example,{" "}
+                      <Link href="/ads/google/dentists/new-york/examples">
+                        Google Ads for dentists in New York examples
+                      </Link>{" "}
+                      often have significantly higher CPC due to competition. Knowing CPC benchmarks helps estimate how many clicks your budget can actually buy each month.
+                    </>
+                  ),
+                },
               {
                 title: "4. Start With a Test Budget",
                 desc: "Never go all-in before validating performance.",
