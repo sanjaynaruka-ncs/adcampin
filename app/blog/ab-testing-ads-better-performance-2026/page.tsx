@@ -22,7 +22,18 @@ const schema = {
   "@type": "Article",
   headline: blogTitle,
   description: metadata.description,
-  author: { "@type": "Organization", name: "AdCampin" },
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/ab-testing-ads-better-performance-2026",
+  },
 };
 
 const faqSchema = {
@@ -56,13 +67,46 @@ const faqSchema = {
   ],
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/ab-testing-ads-better-performance-2026",
+    },
+  ],
+};
+
 const tests = [
   {
     number: "01",
     title: "Test Your Headlines",
     what: "Your headline is the first thing people read. Even a single word change can shift CTR significantly.",
     how: "Run two identical ads with different headlines only — keep everything else (image, CTA, audience) the same. Let them run simultaneously with equal budget split for at least 7 days.",
-    why: "Headlines carry the majority of persuasive weight in any ad. Testing them directly reveals what language resonates with your audience — benefit-led vs. curiosity vs. urgency.",
+    why: (
+  <>
+    Headlines carry the majority of persuasive weight in any ad. Testing them directly reveals what language resonates with your audience — benefit-led vs. curiosity vs. urgency. For example, high-performing campaigns like{" "}
+    <Link href="/ads/google/dentists/new-york/examples">
+      Google Ads examples for dentists in New York
+    </Link>{" "}
+    often rely heavily on headline optimization to drive CTR improvements.
+  </>
+),
   },
   {
     number: "02",
@@ -462,6 +506,11 @@ export default function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </div>
   );
