@@ -20,15 +20,23 @@ export const metadata = {
 
 export default function BlogPage() {
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: blogTitle,
-    description: metadata.description,
-    author: {
-      "@type": "Organization",
-      name: "AdCampin",
-    },
-  };
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: blogTitle,
+  description: metadata.description,
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/google-ads-budget-planning-how-much-to-spend",
+  },
+};
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -60,6 +68,31 @@ export default function BlogPage() {
       },
     ],
   };
+
+  const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/google-ads-budget-planning-how-much-to-spend",
+    },
+  ],
+};
 
   return (
     <>
@@ -314,6 +347,11 @@ export default function BlogPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       </main>
     </>
