@@ -22,7 +22,18 @@ const schema = {
   "@type": "Article",
   headline: blogTitle,
   description: metadata.description,
-  author: { "@type": "Organization", name: "AdCampin" },
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/7-retargeting-mistakes-waste-ad-budget",
+  },
 };
 
 const faqSchema = {
@@ -56,6 +67,31 @@ const faqSchema = {
   ],
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/7-retargeting-mistakes-waste-ad-budget",
+    },
+  ],
+};
+
 const mistakes = [
   {
     id: 1,
@@ -63,8 +99,15 @@ const mistakes = [
     headline: "Retargeting Everyone Who Ever Touched Your Site",
     description:
       "Casting your retargeting net over every single visitor — including people who bounced in two seconds — burns budget on people who were never interested.",
-    explanation:
-      "Not all traffic is equal. Someone who spent 30 seconds on your homepage and left is very different from someone who added to cart and didn't checkout. Lumping them together wastes spend on cold, unqualified traffic that happens to have your pixel. Tighten your retargeting window to high-intent behaviors: page depth, time on site, product views, or cart activity. You'll pay less and convert more.",
+    explanation: (
+  <>
+    Not all traffic is equal. Someone who spent 30 seconds on your homepage and left is very different from someone who added to cart and didn't checkout. Lumping them together wastes spend on cold, unqualified traffic that happens to have your pixel. For example, in high-intent industries like{" "}
+    <Link href="/ads/google/lawyers/houston/examples">
+      Google Ads for lawyers in Houston examples
+    </Link>{" "}
+    you must focus only on deep-engagement users. Tighten your retargeting window to high-intent behaviors: page depth, time on site, product views, or cart activity. You'll pay less and convert more.
+  </>
+),
   },
   {
     id: 2,
@@ -401,6 +444,10 @@ export default function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </div>
   );
