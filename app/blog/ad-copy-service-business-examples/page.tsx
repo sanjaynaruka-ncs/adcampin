@@ -203,6 +203,13 @@ export default function BlogPage() {
           __html: JSON.stringify(faqSchema),
         }}
       />
+
+      <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(breadcrumbSchema),
+      }}
+    />
     </div>
   );
 }
@@ -213,8 +220,15 @@ const examples = [
     headline: "Tooth Pain? Get Same-Day Appointment in Your Area",
     desc: "Trusted local dentists. Book now and get relief today.",
     why: "Targets urgency + local intent",
-    explanation:
-      "Pain-driven copy converts fast. Adding 'same-day' removes hesitation.",
+    explanation: (
+  <>
+    Pain-driven copy converts fast. Adding "same-day" removes hesitation. For example,{" "}
+    <Link href="/ads/google/dentists/new-york/examples">
+      Google Ads for dentists in New York examples
+    </Link>{" "}
+    often use urgency-based messaging to drive immediate conversions.
+  </>
+),
   },
   {
     business: "Lawyer",
@@ -295,7 +309,18 @@ const schema = {
   "@type": "Article",
   headline: blogTitle,
   description: metadata.description,
-  author: { "@type": "Organization", name: "AdCampin" },
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/ad-copy-service-business-examples",
+  },
 };
 
 const faqSchema = {
@@ -325,6 +350,31 @@ const faqSchema = {
         "@type": "Answer",
         text: "Yes, offers significantly increase click-through and conversion rates.",
       },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/ad-copy-service-business-examples",
     },
   ],
 };
