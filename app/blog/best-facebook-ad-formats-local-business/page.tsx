@@ -22,7 +22,18 @@ const schema = {
   "@type": "Article",
   headline: blogTitle,
   description: metadata.description,
-  author: { "@type": "Organization", name: "AdCampin" },
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/best-facebook-ad-formats-local-business",
+  },
 };
 
 const faqSchema = {
@@ -56,6 +67,31 @@ const faqSchema = {
   ],
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/best-facebook-ad-formats-local-business",
+    },
+  ],
+};
+
 const formats = [
   {
     id: 1,
@@ -63,8 +99,19 @@ const formats = [
     headline: "Image Ads: Simple, Fast, and Still Effective",
     description:
       "A single high-quality photo with a sharp headline and clear CTA can outperform complex formats — especially when the creative is hyper-local.",
-    explanation:
-      "Image ads are the easiest to produce and the fastest to test. For local businesses, showing a recognizable location, a real team photo, or a before/after transformation builds immediate trust. Keep the visual clean, the text minimal, and always include a local anchor — the neighborhood name, a landmark, or a recognizable storefront. This isn't about being flashy. It's about being familiar.",
+    explanation: (
+  <>
+    Image ads are the easiest to produce and the fastest to test. For local businesses,
+    showing a recognizable location, a real team photo, or a before/after transformation
+    builds immediate trust. Keep the visual clean, the text minimal, and always include a
+    local anchor — the neighborhood name, a landmark, or a recognizable storefront. For example,{" "}
+    <Link href="/ads/google/dentists/new-york/examples">
+      Google Ads for dentists in New York examples
+    </Link>{" "}
+    often rely on familiar visuals to increase conversions. This isn't about being flashy.
+    It's about being familiar.
+  </>
+),
   },
   {
     id: 2,
@@ -402,6 +449,10 @@ export default function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </div>
   );
