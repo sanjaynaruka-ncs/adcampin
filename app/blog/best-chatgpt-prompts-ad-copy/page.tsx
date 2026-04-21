@@ -12,28 +12,89 @@ export const metadata: Metadata = {
 export default function BlogPage() {
 
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: "Best ChatGPT Prompts for Ad Copy (With Results)",
-    description: "10 proven ChatGPT prompts to generate high-converting ad copy with real examples and results.",
-    author: {
-      "@type": "Organization",
-      name: "AdCampin",
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: blogTitle,
+  description: metadata.description,
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/best-chatgpt-prompts-ad-copy",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Can ChatGPT really write good ad copy?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, with the right prompts. Specifying audience, platform, and tone dramatically improves output quality.",
+      },
     },
-    publisher: {
-      "@type": "Organization",
-      name: "AdCampin",
+    {
+      "@type": "Question",
+      name: "What is the best ChatGPT prompt for ads?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Problem-solution and curiosity-based prompts perform best because they capture attention and drive engagement.",
+      },
     },
-    mainEntityOfPage: "https://www.adcampin.com/blog/best-chatgpt-prompts-ad-copy",
-  };
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/best-chatgpt-prompts-ad-copy",
+    },
+  ],
+};
   return (
     <>
   <Navbar />
 
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-  />
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+/>
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+/>
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+/>
     <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
         Best ChatGPT Prompts for Ad Copy (With Results)
@@ -274,10 +335,17 @@ Also check our <a href="/blog/google-ads-headlines-local-business" className="te
         </div>
         <div className="bg-white/5 border-l-2 border-yellow-500 p-4 rounded-r-lg">
           <p className="text-gray-300 text-sm">
-            Specificity signals credibility. "60 seconds" is more believable and compelling than
-            "fast results." Whenever possible, replace adjectives with numbers—your CTR will thank
-            you.
-          </p>
+          Specificity signals credibility. "60 seconds" is more believable and compelling than
+          "fast results." Whenever possible, replace adjectives with numbers—your CTR will thank
+          you. For example, campaigns like{" "}
+          <a
+            href="/ads/google/dentists/new-york/examples"
+            className="text-yellow-400 underline"
+          >
+            Google Ads examples for dentists in New York
+          </a>{" "}
+          rely heavily on measurable claims to improve performance.
+        </p>
           <p className="text-yellow-400 text-sm mt-2 font-medium">
             Psychological trigger: Specificity bias / instant gratification
           </p>
