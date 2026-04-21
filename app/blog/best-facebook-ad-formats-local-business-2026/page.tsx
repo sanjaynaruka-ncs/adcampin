@@ -22,7 +22,18 @@ const schema = {
   "@type": "Article",
   headline: blogTitle,
   description: metadata.description,
-  author: { "@type": "Organization", name: "AdCampin" },
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/best-facebook-ad-formats-local-business-2026",
+  },
 };
 
 const faqSchema = {
@@ -56,6 +67,31 @@ const faqSchema = {
   ],
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/best-facebook-ad-formats-local-business-2026",
+    },
+  ],
+};
+
 const formats = [
   {
     number: "01",
@@ -63,12 +99,17 @@ const formats = [
     best_use: "Brand awareness, promotions, and service announcements",
     why_works:
       "Simple to produce and fast to test. A single strong visual with a clear headline is often enough to stop the scroll and drive clicks from a local audience that already knows your category.",
-    explanation:
-      "Image ads are the starting point for most local businesses. Use location-specific copy ('Serving Dallas since 2009'), a real photo of your team or space, and a direct CTA. Stock photos underperform — authenticity wins locally.",
-    extra_link: {
-      href: "/blog/best-ad-creatives-facebook-instagram-clicks",
-      label: "See ad creative examples that drive clicks →",
-    },
+    explanation: (
+  <>
+    Image ads are the starting point for most local businesses. Use location-specific copy
+    ("Serving Dallas since 2009"), a real photo of your team or space, and a direct CTA.
+    Stock photos underperform — authenticity wins locally. For example,{" "}
+    <Link href="/ads/google/dentists/new-york/examples">
+      Google Ads for dentists in New York examples
+    </Link>{" "}
+    often perform better when using real clinic visuals instead of generic creatives.
+  </>
+),
   },
   {
     number: "02",
@@ -401,6 +442,10 @@ export default function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </div>
   );
