@@ -63,9 +63,17 @@ const examples = [
     headline: "Gentle Family Dentist in New York | Book Same-Week Visits",
     description:
       "Teeth cleaning, checkups, and emergency care. Trusted local dental team. Schedule online.",
-    explanation:
-      "Dental ads perform better when they feel calm and practical. This one balances service variety with reassurance, which helps both families and urgent patients.",
-    href: "/ads/google/dentists/new-york/examples",
+    explanation: (
+  <>
+    Dental ads perform better when they feel calm and practical. This one balances
+    service variety with reassurance, which helps both families and urgent patients.
+    For example,{" "}
+    <Link href="/ads/google/dentists/new-york/examples">
+      Google Ads for dentists in New York examples
+    </Link>{" "}
+    often use similar messaging patterns to improve CTR and trust.
+  </>
+),
   },
   {
     id: 6,
@@ -141,8 +149,7 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: blogTitle,
-  description:
-    "Explore the best Google Ads examples for small businesses with real ad copy, strategies, and tips to boost conversions in 2026.",
+  description: metadata.description,
   author: {
     "@type": "Organization",
     name: "AdCampin",
@@ -150,6 +157,10 @@ const articleJsonLd = {
   publisher: {
     "@type": "Organization",
     name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/best-google-ads-examples-small-businesses-2026",
   },
 };
 
@@ -166,6 +177,31 @@ const faqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/best-google-ads-examples-small-businesses-2026",
+    },
+  ],
+};
+
 export default function BlogPage() {
   return (
     <>
@@ -179,6 +215,10 @@ export default function BlogPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
 
         <section className="border-b border-white/10 bg-slate-900">
@@ -279,13 +319,15 @@ export default function BlogPage() {
                 </div>
 
                 <div className="mt-6">
-                  <Link
-                    href={example.href}
-                    className="inline-flex items-center text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
-                  >
-                    View niche example
-                    <span className="ml-2">→</span>
-                  </Link>
+                  {example.href && (
+                      <Link
+                        href={example.href}
+                        className="inline-flex items-center text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
+                      >
+                        View niche example
+                        <span className="ml-2">→</span>
+                      </Link>
+                    )}
                 </div>
               </article>
             ))}
@@ -374,13 +416,13 @@ export default function BlogPage() {
 
             <div className="flex flex-wrap gap-3">
                 <Link href="/ads/google/dentists/new-york/examples" className="text-cyan-300 hover:text-cyan-200">
-                Dentist Ads New York
+                Google Ads for Dentists in New York Examples
                 </Link>
                 <Link href="/ads/google/real-estate/mumbai/examples" className="text-cyan-300 hover:text-cyan-200">
-                Real Estate Ads Mumbai
+                Google Ads for Real Estate in Mumbai Examples
                 </Link>
                 <Link href="/ads/google/lawyers/houston/examples" className="text-cyan-300 hover:text-cyan-200">
-                Lawyer Ads Houston
+                Google Ads for Lawyers in Houston Examples
                 </Link>
             </div>
             </div>
