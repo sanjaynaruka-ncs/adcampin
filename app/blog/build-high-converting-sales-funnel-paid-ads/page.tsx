@@ -20,15 +20,23 @@ export const metadata = {
 
 export default function BlogPage() {
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: blogTitle,
-    description: metadata.description,
-    author: {
-      "@type": "Organization",
-      name: "AdCampin",
-    },
-  };
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: blogTitle,
+  description: metadata.description,
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/build-high-converting-sales-funnel-paid-ads",
+  },
+};
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -60,6 +68,31 @@ export default function BlogPage() {
       },
     ],
   };
+
+  const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/build-high-converting-sales-funnel-paid-ads",
+    },
+  ],
+};
 
   return (
     <>
@@ -115,7 +148,17 @@ export default function BlogPage() {
               {
                 title: "4. Design a Focused Landing Page",
                 desc: "Your landing page should have one job and one job only: conversion.",
-                exp: "Remove distractions, eliminate extra navigation, and keep the message aligned with the ad. A clean, focused page consistently outperforms cluttered websites.",
+                exp: (
+                    <>
+                      Remove distractions, eliminate extra navigation, and keep the message aligned
+                      with the ad. A clean, focused page consistently outperforms cluttered
+                      websites. For example,{" "}
+                      <Link href="/ads/google/dentists/new-york/examples">
+                        Google Ads for dentists in New York examples
+                      </Link>{" "}
+                      typically use highly focused landing pages to improve conversion rates.
+                    </>
+                  ),
               },
               {
                 title: "5. Simplify Lead Capture Forms",
@@ -308,6 +351,10 @@ export default function BlogPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       </main>
     </>
