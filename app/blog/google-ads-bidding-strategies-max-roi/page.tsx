@@ -22,7 +22,18 @@ const schema = {
   "@type": "Article",
   headline: blogTitle,
   description: metadata.description,
-  author: { "@type": "Organization", name: "AdCampin" },
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/best-google-ads-bidding-strategies",
+  },
 };
 
 const faqSchema = {
@@ -56,6 +67,31 @@ const faqSchema = {
   ],
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/best-google-ads-bidding-strategies",
+    },
+  ],
+};
+
 const strategies = [
   {
     id: 1,
@@ -64,8 +100,21 @@ const strategies = [
     headline: "Manual CPC: Full Control When You Can't Afford Surprises",
     description:
       "Manual CPC lets you set the exact maximum you'll pay per click — keyword by keyword. There's no algorithm deciding how to spend your money.",
-    explanation:
-      "When you're just starting out, or when you're in a high-cost niche where a few bad clicks can wreck your daily budget, Manual CPC is your safest foundation. You can bid more aggressively on keywords with proven conversion history and lower bids on exploratory terms. The downside is it requires active management — set it and forget it will cost you. But for campaigns where every dollar matters, the control is worth the work.",
+    explanation: (
+  <>
+    When you're just starting out, or when you're in a high-cost niche where a
+    few bad clicks can wreck your daily budget, Manual CPC is your safest
+    foundation. For example,{" "}
+    <Link href="/ads/google/lawyers/houston/examples">
+      Google Ads for lawyers in Houston examples
+    </Link>{" "}
+    often require tight bid control to avoid wasted spend. You can bid more
+    aggressively on keywords with proven conversion history and lower bids on
+    exploratory terms. The downside is it requires active management — set it and
+    forget it will cost you. But for campaigns where every dollar matters, the
+    control is worth the work.
+  </>
+),
   },
   {
     id: 2,
@@ -294,17 +343,17 @@ export default function BlogPage() {
           {[
             {
               href: "/ads/google/dentists/new-york/examples",
-              label: "Google Ads for Dentists — New York",
+              label: "Google Ads for Dentists in New York Examples",
               sub: "Local lead gen examples",
             },
             {
               href: "/ads/google/real-estate/mumbai/examples",
-              label: "Google Ads for Real Estate — Mumbai",
+              label: "Google Ads for Real Estate in Mumbai Examples",
               sub: "Property campaign examples",
             },
             {
               href: "/ads/google/lawyers/houston/examples",
-              label: "Google Ads for Lawyers — Houston",
+              label: "Google Ads for Lawyers in Houston Examples",
               sub: "Legal lead gen examples",
             },
           ].map((link) => (
@@ -440,6 +489,10 @@ export default function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </div>
   );
