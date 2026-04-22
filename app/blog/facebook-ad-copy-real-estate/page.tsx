@@ -1,4 +1,5 @@
 import Navbar from "../../components/navbar";
+import Link from "next/link";
 export const blogTitle = "Facebook Ad Copy for Real Estate (10 High-Converting Examples)";
 export const metadata = {
   title: "Facebook Ad Copy for Real Estate (10 High-Converting Examples)",
@@ -13,8 +14,16 @@ const ads = [
     primaryText:
       "Spacious 3-bedroom home in [Neighborhood]. New kitchen. Big backyard. Walking distance to schools.\n\nOnly 2 units left at this price. Serious buyers, let's talk.",
     cta: "Book a Viewing",
-    explanation:
-      "Short sentences mirror how people actually read on mobile. The phrase 'only 2 units left' creates real scarcity without being overdramatic.",
+    explanation: (
+  <>
+    Short sentences mirror how people actually read on mobile. The phrase
+    "only 2 units left" creates real scarcity without being overdramatic. For example,{" "}
+    <Link href="/ads/google/real-estate/mumbai/examples">
+      Google Ads for real estate in Mumbai examples
+    </Link>{" "}
+    often use similar urgency-based messaging to improve CTR.
+  </>
+),
     trigger: "Scarcity + Specificity",
   },
   {
@@ -139,7 +148,10 @@ export default function BlogPage() {
       "@type": "Organization",
       name: "AdCampin",
     },
-    mainEntityOfPage: "https://www.adcampin.com/blog/facebook-ad-copy-real-estate",
+    mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://www.adcampin.com/blog/facebook-ad-copy-real-estate",
+      },
   };
 
   const faqSchema = {
@@ -172,19 +184,34 @@ export default function BlogPage() {
       },
     ],
   };
+
+  const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/facebook-ad-copy-real-estate",
+    },
+  ],
+};
   return (
         <>
         <Navbar />
-
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
     <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       {/* H1 */}
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
@@ -348,6 +375,21 @@ Also check our <a href="/blog/google-ads-headlines-local-business" className="te
           publishing.
         </p>
       </footer>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
     </main>
     </>
   );
