@@ -20,17 +20,63 @@ export default function FacebookAdsLawyers() {
       "@type": "Organization",
       name: "AdCampin",
     },
-    mainEntityOfPage: "https://www.adcampin.com/blog/facebook-ads-lawyers",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://www.adcampin.com/blog/facebook-ads-lawyers",
+    },
   };
+
+  const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Can lawyers advertise on Facebook legally?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, but ads must be truthful, non-misleading, and follow your state bar guidelines.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is a good budget for Facebook Ads for lawyers?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Most firms start between $1500–$4000 per month depending on case value and competition.",
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/facebook-ads-lawyers",
+    },
+  ],
+};
 
   return (
     <>
       <Navbar />
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
       <main className="max-w-4xl mx-auto px-6 py-12 text-white">
 
         {/* H1 */}
@@ -42,7 +88,7 @@ export default function FacebookAdsLawyers() {
         <p className="text-gray-300 mb-10 border-l-2 border-gray-600 pl-4 italic">
           Most law firm Facebook ads get ignored — not because the budget is wrong, but because the message is. In 2026, the firms getting consistent leads are the ones treating Facebook like a trust-building engine, not a billboard. If you want to see how other service businesses are cracking local ad copy, our posts on{" "}
           <a href="/blog/google-ads-dentists" className="text-yellow-400 underline hover:text-yellow-300">
-            Google Ads for dentists
+            Google Ads for dentists examples
           </a>{" "}
           and{" "}
           <a href="/blog/google-ads-headlines-local-business" className="text-yellow-400 underline hover:text-yellow-300">
@@ -71,7 +117,11 @@ export default function FacebookAdsLawyers() {
           </p>
           <div className="bg-white/5 border-l-2 border-yellow-500 p-4 rounded-r-lg">
             <p className="text-gray-300 text-sm">
-              The "no win, no fee" model eliminates the biggest objection injury victims have — cost. Opening with "insurance companies have lawyers" immediately creates an us-vs-them dynamic that resonates with people who feel outmatched. It positions the firm as their advocate before they even click.
+              The "no win, no fee" model eliminates the biggest objection injury victims have — cost. Opening with "insurance companies have lawyers" immediately creates an us-vs-them dynamic that resonates with people who feel outmatched. For example,{" "}
+              <a href="/ads/google/lawyers/houston/examples" className="text-yellow-400 underline">
+                Google Ads for lawyers in Houston examples
+              </a>{" "}
+              often use similar positioning to increase conversions. It positions the firm as their advocate before they even click.
             </p>
             <p className="text-yellow-400 text-sm mt-2 font-medium">🧠 Psychological trigger: Risk reversal + Adversarial framing</p>
           </div>
@@ -336,7 +386,20 @@ export default function FacebookAdsLawyers() {
             </a>
           </p>
         </footer>
+          <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
 
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
       </main>
     </>
   );
