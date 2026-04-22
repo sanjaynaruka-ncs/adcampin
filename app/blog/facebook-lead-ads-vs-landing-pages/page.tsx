@@ -97,19 +97,19 @@ export default function BlogPage() {
             href="/ads/google/dentists/new-york/examples"
             className="rounded-lg border border-white/10 bg-slate-800 p-6"
           >
-            Dentist Ads (NY)
+            Google Ads for Dentists in New York Examples
           </Link>
           <Link
             href="/ads/google/real-estate/mumbai/examples"
             className="rounded-lg border border-white/10 bg-slate-800 p-6"
           >
-            Real Estate Ads (Mumbai)
+            Google Ads for Real Estate in Mumbai Examples
           </Link>
           <Link
             href="/ads/google/lawyers/houston/examples"
             className="rounded-lg border border-white/10 bg-slate-800 p-6"
           >
-            Lawyer Ads (Houston)
+            Google Ads for Lawyers in Houston Examples
           </Link>
         </div>
       </section>
@@ -193,6 +193,10 @@ export default function BlogPage() {
       {/* Schema */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+    <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+/>
     </div>
   );
 }
@@ -213,12 +217,20 @@ const comparisons = [
       "High-value decisions require trust and information before conversion.",
   },
   {
-    scenario: "Dentist Appointment Booking",
-    winner: "Lead Ads",
-    why: "Quick bookings work better with fewer steps.",
-    takeaway:
-      "For urgent needs, faster forms outperform detailed pages.",
-  },
+  scenario: "Dentist Appointment Booking",
+  winner: "Lead Ads",
+  why: (
+    <>
+      Quick bookings work better with fewer steps. For example,{" "}
+      <Link href="/ads/google/dentists/new-york/examples">
+        Google Ads for dentists in New York examples
+      </Link>{" "}
+      often rely on fast lead capture to improve conversions.
+    </>
+  ),
+  takeaway:
+    "For urgent needs, faster forms outperform detailed pages.",
+},
   {
     scenario: "Legal Consultation",
     winner: "Landing Page",
@@ -274,8 +286,19 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: blogTitle,
-  description:
-    "Comparison of Facebook Lead Ads vs Landing Pages for conversions.",
+  description: metadata.description,
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/facebook-lead-ads-vs-landing-pages",
+  },
 };
 
 const faqSchema = {
@@ -305,6 +328,31 @@ const faqSchema = {
         "@type": "Answer",
         text: "Use landing pages for complex offers or high-ticket services.",
       },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/facebook-lead-ads-vs-landing-pages",
     },
   ],
 };
