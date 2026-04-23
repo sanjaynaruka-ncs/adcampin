@@ -32,8 +32,15 @@ const examples = [
       "Feeling Nervous About Your Next Dental Checkup? We Make It Easy and Painless",
     facebookAngle:
       "Facebook uses empathy and reassurance instead of a pure search query, then funnels users to a simple booking form or local‑service ad.",
-    explanation:
-      "In 2026, Google Ads usually win on lead quality for dentists, while Facebook Ads can drive cheaper volume for awareness and follow‑up, especially with retargeting and in‑app lead forms.",
+    explanation: (
+        <>
+          In 2026, Google Ads usually win on lead quality for dentists, while Facebook Ads can drive cheaper volume for awareness and follow-up, especially with retargeting and in-app lead forms. For example,{" "}
+          <Link href="/ads/google/dentists/new-york/examples">
+            Google Ads for dentists in New York examples
+          </Link>{" "}
+          show how intent-driven campaigns outperform broad targeting in lead quality.
+        </>
+      ),
   },
   {
     id: 2,
@@ -185,19 +192,23 @@ const faqs = [
 ];
 
 const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: blogTitle,
-  description: metadata.description,
-  author: {
-    "@type": "Organization",
-    name: "AdCampin",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "AdCampin",
-  },
-};
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: blogTitle,
+    description: metadata.description,
+    author: {
+      "@type": "Organization",
+      name: "AdCampin",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "AdCampin",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://www.adcampin.com/blog/google-ads-vs-facebook-ads-lead-generation",
+    },
+  };
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -210,6 +221,31 @@ const faqSchema = {
       text: faq.answer,
     },
   })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/google-ads-vs-facebook-ads-lead-generation",
+    },
+  ],
 };
 
 export default function BlogPage() {
@@ -225,6 +261,10 @@ export default function BlogPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
 
         <section className="border-b border-white/10 bg-slate-900">
@@ -417,16 +457,16 @@ export default function BlogPage() {
 
       <div className="mt-6 flex flex-wrap gap-3">
         <Link href="/ads/google/dentists/new-york/examples" className="text-cyan-300 hover:text-cyan-200">
-          Dentist Ads New York
+          Google Ads for Dentists in New York Examples
         </Link>
         <Link href="/ads/google/real-estate/mumbai/examples" className="text-cyan-300 hover:text-cyan-200">
-          Real Estate Ads Mumbai
+          Google Ads for Real Estate in Mumbai Examples
         </Link>
         <Link href="/ads/google/lawyers/houston/examples" className="text-cyan-300 hover:text-cyan-200">
-          Lawyer Ads Houston
+          Google Ads for Lawyers in Houston Examples
         </Link>
         <Link href="/ads/google/restaurants/jaipur/examples" className="text-cyan-300 hover:text-cyan-200">
-          Restaurant Ads Jaipur
+          Gggole Ads for Restaurants in Jaipur
         </Link>
         <Link href="/ads/google/hvac/dallas/examples" className="text-cyan-300 hover:text-cyan-200">
           HVAC Ads Dallas
