@@ -21,7 +21,10 @@ export default function BlogPage() {
       "@type": "Organization",
       name: "AdCampin",
     },
-    mainEntityOfPage: "https://www.adcampin.com/blog/google-ads-headlines-local-business",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://www.adcampin.com/blog/google-ads-headlines-local-business",
+    },
   };
 
   const faqSchema = {
@@ -54,19 +57,34 @@ export default function BlogPage() {
       },
     ],
   };
+
+  const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/google-ads-headlines-local-business",
+    },
+  ],
+};
   return (
         <>
         <Navbar />
-
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
     <main className="max-w-4xl mx-auto px-6 py-12 text-white">
       {/* H1 */}
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
@@ -109,10 +127,17 @@ Also check <a href="/blog/facebook-ad-copy-real-estate" className="text-yellow-4
       </div>
       <div className="bg-white/5 border-l-2 border-yellow-500 p-4 rounded-r-lg mb-8">
         <p className="text-gray-300 text-sm">
-          Naming your city directly in the headline tells the algorithm — and
-          the customer — that you're nearby. It filters out irrelevant clicks
-          and dramatically improves local CTR. People aren't searching for "a
-          plumber." They're searching for one close to them.
+          Naming your city directly in the headline tells the algorithm — and the
+          customer — that you're nearby. It filters out irrelevant clicks and
+          dramatically improves local CTR. For example,{" "}
+          <a
+            href="/ads/google/dentists/new-york/examples"
+            className="text-yellow-400 underline"
+          >
+            Google Ads for dentists in New York examples
+          </a>{" "}
+          often rely on strong location signals to boost conversions. People aren't
+          searching for "a plumber." They're searching for one close to them.
         </p>
         <p className="text-yellow-400 text-xs mt-2 uppercase tracking-wide">
           Psychological Trigger: Locality + Trust
@@ -471,6 +496,20 @@ Also check <a href="/blog/facebook-ad-copy-real-estate" className="text-yellow-4
           conversion principles — not theory.
         </p>
       </footer>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
     </main>
     </>
   );
