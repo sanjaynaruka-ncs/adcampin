@@ -21,17 +21,63 @@ export default function GoogleAdsDentists() {
       "@type": "Organization",
       name: "AdCampin",
     },
-    mainEntityOfPage: "https://www.adcampin.com/blog/google-ads-dentists",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://www.adcampin.com/blog/google-ads-dentists",
+    },
   };
+
+  const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How much should a dental practice spend on Google Ads?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Most practices start between $1000–$3000/month depending on competition and services offered.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do Google Ads work for dentists?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Google Ads work extremely well for dentists when targeting high-intent local keywords with strong landing pages.",
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/google-ads-dentists",
+    },
+  ],
+};
 
   return (
     <>
       <Navbar />
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
       <main className="max-w-4xl mx-auto px-6 py-12 text-white">
 
         {/* H1 */}
@@ -71,7 +117,11 @@ export default function GoogleAdsDentists() {
           </p>
           <div className="bg-white/5 border-l-2 border-yellow-500 p-4 rounded-r-lg">
             <p className="text-gray-300 text-sm">
-              Emergency searches are high-urgency, high-conversion. The person searching is in pain and ready to book right now — your ad just needs to confirm you're available and fast. "Open Now" and "same-day" do most of the heavy lifting.
+              Emergency searches are high-urgency, high-conversion. The person searching is in pain and ready to book right now — your ad just needs to confirm you're available and fast. For example,{" "}
+              <a href="/ads/google/dentists/new-york/examples" className="text-yellow-400 underline">
+                Google Ads for dentists in New York examples
+              </a>{" "}
+              often rely on urgency-based messaging like "Open Now" and "Same-Day" to drive conversions. These phrases do most of the heavy lifting.
             </p>
             <p className="text-yellow-400 text-sm mt-2 font-medium">🧠 Psychological trigger: Urgency + Relief</p>
           </div>
@@ -326,7 +376,20 @@ export default function GoogleAdsDentists() {
             <a href="/signup" className="hover:text-gray-300 underline">Get Started</a>
           </p>
         </footer>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
       </main>
     </>
   );
