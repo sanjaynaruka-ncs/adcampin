@@ -23,7 +23,18 @@ const schema = {
   "@type": "Article",
   headline: blogTitle,
   description: metadata.description,
-  author: { "@type": "Organization", name: "AdCampin" },
+  author: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AdCampin",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.adcampin.com/blog/google-ads-quality-score-explained",
+  },
 };
 
 const faqSchema = {
@@ -57,6 +68,31 @@ const faqSchema = {
   ],
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/google-ads-quality-score-explained",
+    },
+  ],
+};
+
 const strategies = [
   {
     number: "01",
@@ -65,8 +101,19 @@ const strategies = [
       "Expected CTR is Google's prediction of how likely your ad is to be clicked when shown for a given keyword. It's the most heavily weighted component of Quality Score and directly affects your Ad Rank and the CPC you pay.",
     how_to_improve:
       "Write headlines that tightly match what the user searched. Use numbers, brackets, and action verbs. Test emotional triggers alongside rational benefits. Pause keywords with chronically low CTR and replace them with tighter, more specific terms.",
-    explanation:
-      "A low expected CTR signals to Google that your ad isn't relevant to the query — even if you think it is. The algorithm has seen millions of similar searches and knows whether users click ads like yours. If your CTR is below 2% on core keywords, treat it as a structural problem, not a copy problem.",
+    explanation: (
+      <>
+        A low expected CTR signals to Google that your ad isn't relevant to the query
+        — even if you think it is. The algorithm has seen millions of similar searches
+        and knows whether users click ads like yours. For example,{" "}
+        <Link href="/ads/google/dentists/new-york/examples">
+          Google Ads for dentists in New York examples
+        </Link>{" "}
+        often achieve higher CTR by tightly matching search intent with ad messaging.
+        If your CTR is below 2% on core keywords, treat it as a structural problem,
+        not just a copy issue.
+      </>
+    ),
     extra_link: {
       href: "/blog/lower-cpc-google-ads-without-losing-traffic",
       label: "Lower your CPC without cutting traffic →",
@@ -189,9 +236,9 @@ const strategies = [
 ];
 
 const internalLinks = [
-  { label: "Dentist Ads · New York", href: "/ads/google/dentists/new-york/examples", tag: "Local Ads" },
-  { label: "Real Estate Ads · Mumbai", href: "/ads/google/real-estate/mumbai/examples", tag: "Local Ads" },
-  { label: "Lawyer Ads · Houston", href: "/ads/google/lawyers/houston/examples", tag: "Local Ads" },
+  { label: "Google Ads for Dentists in New York Examples", href: "/ads/google/dentists/new-york/examples"},
+  { label: "Google Ads for Real Estate in Mumbai Examples", href: "/ads/google/real-estate/mumbai/examples", tag: "Local Ads" },
+  { label: "Google Ads for Lawyers in Houston Examples", href: "/ads/google/lawyers/houston/examples", tag: "Local Ads" },
   { label: "Google Ads for Dentists", href: "/blog/google-ads-dentists", tag: "Blog" },
   { label: "Best Google Ads Examples for Small Businesses 2026", href: "/blog/best-google-ads-examples-small-businesses-2026", tag: "Blog" },
   { label: "Lower CPC Without Losing Traffic", href: "/blog/lower-cpc-google-ads-without-losing-traffic", tag: "Blog" },
@@ -436,6 +483,10 @@ export default function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </div>
   );
