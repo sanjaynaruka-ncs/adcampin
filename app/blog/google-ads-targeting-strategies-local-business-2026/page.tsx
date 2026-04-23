@@ -18,36 +18,65 @@ export const metadata = {
 };
 
 export default function BlogPage() {
-  const schemaArticle = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: blogTitle,
-    description: metadata.description,
-    author: { "@type": "Organization", name: "AdCampin" },
-    publisher: { "@type": "Organization", name: "AdCampin" },
-  };
+    const schemaArticle = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: blogTitle,
+      description: metadata.description,
+      author: {
+        "@type": "Organization",
+        name: "AdCampin",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "AdCampin",
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://www.adcampin.com/blog/best-google-ads-targeting-strategies-local-business",
+      },
+    };
 
   const schemaFAQ = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+};
+
+  const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.adcampin.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.adcampin.com/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blogTitle,
+      item: "https://www.adcampin.com/blog/best-google-ads-targeting-strategies-local-business",
+    },
+  ],
+};
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaArticle) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQ) }}
-      />
-
       <div className="min-h-screen bg-slate-950 text-gray-300">
         <Navbar />
 
@@ -130,13 +159,13 @@ export default function BlogPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-4">
             <Link href="/ads/google/dentists/new-york/examples" className="rounded-lg border border-white/10 bg-slate-800 p-6">
-              Dentist Ads (NY)
+              Google Ads for Dentists in New York Examples
             </Link>
             <Link href="/ads/google/real-estate/mumbai/examples" className="rounded-lg border border-white/10 bg-slate-800 p-6">
-              Real Estate Ads (Mumbai)
+              Google Ads for Real Estate in Mumbai Examples
             </Link>
             <Link href="/ads/google/lawyers/houston/examples" className="rounded-lg border border-white/10 bg-slate-800 p-6">
-              Lawyer Ads (Houston)
+              Google Ads for Lawyers in Houston Examples
             </Link>
           </div>
         </section>
@@ -166,6 +195,21 @@ export default function BlogPage() {
             ))}
           </div>
         </section>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaArticle) }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQ) }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
+        />
       </div>
     </>
   );
@@ -176,7 +220,15 @@ const strategies = [
     title: "Geo Radius Targeting",
     useCase: "Best for local service businesses like plumbers or dentists.",
     how: "Set radius targeting around your service area (5–20 km).",
-    why: "Ensures ads are shown only to nearby users likely to convert.",
+    why: (
+      <>
+        Ensures ads are shown only to nearby users likely to convert. For example,{" "}
+        <Link href="/ads/google/dentists/new-york/examples">
+          Google Ads for dentists in New York examples
+        </Link>{" "}
+        use tight geo targeting to capture high-intent local traffic and improve conversions.
+      </>
+    ),
   },
   {
     title: "Location-Specific Keywords",
