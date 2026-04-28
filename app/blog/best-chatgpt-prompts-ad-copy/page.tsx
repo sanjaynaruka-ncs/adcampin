@@ -30,29 +30,6 @@ export default function BlogPage() {
   },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Can ChatGPT really write good ad copy?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, with the right prompts. Specifying audience, platform, and tone dramatically improves output quality.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is the best ChatGPT prompt for ads?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Problem-solution and curiosity-based prompts perform best because they capture attention and drive engagement.",
-      },
-    },
-  ],
-};
-
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -84,11 +61,6 @@ const breadcrumbSchema = {
 <script
   type="application/ld+json"
   dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-/>
-
-<script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
 />
 
 <script
