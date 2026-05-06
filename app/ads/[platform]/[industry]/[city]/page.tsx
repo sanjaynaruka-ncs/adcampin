@@ -3,11 +3,8 @@ import Image from "next/image";
 import { industries } from "@/lib/industries";
 import { types } from "@/lib/types";
 import Navbar from "./../../../../components/navbar";
-import SEOShareEmbed from "@/app/components/seo_share_embed";
-
-export const dynamicParams = true;
-export const revalidate = 3600;
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
+export const revalidate = 86400;
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -43,10 +40,9 @@ type PageParams = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<PageParams>;
+  params: PageParams;
 }) {
-  // ✅ FIXED: await the params Promise before accessing its properties
-  const { platform, industry, city, type } = await params;
+  const { platform, industry, city, type } = params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
@@ -78,13 +74,12 @@ export async function generateMetadata({
  * Without `await params`, platform/industry/city/type are all undefined,
  * causing the heading to render as "Ads for in (2026 Guide)".
  */
-export default async function Page({
+export default function Page({
   params,
 }: {
-  params: Promise<PageParams>;
+  params: PageParams;
 }) {
-  // ✅ FIXED: await the params Promise before accessing its properties
-  const { platform, industry, city, type } = await params;
+  const { platform, industry, city, type } = params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
@@ -656,12 +651,6 @@ export default async function Page({
         {/* ------------------------------------------------------------------ */}
         {/* SHARE EMBED                                                         */}
         {/* ------------------------------------------------------------------ */}
-
-        <div className="flex justify-center">
-          <SEOShareEmbed
-            title={`${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`}
-          />
-        </div>
 
         {/* ------------------------------------------------------------------ */}
         {/* JSON-LD STRUCTURED DATA                                             */}
