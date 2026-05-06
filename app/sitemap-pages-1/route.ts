@@ -5,41 +5,77 @@ import { types } from "@/lib/types";
 import fs from "fs";
 import path from "path";
 
+/**
+ * =========================================================
+ * PERFORMANCE OPTIMIZATION CONFIG
+ * =========================================================
+ */
+
+// Use Node runtime (avoids expensive Edge execution)
+export const runtime = "nodejs";
+
+// Cache sitemap for 24 hours (VERY IMPORTANT)
+export const revalidate = 86400;
+
+/**
+ * =========================================================
+ * SITEMAP GENERATOR
+ * =========================================================
+ */
+
 export async function GET() {
   const baseUrl = "https://www.adcampin.com";
   const urls: string[] = [];
 
-  // Static Pages
+  /**
+   * ---------------------------------------------------------
+   * STATIC PAGES
+   * ---------------------------------------------------------
+   */
   urls.push(`${baseUrl}`);
   urls.push(`${baseUrl}/blog`);
 
-  // Programmatic SEO Pages
-  platforms.forEach((p: any) => {
-    const platform = typeof p === "string" ? p : p.slug;
+  /**
+   * ---------------------------------------------------------
+   * PROGRAMMATIC SEO PAGES
+   * ---------------------------------------------------------
+   * NOTE:
+   * - Keep logic intact
+   * - No async calls (fast execution)
+   */
+  for (const p of platforms as any[]) {
+  const platform = typeof p === "string" ? p : p?.slug;
 
-    industries.forEach((i: any) => {
+    for (const i of industries) {
       const industry = typeof i === "string" ? i : i.slug;
 
-      cities.forEach((c: any) => {
-        const city = typeof c === "string" ? c : c.slug;
+      for (const c of cities as any[]) {
+      const city = typeof c === "string" ? c : c?.slug;
 
-        types.forEach((t: any) => {
-          const type = typeof t === "string" ? t : t.slug;
+        for (const t of types as any[]) {
+        const type = typeof t === "string" ? t : t?.slug;
 
           urls.push(`${baseUrl}/ads/${platform}/${industry}/${city}/${type}`);
-        });
-      });
-    });
-  });
+        }
+      }
+    }
+  }
 
-  // Blog Pages
+  /**
+   * ---------------------------------------------------------
+   * BLOG PAGES
+   * ---------------------------------------------------------
+   * NOTE:
+   * - Wrapped in try/catch (safe execution)
+   * - No blocking failures
+   */
   try {
     const blogDir = path.join(process.cwd(), "app", "blog");
 
     if (fs.existsSync(blogDir)) {
       const blogFolders = fs.readdirSync(blogDir);
 
-      blogFolders.forEach((folder) => {
+      for (const folder of blogFolders) {
         const fullPath = path.join(blogDir, folder);
 
         if (
@@ -48,14 +84,25 @@ export async function GET() {
         ) {
           urls.push(`${baseUrl}/blog/${folder}`);
         }
-      });
+      }
     }
   } catch (error) {
     console.error("Sitemap blog scan error:", error);
   }
 
-  // First 50,000 URLs
+  /**
+   * ---------------------------------------------------------
+   * LIMIT TO 50,000 URLs (Google limit)
+   * ---------------------------------------------------------
+   */
   const sitemapUrls = urls.slice(0, 50000);
+
+  /**
+   * ---------------------------------------------------------
+   * XML GENERATION
+   * ---------------------------------------------------------
+   */
+  const lastMod = new Date().toISOString();
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -64,7 +111,7 @@ ${sitemapUrls
     (url) => `
   <url>
     <loc>${url}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
+    <lastmod>${lastMod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>`
@@ -72,9 +119,15 @@ ${sitemapUrls
   .join("")}
 </urlset>`;
 
+  /**
+   * ---------------------------------------------------------
+   * RESPONSE WITH AGGRESSIVE CACHING
+   * ---------------------------------------------------------
+   */
   return new Response(xml, {
     headers: {
       "Content-Type": "application/xml",
+      "Cache-Control": "public, max-age=86400, s-maxage=86400",
     },
   });
 }
