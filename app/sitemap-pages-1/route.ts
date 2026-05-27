@@ -92,7 +92,8 @@ export async function GET() {
    * LIMIT TO 50,000 URLs (Google limit)
    * ---------------------------------------------------------
    */
-  const sitemapUrls = urls.slice(0, 25000);
+  const sitemapUrls = urls.slice(0, 25000).filter(Boolean);
+  console.log("SITEMAP 1 URL COUNT:", sitemapUrls.length);
 
   /**
    * ---------------------------------------------------------
