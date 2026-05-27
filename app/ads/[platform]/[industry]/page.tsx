@@ -7,12 +7,32 @@ import Navbar from "../../../components/navbar";
 export const dynamicParams = true;
 export const dynamic = "force-static";
 
-export const metadata = {
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: {
+    platform: string;
+    industry: string;
+  };
+}) {
+  const formattedPlatform = formatText(params.platform);
+  const formattedIndustry = formatText(params.industry);
+
+  return {
+    title: `${formattedPlatform} Ads for ${formattedIndustry} (${new Date().getFullYear()} Guide)`,
+
+    description: `Explore ${formattedPlatform} advertising strategies for ${formattedIndustry} businesses. Discover campaign optimization techniques, ad examples, lead generation ideas, audience targeting methods and advertising strategies tailored for ${formattedIndustry} companies.`,
+
+    alternates: {
+      canonical: `https://www.adcampin.com/ads/${params.platform}/${params.industry}`,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export function generateStaticParams() {
 
@@ -93,14 +113,24 @@ const adCopies: string[] = [
         {formattedPlatform} Ads for {formattedIndustry} ({new Date().getFullYear()} Guide)
       </h1>
 
-        <p className="text-gray-300 max-w-2xl mx-auto mb-10">
-          <p className="text-gray-300 max-w-2xl mx-auto mb-10">
-            Looking to generate high-converting {formattedPlatform} ads for {formattedIndustry}? 
-            This guide covers proven strategies, real ad examples, targeting tips and cost insights 
-            to help you attract more customers and grow your business.
-          </p>
-          using AI. AdCampin helps create ad copy, targeting strategy,
-          creatives and optimization instantly.
+                <p className="text-gray-300 max-w-2xl mx-auto mb-10">
+          Explore high-performing {formattedPlatform} advertising strategies
+          designed specifically for {formattedIndustry} businesses.
+
+          <br />
+          <br />
+
+          This detailed {year} guide covers customer targeting methods,
+          advertising costs, campaign optimization techniques, ad creatives,
+          conversion-focused marketing strategies and lead generation ideas
+          tailored for businesses operating in the {formattedIndustry} sector.
+
+          <br />
+          <br />
+
+          AdCampin uses AI to generate ad copy, targeting recommendations,
+          campaign structures and optimization ideas for {formattedIndustry}
+          businesses using {formattedPlatform} advertising.
         </p>
 
         <div className="flex justify-center mb-10">
@@ -155,12 +185,27 @@ const adCopies: string[] = [
           Advertising for {formattedIndustry} Businesses
         </h2>
 
-        <p className="text-gray-300 max-w-3xl mx-auto">
-          {formattedIndustry} businesses use {formattedPlatform} ads to reach new
-          customers, promote services and generate qualified leads.
-          Advertising campaigns can target audiences based on location,
-          interests and behaviors, making them highly effective for
-          service-based businesses looking to grow.
+                <p className="text-gray-300 max-w-3xl mx-auto">
+          {formattedIndustry} businesses increasingly rely on{" "}
+          {formattedPlatform} advertising to generate qualified leads,
+          improve customer acquisition and strengthen brand visibility in
+          competitive markets.
+
+          <br />
+          <br />
+
+          Advertising campaigns are commonly optimized using audience
+          segmentation, conversion-focused creatives, retargeting strategies,
+          demographic targeting and performance analysis to improve return on
+          ad spend and reduce customer acquisition costs.
+
+          <br />
+          <br />
+
+          Businesses operating in the {formattedIndustry} sector often test
+          multiple campaign formats, promotional offers and targeting methods
+          to identify the highest-performing advertising strategies for their
+          services.
         </p>
 
       </section>
