@@ -4,7 +4,10 @@ import { industries } from "@/lib/industries";
 import { types } from "@/lib/types";
 import Navbar from "./../../../../components/navbar";
 export const dynamic = "force-static";
-export const revalidate = 86400;
+
+export async function generateStaticParams() {
+  return [];
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
