@@ -92,7 +92,7 @@ export async function GET() {
    * SECOND SITEMAP (URLS AFTER 50K)
    * ---------------------------------------------------------
    */
-  const sitemapUrls = urls.slice(50000);
+  const sitemapUrls = urls.slice(25000, 50000);
 
   /**
    * ---------------------------------------------------------
