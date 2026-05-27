@@ -53,7 +53,7 @@ export async function generateMetadata({
   const formattedType = formatText(type);
 
   const title = `${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`;
-  const description = `Guide to ${formattedPlatform} ads ${formattedType} for ${formattedIndustry} businesses in ${formattedCity}.`;
+  const description = `Explore ${formattedPlatform} advertising strategies for ${formattedIndustry} businesses in ${formattedCity}. Discover local ad examples, customer targeting methods, campaign optimization techniques, lead generation ideas, advertising costs and marketing strategies tailored for businesses operating in ${formattedCity}.`;
 
   return {
     title,
@@ -140,15 +140,27 @@ export default function Page({
             {formattedCity} ({year} Guide)
           </h1>
 
-          <p className="text-gray-300 max-w-2xl mx-auto mb-10">
-            Looking to generate high-converting {formattedPlatform} ads for{" "}
-            {formattedIndustry}? This guide covers proven strategies, real ad
-            examples, targeting tips and cost insights to help you attract more
-            customers and grow your business.
+                    <p className="text-gray-300 max-w-2xl mx-auto mb-10">
+            Businesses in {formattedCity} are increasingly using{" "}
+            {formattedPlatform} advertising to attract qualified customers,
+            generate leads and improve local brand visibility for{" "}
+            {formattedIndustry} services.
+
             <br />
             <br />
-            Using AI, AdCampin helps create ad copy, targeting strategy,
-            creatives and optimization instantly.
+
+            This guide explains how companies operating in {formattedCity}
+            create high-performing advertising campaigns using audience
+            targeting, localized creatives, conversion optimization and
+            platform-specific marketing strategies designed for{" "}
+            {formattedIndustry} businesses.
+
+            <br />
+            <br />
+
+            AdCampin helps generate AI-powered ad copy, campaign ideas,
+            targeting recommendations and advertising strategies customized
+            for businesses in {formattedCity}.
           </p>
 
           <div className="flex justify-center mb-10">
@@ -206,12 +218,26 @@ export default function Page({
             Advertising for {formattedIndustry} Businesses
           </h2>
 
-          <p className="text-gray-300 max-w-3xl mx-auto">
-            {formattedIndustry} businesses use {formattedPlatform} ads to reach
-            new customers, promote services and generate qualified leads.
-            Advertising campaigns can target audiences based on location,
-            interests and behaviors, making them highly effective for
-            service-based businesses looking to grow.
+                    <p className="text-gray-300 max-w-3xl mx-auto">
+            {formattedIndustry} businesses in {formattedCity} use{" "}
+            {formattedPlatform} advertising to increase local visibility,
+            attract qualified prospects and generate more customer inquiries.
+
+            <br />
+            <br />
+
+            Campaigns are often optimized around local audience targeting,
+            customer intent, conversion-focused landing pages and retargeting
+            strategies designed specifically for businesses serving customers
+            in {formattedCity}.
+
+            <br />
+            <br />
+
+            Competition levels, advertising costs and customer behavior patterns
+            can vary significantly across cities, making localized advertising
+            strategies important for improving campaign performance and reducing
+            wasted ad spend.
           </p>
 
         </section>
