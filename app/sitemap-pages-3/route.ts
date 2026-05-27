@@ -7,16 +7,16 @@ import path from "path";
 
 /**
  * =========================================================
- * PERFORMANCE OPTIMIZATION CONFIG
+ * PERFORMANCE CONFIG
  * =========================================================
  */
 
-// Use Node runtime (avoids expensive Edge execution)
+// Use Node runtime
 export const runtime = "nodejs";
 
 /**
  * =========================================================
- * SITEMAP GENERATOR
+ * SITEMAP GENERATOR (THIRD CHUNK)
  * =========================================================
  */
 
@@ -36,21 +36,18 @@ export async function GET() {
    * ---------------------------------------------------------
    * PROGRAMMATIC SEO PAGES
    * ---------------------------------------------------------
-   * NOTE:
-   * - Keep logic intact
-   * - No async calls (fast execution)
    */
   for (const p of platforms as any[]) {
-  const platform = typeof p === "string" ? p : p?.slug;
+    const platform = typeof p === "string" ? p : p?.slug;
 
-    for (const i of industries) {
-      const industry = typeof i === "string" ? i : i.slug;
+    for (const i of industries as any[]) {
+      const industry = typeof i === "string" ? i : i?.slug;
 
       for (const c of cities as any[]) {
-      const city = typeof c === "string" ? c : c?.slug;
+        const city = typeof c === "string" ? c : c?.slug;
 
         for (const t of types as any[]) {
-        const type = typeof t === "string" ? t : t?.slug;
+          const type = typeof t === "string" ? t : t?.slug;
 
           urls.push(`${baseUrl}/ads/${platform}/${industry}/${city}/${type}`);
         }
@@ -62,9 +59,6 @@ export async function GET() {
    * ---------------------------------------------------------
    * BLOG PAGES
    * ---------------------------------------------------------
-   * NOTE:
-   * - Wrapped in try/catch (safe execution)
-   * - No blocking failures
    */
   try {
     const blogDir = path.join(process.cwd(), "app", "blog");
@@ -89,10 +83,10 @@ export async function GET() {
 
   /**
    * ---------------------------------------------------------
-   * LIMIT TO 50,000 URLs (Google limit)
+   * THIRD SITEMAP (URLS AFTER 50K)
    * ---------------------------------------------------------
    */
-  const sitemapUrls = urls.slice(0, 25000);
+  const sitemapUrls = urls.slice(50000, 75000);
 
   /**
    * ---------------------------------------------------------
@@ -118,7 +112,7 @@ ${sitemapUrls
 
   /**
    * ---------------------------------------------------------
-   * RESPONSE WITH AGGRESSIVE CACHING
+   * RESPONSE
    * ---------------------------------------------------------
    */
   return new Response(xml, {
