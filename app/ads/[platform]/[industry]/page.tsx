@@ -6,7 +6,6 @@ import SEOShareEmbed from "@/app/components/seo_share_embed";
 import Navbar from "../../../components/navbar";
 export const dynamicParams = true;
 export const dynamic = "force-static";
-export const revalidate = 86400;
 
 export const metadata = {
   robots: {
