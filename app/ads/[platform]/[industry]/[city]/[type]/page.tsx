@@ -54,7 +54,7 @@ export async function generateMetadata({
   const formattedType = formatText(type);
 
   const title = `${formattedPlatform} Ads for ${formattedIndustry} in ${formattedCity} (${formattedType}) [2026]`;
-  const description =`See high-converting ${formattedPlatform} ads for ${formattedIndustry} in ${formattedCity}. Real ${formattedType}, targeting tips & cost insights. Updated 2026.`;
+  const description = `See high-converting ${formattedPlatform} ads for ${formattedIndustry} businesses in ${formattedCity}. Explore real ${formattedType} ad examples, local targeting strategies, ad costs, campaign ideas, lead generation techniques and advertising tips specifically for ${formattedIndustry} companies operating in ${formattedCity}. Updated 2026.`;
   const keywords = [
   `${formattedPlatform} ads for ${formattedIndustry}`,
   `${formattedPlatform} ads in ${formattedCity}`,
@@ -152,15 +152,28 @@ export default function Page({
             {formattedCity} ({year} Guide)
           </h1>
 
-          <p className="text-gray-300 max-w-2xl mx-auto mb-10">
+                    <p className="text-gray-300 max-w-2xl mx-auto mb-10">
             Looking to generate high-converting {formattedPlatform} ads for{" "}
-            {formattedIndustry}? This guide covers proven strategies, real ad
-            examples, targeting tips and cost insights to help you attract more
-            customers and grow your business.
+            {formattedIndustry} businesses in {formattedCity}? This detailed{" "}
+            {year} guide explains how local businesses use{" "}
+            {formattedPlatform} advertising to attract qualified customers,
+            increase leads and improve brand visibility.
+
             <br />
             <br />
-            Using AI, AdCampin helps create ad copy, targeting strategy,
-            creatives and optimization instantly.
+
+            This page includes local advertising strategies for{" "}
+            {formattedIndustry} companies operating in {formattedCity},
+            including audience targeting ideas, estimated campaign budgets,
+            ad creative examples, conversion optimization techniques and
+            industry-specific marketing recommendations.
+
+            <br />
+            <br />
+
+            AdCampin uses AI to generate ad copy, targeting strategies,
+            creatives and campaign optimization recommendations tailored for{" "}
+            {formattedIndustry} businesses in {formattedCity}.
           </p>
 
           <div className="flex justify-center mb-10">
@@ -218,12 +231,29 @@ export default function Page({
             Advertising for {formattedIndustry} Businesses
           </h2>
 
-          <p className="text-gray-300 max-w-3xl mx-auto">
-            {formattedIndustry} businesses use {formattedPlatform} ads to reach
-            new customers, promote services and generate qualified leads.
-            Advertising campaigns can target audiences based on location,
-            interests and behaviors, making them highly effective for
-            service-based businesses looking to grow.
+                    <p className="text-gray-300 max-w-3xl mx-auto">
+            {formattedIndustry} businesses in {formattedCity} increasingly use{" "}
+            {formattedPlatform} advertising to reach local customers searching
+            for trusted service providers. Campaigns are often optimized for
+            lead generation, phone inquiries, website visits and appointment
+            bookings.
+
+            <br />
+            <br />
+
+            Businesses operating in {formattedCity} frequently combine
+            geo-targeting, retargeting campaigns, audience segmentation and
+            conversion-focused creatives to improve campaign performance and
+            reduce customer acquisition costs.
+
+            <br />
+            <br />
+
+            Advertising competition for {formattedIndustry} services in{" "}
+            {formattedCity} can vary significantly depending on seasonality,
+            customer demand and local market saturation. High-performing
+            campaigns usually focus on trust signals, customer reviews,
+            localized messaging and strong offers.
           </p>
 
         </section>
