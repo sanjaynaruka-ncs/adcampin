@@ -14,9 +14,6 @@ import path from "path";
 // Use Node runtime (avoids expensive Edge execution)
 export const runtime = "nodejs";
 
-// Cache sitemap for 24 hours (reduces repeated bot hits)
-export const revalidate = 86400;
-
 /**
  * =========================================================
  * SITEMAP GENERATOR (SECOND HALF: 50K+ URLs)
