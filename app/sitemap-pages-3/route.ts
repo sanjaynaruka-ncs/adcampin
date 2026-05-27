@@ -86,7 +86,8 @@ export async function GET() {
    * THIRD SITEMAP (URLS AFTER 50K)
    * ---------------------------------------------------------
    */
-  const sitemapUrls = urls.slice(50000, 75000);
+  const sitemapUrls = urls.slice(50000).filter(Boolean);
+  console.log("SITEMAP 3 URL COUNT:", sitemapUrls.length);
 
   /**
    * ---------------------------------------------------------
