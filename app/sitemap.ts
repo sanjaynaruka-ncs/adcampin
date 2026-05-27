@@ -22,8 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/sitemap-pages-1.xml`,
       lastModified: new Date(),
     },
-    {
+        {
       url: `${baseUrl}/sitemap-pages-2.xml`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/sitemap-pages-3.xml`,
       lastModified: new Date(),
     },
   ];
