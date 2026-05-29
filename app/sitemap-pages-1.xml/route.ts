@@ -40,23 +40,48 @@ export async function GET() {
    * - Keep logic intact
    * - No async calls (fast execution)
    */
-  for (const p of platforms as any[]) {
+for (const p of platforms as any[]) {
   const platform = typeof p === "string" ? p : p?.slug;
 
-    for (const i of industries) {
-      const industry = typeof i === "string" ? i : i.slug;
+  for (const i of industries) {
+    const industry = typeof i === "string" ? i : i.slug;
 
-      for (const c of cities as any[]) {
+    /**
+     * -------------------------------------------------------
+     * INDUSTRY PAGE
+     * -------------------------------------------------------
+     */
+    urls.push(
+      `${baseUrl}/ads/${platform}/${industry}`
+    );
+
+    for (const c of cities as any[]) {
       const city = typeof c === "string" ? c : c?.slug;
 
-        for (const t of types as any[]) {
+      /**
+       * -----------------------------------------------------
+       * CITY PAGE
+       * -----------------------------------------------------
+       */
+      urls.push(
+        `${baseUrl}/ads/${platform}/${industry}/${city}`
+      );
+
+      for (const t of types as any[]) {
         const type = typeof t === "string" ? t : t?.slug;
 
-          urls.push(`${baseUrl}/ads/${platform}/${industry}/${city}/${type}`);
-        }
+        /**
+         * ---------------------------------------------------
+         * TYPE PAGE
+         * ---------------------------------------------------
+         */
+        urls.push(
+          `${baseUrl}/ads/${platform}/${industry}/${city}/${type}`
+        );
       }
     }
   }
+}
 
   /**
    * ---------------------------------------------------------

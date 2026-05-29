@@ -40,23 +40,48 @@ export async function GET() {
    * - Using for-loops (faster than forEach)
    * - Safe typing to avoid TS errors
    */
-  for (const p of platforms as any[]) {
-    const platform = typeof p === "string" ? p : p?.slug;
+for (const p of platforms as any[]) {
+  const platform = typeof p === "string" ? p : p?.slug;
 
-    for (const i of industries as any[]) {
-      const industry = typeof i === "string" ? i : i?.slug;
+  for (const i of industries as any[]) {
+    const industry = typeof i === "string" ? i : i?.slug;
 
-      for (const c of cities as any[]) {
-        const city = typeof c === "string" ? c : c?.slug;
+    /**
+     * -------------------------------------------------------
+     * INDUSTRY PAGE
+     * -------------------------------------------------------
+     */
+    urls.push(
+      `${baseUrl}/ads/${platform}/${industry}`
+    );
 
-        for (const t of types as any[]) {
-          const type = typeof t === "string" ? t : t?.slug;
+    for (const c of cities as any[]) {
+      const city = typeof c === "string" ? c : c?.slug;
 
-          urls.push(`${baseUrl}/ads/${platform}/${industry}/${city}/${type}`);
-        }
+      /**
+       * -----------------------------------------------------
+       * CITY PAGE
+       * -----------------------------------------------------
+       */
+      urls.push(
+        `${baseUrl}/ads/${platform}/${industry}/${city}`
+      );
+
+      for (const t of types as any[]) {
+        const type = typeof t === "string" ? t : t?.slug;
+
+        /**
+         * ---------------------------------------------------
+         * TYPE PAGE
+         * ---------------------------------------------------
+         */
+        urls.push(
+          `${baseUrl}/ads/${platform}/${industry}/${city}/${type}`
+        );
       }
     }
   }
+}
 
   /**
    * ---------------------------------------------------------
