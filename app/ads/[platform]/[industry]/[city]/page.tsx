@@ -43,23 +43,27 @@ type PageParams = {
 export async function generateMetadata({
   params,
 }: {
-  params: PageParams;
+  params: Promise<PageParams>;
 }) {
-  const { platform, industry, city, type } = params;
+
+  const {
+    platform,
+    industry,
+    city,
+  } = await params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
   const formattedCity = formatText(city);
-  const formattedType = formatText(type);
 
-  const title = `${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`;
+  const title = `${formattedPlatform} Ads for ${formattedIndustry} in ${formattedCity}`;
   const description = `Explore ${formattedPlatform} advertising strategies for ${formattedIndustry} businesses in ${formattedCity}. Discover local ad examples, customer targeting methods, campaign optimization techniques, lead generation ideas, advertising costs and marketing strategies tailored for businesses operating in ${formattedCity}.`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: `https://www.adcampin.com/ads/${platform}/${industry}/${city}/${type}`,
+      canonical: `https://www.adcampin.com/ads/${platform}/${industry}/${city}`,
     },
     robots: {
       index: true,
@@ -77,17 +81,21 @@ export async function generateMetadata({
  * Without `await params`, platform/industry/city/type are all undefined,
  * causing the heading to render as "Ads for in (2026 Guide)".
  */
-export default function Page({
+export default async function Page({
   params,
 }: {
-  params: PageParams;
+  params: Promise<PageParams>;
 }) {
-  const { platform, industry, city, type } = params;
+
+  const {
+    platform,
+    industry,
+    city,
+  } = await params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
   const formattedCity = formatText(city);
-  const formattedType = formatText(type);
   const year = new Date().getFullYear();
 
   // ---------------------------------------------------------------------------
@@ -136,7 +144,7 @@ export default function Page({
         <section className="mb-20">
 
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            {formattedPlatform} Ads {formattedType} for {formattedIndustry} in{" "}
+            {formattedPlatform} Ads for {formattedIndustry} in{" "}
             {formattedCity} ({year} Guide)
           </h1>
 
@@ -176,7 +184,7 @@ export default function Page({
                   ? "/linkedin-ads.webp"
                   : "/google-ads.webp"
               }
-              alt={`${formattedPlatform} ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`}
+              alt={`${formattedPlatform} ads for ${formattedIndustry} in ${formattedCity}`}
               width={900}
               height={500}
               className="rounded-xl border border-slate-700"
@@ -185,7 +193,7 @@ export default function Page({
           </div>
 
           <a
-            href={`/signup?platform=${platform}&industry=${industry}&city=${city}&type=${type}`}
+            href={`/signup?platform=${platform}&industry=${industry}&city=${city}`}
             className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
           >
             Generate Ads Now
@@ -249,7 +257,7 @@ export default function Page({
         <section className="mb-24">
 
           <h2 className="text-3xl font-bold mb-8">
-            Example {formattedPlatform} Ads {formattedType} for{" "}
+            Example {formattedPlatform} Ads for{" "}
             {formattedIndustry} in {formattedCity}
           </h2>
 
@@ -669,11 +677,11 @@ export default function Page({
           </p>
 
           <Link
-            href={`/signup?platform=${platform}&industry=${industry}&city=${city}&type=${type}`}
-            className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
-          >
-            Start Free Trial
-          </Link>
+          href={`/signup?platform=${platform}&industry=${industry}&city=${city}`}
+          className="bg-blue-600 px-6 py-3 rounded-lg inline-block"
+        >
+          Start Free Trial
+        </Link>
 
         </section>
 
@@ -692,8 +700,8 @@ export default function Page({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
-              headline: `${formattedPlatform} Ads ${formattedType} for ${formattedIndustry} in ${formattedCity}`,
-              description: `Guide to ${formattedPlatform} ads ${formattedType} for ${formattedIndustry} businesses in ${formattedCity}.`,
+              headline: `${formattedPlatform} Ads for ${formattedIndustry} in ${formattedCity}`,
+              description: `Guide to ${formattedPlatform} ads for ${formattedIndustry} businesses in ${formattedCity}.`,
               author: {
                 "@type": "Organization",
                 name: "AdCampin",
@@ -702,9 +710,9 @@ export default function Page({
                 "@type": "Organization",
                 name: "AdCampin",
               },
-              mainEntityOfPage: {
+             mainEntityOfPage: {
                 "@type": "WebPage",
-                "@id": `https://www.adcampin.com/ads/${platform}/${industry}/${city}/${type}`,
+                "@id": `https://www.adcampin.com/ads/${platform}/${industry}/${city}`,
               },
             }),
           }}
