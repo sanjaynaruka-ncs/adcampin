@@ -63,9 +63,7 @@ export const metadata: Metadata = {
     "AdCampin",
   ],
 
-  alternates: {
-    canonical: siteUrl,
-  },
+  alternates: {},
 
   robots: {
     index: true,
@@ -148,9 +146,6 @@ export default function RootLayout({
       {/* ================================================================== */}
 
       <head>
-
-        {/* Canonical Homepage */}
-        <link rel="canonical" href={siteUrl} />
 
         {/* Theme */}
         <meta name="theme-color" content="#000000" />
