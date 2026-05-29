@@ -44,9 +44,15 @@ type PageParams = {
 export async function generateMetadata({
   params,
 }: {
-  params: PageParams;
+  params: Promise<PageParams>;
 }) {
-  const { platform, industry, city, type } = params;
+
+  const {
+    platform,
+    industry,
+    city,
+    type,
+  } = await params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
@@ -89,12 +95,18 @@ export async function generateMetadata({
  * Without `await params`, platform/industry/city/type are all undefined,
  * causing the heading to render as "Ads for in (2026 Guide)".
  */
-export default function Page({
+export default async function Page({
   params,
 }: {
-  params: PageParams;
+  params: Promise<PageParams>;
 }) {
-  const { platform, industry, city, type } = params;
+
+  const {
+    platform,
+    industry,
+    city,
+    type,
+  } = await params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
