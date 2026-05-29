@@ -4,19 +4,24 @@ import { industries } from "@/lib/industries";
 import { platforms } from "@/lib/platforms";
 import SEOShareEmbed from "@/app/components/seo_share_embed";
 import Navbar from "../../../components/navbar";
-export const dynamicParams = true;
-export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
 }: {
-  params: {
+  params: Promise<{
     platform: string;
     industry: string;
-  };
+  }>;
 }) {
-  const formattedPlatform = formatText(params.platform);
-  const formattedIndustry = formatText(params.industry);
+
+  const {
+    platform,
+    industry,
+  } = await params;
+
+  const formattedPlatform = formatText(platform);
+  const formattedIndustry = formatText(industry);
 
   return {
     title: `${formattedPlatform} Ads for ${formattedIndustry} (${new Date().getFullYear()} Guide)`,
@@ -24,7 +29,7 @@ export async function generateMetadata({
     description: `Explore ${formattedPlatform} advertising strategies for ${formattedIndustry} businesses. Discover campaign optimization techniques, ad examples, lead generation ideas, audience targeting methods and advertising strategies tailored for ${formattedIndustry} companies.`,
 
     alternates: {
-      canonical: `https://www.adcampin.com/ads/${params.platform}/${params.industry}`,
+      canonical: `https://www.adcampin.com/ads/${platform}/${industry}`,
     },
 
     robots: {
@@ -50,13 +55,6 @@ export function generateStaticParams() {
   return params;
 }
 
-type PageProps = {
-  params: {
-    platform: string;
-    industry: string;
-  };
-};
-
 function formatText(text?: string) {
   if (!text) return "";
   return text
@@ -66,10 +64,19 @@ function formatText(text?: string) {
 }
 
 
-export default function Page({ params }: PageProps) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{
+    platform: string;
+    industry: string;
+  }>;
+}) {
 
-const platform = params?.platform || "";
-const industry = params?.industry || "";
+const {
+  platform,
+  industry,
+} = await params;
 
   const formattedPlatform = formatText(platform);
   const formattedIndustry = formatText(industry);
