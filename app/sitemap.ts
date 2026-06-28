@@ -67,16 +67,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
     },
 
-    /**
-     * ------------------------------------------------------------------------
-     * REMAINING URLS
-     * ------------------------------------------------------------------------
-     */
-
-    {
-      url: `${baseUrl}/sitemap-pages-3.xml`,
-      lastModified,
-    },
-
   ];
 }
