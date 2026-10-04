@@ -204,38 +204,6 @@ export default function RootLayout({
             - Strengthen internal linking graph
         */}
 
-        <div className="hidden">
-
-          {/* Existing Articles */}
-
-          <Link href="/blog/facebook-ad-copy-real-estate">
-            Real Estate Facebook Ads
-          </Link>
-
-          <Link href="/blog/google-ads-headlines-local-business">
-            Google Ads Headlines
-          </Link>
-
-          <Link href="/blog/best-chatgpt-prompts-ad-copy">
-            ChatGPT Prompts for Ads
-          </Link>
-
-          {/* Additional Articles */}
-
-          <Link href="/blog/google-ads-dentists">
-            Google Ads for Dentists
-          </Link>
-
-          <Link href="/blog/facebook-ads-lawyers">
-            Facebook Ads for Lawyers
-          </Link>
-
-          <Link href="/blog/instagram-ads-gyms">
-            Instagram Ads for Gyms
-          </Link>
-
-        </div>
-
         {/* ================================================================ */}
         {/* GLOBAL STRUCTURED DATA                                           */}
         {/* ================================================================ */}

@@ -5,61 +5,28 @@ import HowItWorksSection from "./components/HowItWorksSection";
 import PricingPreviewSection from "./components/PricingPreviewSection";
 import CTASection from "./components/CTASection";
 
-import fs from "fs";
-import path from "path";
-
-import Link from "next/link";
-
 import type { Metadata } from "next";
-
-/**
- * ============================================================================
- * HOMEPAGE SEO + INDEXING OPTIMIZATION
- * ============================================================================
- *
- * PURPOSE:
- * - Strengthen homepage indexing signals
- * - Improve crawl distribution
- * - Improve blog discovery
- * - Improve homepage semantic relevance
- * - Reduce thin-content risk
- * - Improve internal linking architecture
- *
- * IMPORTANT:
- * - Existing UI fully preserved
- * - Existing functionality fully preserved
- * - Existing components fully preserved
- * - Existing blog logic fully preserved
- * ============================================================================
- */
-
-/**
- * ============================================================================
- * SEO METADATA
- * ============================================================================
- */
 
 const siteUrl = "https://www.adcampin.com";
 
 export const metadata: Metadata = {
-  title:
-    "AdCampin — AI Ad Generator for Facebook, Google & Instagram Ads",
+  title: "AdCampin — AI Ad Manager",
 
   description:
-    "Generate high-converting Facebook, Google, Instagram and LinkedIn ads using AI. Create ad copy, targeting strategies, campaign ideas and optimized advertising campaigns instantly with AdCampin.",
+    "AdCampin is an AI Ad Manager that helps businesses analyze, optimize and manage advertising campaigns across Google Ads, Meta Ads and other advertising platforms.",
 
   keywords: [
-    "AI ad generator",
-    "Facebook ads AI",
-    "Google ads AI",
-    "Instagram ads AI",
-    "LinkedIn ads AI",
-    "AI ad copy generator",
-    "digital advertising AI",
-    "PPC ad generator",
+    "AI Ad Manager",
+    "AI advertising platform",
+    "AI ads manager",
+    "Google Ads AI",
+    "Meta Ads AI",
+    "Facebook Ads AI",
+    "AI campaign optimization",
+    "AI advertising automation",
+    "ad campaign management",
     "AI marketing platform",
     "advertising automation",
-    "marketing AI tool",
     "AdCampin",
   ],
 
@@ -73,9 +40,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "AdCampin — AI Ad Generator",
+    title: "AdCampin — AI Ad Manager",
     description:
-      "Create high-converting ad campaigns in seconds using AI-powered advertising tools.",
+      "Analyze, optimize and manage advertising campaigns with an AI-powered Ad Manager.",
     url: siteUrl,
     siteName: "AdCampin",
     type: "website",
@@ -84,46 +51,19 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AdCampin AI Advertising Platform",
+        alt: "AdCampin AI Ad Manager",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "AdCampin — AI Ad Generator",
+    title: "AdCampin — AI Ad Manager",
     description:
-      "Generate high-converting ads using AI-powered advertising tools.",
+      "Analyze, optimize and manage advertising campaigns with an AI-powered Ad Manager.",
     images: ["/og-image.png"],
   },
 };
-
-/**
- * ============================================================================
- * DYNAMIC BLOG POST FETCHER
- * ============================================================================
- */
-
-function getLatestPosts() {
-  const blogDir = path.join(process.cwd(), "app/blog");
-
-  return fs
-    .readdirSync(blogDir)
-
-    // Exclude blog index page
-    .filter((name) => name !== "page.tsx")
-
-    // Latest 6 posts
-    .slice(-6)
-
-    .map((slug) => ({
-      title: slug
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, (l) => l.toUpperCase()),
-
-      href: `/blog/${slug}`,
-    }));
-}
 
 /**
  * ============================================================================
@@ -132,8 +72,6 @@ function getLatestPosts() {
  */
 
 export default function Home() {
-  const posts = getLatestPosts();
-
   return (
     <>
       {/* ================================================================== */}
@@ -159,125 +97,75 @@ export default function Home() {
       {/* ================================================================== */}
       {/* SEO CONTENT SECTION                                                 */}
       {/* ================================================================== */}
-      {/* PURPOSE:
-          - Improve homepage semantic depth
-          - Improve indexing quality
-          - Strengthen topical authority
-          - Reduce thin homepage signals
+      {/*
+        PURPOSE:
+        - Improve homepage semantic depth
+        - Explain the current AdCampin product
+        - Improve topical relevance
+        - Support organic discovery
+
+        NOTE:
+        This content is intentionally aligned with the new AI Ad Manager
+        positioning rather than the previous AI ad-generator-only model.
       */}
 
       <section className="bg-black text-white py-20">
-
         <div className="max-w-5xl mx-auto px-6">
-
           <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-            AI Advertising Platform for High-Converting Campaigns
+            AI Ad Manager for Smarter Advertising Campaigns
           </h2>
 
           <div className="space-y-8 text-gray-300 leading-8 text-lg">
-
             <p>
-              AdCampin helps businesses create high-converting advertising
-              campaigns using artificial intelligence. Generate optimized
-              Facebook ads, Google ads, Instagram ads and LinkedIn advertising
-              campaigns in seconds using AI-powered ad generation tools.
+              AdCampin is an AI-powered Ad Manager designed to help businesses
+              analyze, optimize and manage their advertising campaigns.
+              Instead of simply generating ad copy, AdCampin is built to work
+              with real advertising campaign data and help advertisers make
+              better decisions.
             </p>
 
             <p>
-              Businesses use AdCampin to create ad copy, campaign structures,
-              audience targeting strategies, conversion-focused creatives and
-              marketing ideas designed to improve campaign performance and
-              generate more qualified leads.
+              AdCampin can help advertisers understand campaign performance,
+              identify inefficient spending, evaluate advertising metrics and
+              recommend optimization actions across supported advertising
+              platforms.
             </p>
 
             <p>
-              The platform supports advertising strategies for multiple
-              industries including real estate, healthcare, gyms, legal
-              services, education, restaurants, salons, e-commerce businesses
-              and local service providers.
+              The platform is designed around the complete advertising
+              management workflow: connecting advertising accounts, analyzing
+              campaign performance, generating recommendations, taking
+              approved actions, verifying results and maintaining an audit
+              history of campaign activity.
             </p>
 
             <p>
-              AI-powered optimization helps advertisers improve click-through
-              rates, reduce customer acquisition costs and generate more
-              conversions through smarter campaign structures and targeted
-              advertising strategies.
+              AdCampin is being built for businesses that want the benefits of
+              AI-powered advertising management without having to manually
+              monitor every campaign, budget, bid, audience and performance
+              signal themselves.
             </p>
-
           </div>
-
         </div>
-
       </section>
 
       {/* ================================================================== */}
       {/* LATEST GUIDES SECTION                                               */}
       {/* ================================================================== */}
-
-      <section className="pt-10 pb-20 bg-black text-white">
-
-        <div className="max-w-6xl mx-auto px-6 py-10">
-
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
-            Latest Advertising Guides
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            {posts.map((post, index) => (
-
-              <Link
-                key={index}
-                href={post.href}
-                className="block rounded-lg border border-white/10 bg-slate-800 p-5 hover:bg-slate-700 transition"
-              >
-
-                <h3 className="text-lg font-semibold text-white">
-                  {post.title}
-                </h3>
-
-              </Link>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
+      {/*
+        The previous dynamic blog section has intentionally been removed.
+        The old blog articles and /blog directory are no longer part of the
+        application. A new blog/content system will be added later.
+      */}
 
       {/* ================================================================== */}
       {/* INTERNAL SEO LINKS                                                  */}
       {/* ================================================================== */}
-      {/* PURPOSE:
-          - Improve crawl discovery
-          - Improve page distribution
-          - Improve indexing signals
+      {/*
+        The previous hidden internal SEO links pointed to deleted blog
+        articles. They have intentionally been removed so the homepage does
+        not contain links to non-existent routes.
       */}
-
-      <section className="hidden">
-
-        <Link href="/blog/google-ads-dentists">
-          Google Ads for Dentists
-        </Link>
-
-        <Link href="/blog/facebook-ads-lawyers">
-          Facebook Ads for Lawyers
-        </Link>
-
-        <Link href="/blog/instagram-ads-gyms">
-          Instagram Ads for Gyms
-        </Link>
-
-        <Link href="/blog/best-chatgpt-prompts-ad-copy">
-          ChatGPT Prompts for Ad Copy
-        </Link>
-
-        <Link href="/blog/google-ads-headlines-local-business">
-          Google Ads Headlines for Local Businesses
-        </Link>
-
-      </section>
 
       {/* ================================================================== */}
       {/* JSON-LD STRUCTURED DATA                                             */}
@@ -301,13 +189,7 @@ export default function Home() {
             url: siteUrl,
 
             description:
-              "AI-powered advertising platform for generating high-converting ad campaigns.",
-
-            offers: {
-              "@type": "Offer",
-              price: "0",
-              priceCurrency: "USD",
-            },
+              "AI-powered advertising platform for analyzing, optimizing and managing advertising campaigns.",
 
             publisher: {
               "@type": "Organization",

@@ -1,25 +1,47 @@
-export const PLAN_FEATURES: any = {
-  free: {
-    landing_page: false,
-    image_variations: false,
-    export_ads: false
-  },
-
-  pro: {
+export const PLAN_FEATURES = {
+  starter: {
+    ai_ad_manager: true,
+    campaign_analysis: true,
+    campaign_optimization: true,
+    performance_reporting: true,
+    alerts: true,
+    approval_workflows: true,
     landing_page: true,
     image_variations: true,
-    export_ads: true
   },
 
-  business: {
+  growth: {
+    ai_ad_manager: true,
+    campaign_analysis: true,
+    campaign_optimization: true,
+    performance_reporting: true,
+    alerts: true,
+    approval_workflows: true,
     landing_page: true,
     image_variations: true,
-    export_ads: true
+  },
+
+  professional: {
+    ai_ad_manager: true,
+    campaign_analysis: true,
+    campaign_optimization: true,
+    performance_reporting: true,
+    alerts: true,
+    approval_workflows: true,
+    landing_page: true,
+    image_variations: true,
   },
 
   enterprise: {
+    ai_ad_manager: true,
+    campaign_analysis: true,
+    campaign_optimization: true,
+    performance_reporting: true,
+    alerts: true,
+    approval_workflows: true,
     landing_page: true,
     image_variations: true,
-    export_ads: true
-  }
-};
+  },
+} as const;
+
+export type PlanFeatureKey = keyof typeof PLAN_FEATURES;
